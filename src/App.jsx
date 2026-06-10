@@ -541,26 +541,33 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
     return ()=>clearInterval(iv);
   },[]);
   if(!show) return null;
+  const timerText = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
   return(
-    <div style={{ position:"fixed",top:0,left:0,right:0,zIndex:200,background:"linear-gradient(90deg,#0f172a,#1e293b,#0f172a)",borderBottom:"1px solid rgba(14,165,233,0.2)",padding:"8px 1rem",display:"flex",alignItems:"center",justifyContent:"center",gap:"0.75rem",flexWrap:"wrap" }}>
-      <div style={{ display:"flex",alignItems:"center",gap:"6px",flexWrap:"wrap",justifyContent:"center" }}>
-        <div style={{ width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite",flexShrink:0 }}/>
-        <span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.72rem" }}>Limited Offer:</span>
-        <span style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontSize:"0.72rem",fontWeight:600 }}>Pro plan</span>
-        <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.72rem",textDecoration:"line-through" }}>₹649/mo</span>
-        <span style={{ fontFamily:"'Inter',sans-serif",color:"#10b981",fontSize:"0.75rem",fontWeight:700 }}>₹399/mo</span>
-        <span style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",borderRadius:"3px",padding:"1px 7px",fontFamily:"'Inter',sans-serif",color:"#fff",fontSize:"0.62rem",fontWeight:700,letterSpacing:"0.04em" }}>38% OFF</span>
+    <div style={{ position:"fixed",top:0,left:0,right:0,zIndex:200,background:"linear-gradient(90deg,#0a1628,#0f2040,#0a1628)",borderBottom:"1px solid rgba(14,165,233,0.2)",height:"37px",display:"flex",alignItems:"center",overflow:"hidden" }}>
+      <style>{`@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}`}</style>
+      <div style={{ display:"flex",whiteSpace:"nowrap",animation:"marquee 35s linear infinite",cursor:"pointer" }} onClick={onCTA}>
+        {[0,1].map(idx=>(
+          <div key={idx} style={{ display:"inline-flex",whiteSpace:"nowrap" }}>
+            {[0,1,2,3,4,5,6,7].map(i=>(
+              <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:"6px",padding:"0 1.5rem",fontFamily:"'Inter',sans-serif",fontSize:"0.72rem" }}>
+                <span style={{ color:"#94a3b8" }}>Limited Offer:</span>
+                <span style={{ color:"#f1f5f9",fontWeight:600 }}>Pro plan</span>
+                <span style={{ color:"#475569",textDecoration:"line-through" }}>649/mo</span>
+                <span style={{ color:"#10b981",fontWeight:700 }}>399/mo</span>
+                <span style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",borderRadius:"3px",padding:"1px 6px",color:"#fff",fontSize:"0.6rem",fontWeight:700 }}>38% OFF</span>
+                <span style={{ color:"#64748b" }}>|</span>
+                <span style={{ color:"#fca5a5",fontSize:"0.7rem" }}>Ends in</span>
+                <span style={{ color:"#f87171",fontWeight:700,fontVariantNumeric:"tabular-nums" }}>{timerText}</span>
+                <span style={{ color:"#334155" }}>•</span>
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
-      <div style={{ display:"flex",alignItems:"center",gap:"4px",background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"4px",padding:"2px 8px" }}>
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span style={{ fontFamily:"'Inter',sans-serif",color:"#fca5a5",fontSize:"0.7rem",fontWeight:600 }}>
-          {String(mins).padStart(2,'0')}:{String(secs).padStart(2,'0')} left
-        </span>
-      </div>
-      <button onClick={onCTA} style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"4px",color:"#fff",fontSize:"0.7rem",fontWeight:700,padding:"4px 12px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>
-        {lang==="hi" ? "Claim karo" : "Claim Offer"}
+      <button onClick={()=>{setShow(false);onClose&&onClose();}}
+        style={{ position:"absolute",right:"8px",top:"50%",transform:"translateY(-50%)",background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:22,height:22,borderRadius:"4px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.75rem",zIndex:1 }}>
+        x
       </button>
-      <button onClick={()=>{setShow(false);onClose&&onClose();}} style={{ background:"none",border:"none",color:"#334155",cursor:"pointer",marginLeft:"0.25rem",fontSize:"0.9rem",lineHeight:1 }}>x</button>
     </div>
   );
 }
@@ -569,10 +576,10 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const tn = t.nav;
   return (
-    <nav style={{ position:"fixed",top:bannerVisible?"37px":"0px",transition:"top .3s ease",left:0,right:0,zIndex:100,height:isMobile?"56px":"64px",background:"rgba(15,23,42,0.98)",backdropFilter:"blur(20px)",borderBottom:"1px solid rgba(255,255,255,0.06)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:isMobile?"0 1rem":isTablet?"0 1.5rem":"0 2.5rem" }}>
+    <nav style={{ position:"fixed",top:bannerVisible?"37px":"0px",transition:"top .3s ease",left:0,right:0,zIndex:100,height:isMobile?"60px":"68px",background:"rgba(15,23,42,0.98)",backdropFilter:"blur(20px)",borderBottom:"1px solid rgba(255,255,255,0.06)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:isMobile?"0 1.2rem":isTablet?"0 1.5rem":"0 2.5rem" }}>
       {/* Logo */}
       <div style={{ display:"flex",alignItems:"center",gap:"9px",textDecoration:"none" }}>
-<span style={{ fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"1.05rem",color:"#f1f5f9",letterSpacing:"-0.01em" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
+        <span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:isMobile?"1.6rem":isTablet?"1.7rem":"1.9rem",color:"#f1f5f9",letterSpacing:"-0.03em" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
       </div>
 
       {isDesktop ? (
@@ -601,9 +608,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true }) {
             {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
-          {isMobile&&<button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>
-            {menuOpen?"x":"="}
-          </button>}
+          {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
         </div>
       )}
 
@@ -636,7 +641,7 @@ function Hero({ onCTA, t, lang }) {
   },[wi]);
 
   return(
-    <section style={{ background:"#020817",minHeight:isMobile?"100vh":"92vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"7rem 1.5rem 2.5rem":isTablet?"8rem 2rem 3rem":"9rem 2rem 4rem",position:"relative",overflow:"hidden" }}>
+    <section style={{ background:"#020817",minHeight:isMobile?"100vh":"92vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"9rem 1.2rem 2.5rem":isTablet?"8.5rem 2rem 3rem":"9.5rem 2rem 4rem",position:"relative",overflow:"hidden" }}>
 
       {/* Animated grid */}
       <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(14,165,233,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.04) 1px,transparent 1px)",backgroundSize:"50px 50px",pointerEvents:"none",maskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)" }}/>
