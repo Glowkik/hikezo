@@ -78,42 +78,42 @@ const T = {
   en: {
     nav: { features: "Features", pricing: "Pricing", cta: "Get Started" },
     hero: {
-      badge: "India's #1 Career Growth Platform",
-      h1a: "Accelerate Your", h1b: "Career Growth",
-      sub: "Expert career consultants available 24/7 -- salary negotiation, career roadmaps, skills gap analysis, interview prep, and resume building. All in one place.",
-      cta: "Talk to a Consultant", demo: "See How It Works",
-      social: "professionals trust Hikezo",
+      badge: "10,000+ Professionals Got Their Hike",
+      h1a: "Get the Salary", h1b: "You Deserve",
+      sub: "India's professionals earn 40% more after using Hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
+      cta: "Get My Salary Script Free", demo: "See How It Works",
+      social: "got salary hikes with Hikezo",
     },
     how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
       steps: [
         { title: "Create Account", desc: "Sign up free in 30 seconds. No credit card needed." },
         { title: "Meet Your Consultant", desc: "Get matched with a specialized career expert instantly." },
         { title: "Get Your Strategy", desc: "Receive a personalized negotiation script & career plan." },
-        { title: "Land the Hike", desc: "Execute your strategy and claim the salary you deserve." },
+        { title: "Claim Your Raise", desc: "Use your script. Walk out with the salary you deserve." },
       ]
     },
     features: { label: "WHAT WE OFFER", title: "Everything You Need to Grow",
       items: [
-        { title: "Salary Negotiation", desc: "Word-for-word scripts tailored to your role, company, and experience level." },
-        { title: "Career Roadmap", desc: "A 6-12 month plan covering skills, milestones, and job switch timing." },
-        { title: "Skills Gap Analysis", desc: "Pinpoint exactly what's holding you back and how to bridge the gap fast." },
-        { title: "Resume Overhaul", desc: "Transform bullet points into achievement statements that get callbacks." },
-        { title: "Interview Coaching", desc: "Role-specific Q&A with STAR-format answers and live feedback." },
-        { title: "Salary Benchmarking", desc: "Real market data from India's top companies -- by role, city, and experience." },
+        { title: "Salary Negotiation", desc: "Exact words to say in your next appraisal. Proven to get 30-45% hikes." },
+        { title: "Career Roadmap", desc: "Know exactly what to do next week, next month, and next year to level up." },
+        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for -- and how to get them." },
+        { title: "Resume Overhaul", desc: "Rewrite your resume in 1 session. Get 3x more callbacks guaranteed." },
+        { title: "Interview Coaching", desc: "Walk into any interview confident. We prep you for the exact questions they'll ask." },
+        { title: "Salary Benchmarking", desc: "Find out if you're underpaid -- compare your salary with 50,000+ data points." },
       ]
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Got a 40% hike using Hikezo's negotiation script. But the career roadmap was equally valuable -- I finally knew exactly where I was headed in the next 2 years.", av: "RS" },
-        { name: "Priya Menon", role: "Product Manager, Mumbai", text: "The skills gap analysis was eye-opening. I was missing 3 key competencies for a senior role. Followed the roadmap, built those skills, and got promoted in 5 months.", av: "PM" },
-        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "Interview prep was a game changer -- role-specific questions with STAR format answers. Went from nervous to confident. Got 2 competing offers in 3 weeks.", av: "AK" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used Hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
+        { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
+        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "Hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "No hidden charges. Billed monthly.",
+    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg Hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
       plans: [
-        { name: "Free", price: "₹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Start Free", highlight: false },
-        { name: "Pro", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro", highlight: true },
-        { name: "Elite", price: "₹799", originalPrice: "₹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite", highlight: false },
+        { name: "Free", price: "₹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Try Free -- No Card", highlight: false },
+        { name: "Pro", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Get My Salary Script", highlight: true },
+        { name: "Elite", price: "₹799", originalPrice: "₹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Get Full Access", highlight: false },
       ]
     },
     faq: { title: "Frequently Asked Questions",
@@ -137,8 +137,8 @@ const T = {
     nav: { features: "फीचर्स", pricing: "प्राइसिंग", cta: "शुरू करो" },
     hero: {
       badge: "India का #1 Career Growth Platform",
-      h1a: "अपना Career", h1b: "Accelerate करो",
-      sub: "Expert career consultants 24/7 available -- salary negotiation, career roadmap, skills gap analysis, interview prep, aur resume building. Sab ek jagah.",
+      h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
+      sub: "Hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
       cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
       social: "professionals ने Hikezo trust किया",
     },
@@ -717,7 +717,7 @@ function Hero({ onCTA, t, lang }) {
           <button onClick={onCTA} style={{ padding:isMobile?"13px 22px":"14px 24px",borderRadius:"8px",background:"transparent",border:"1px solid rgba(255,255,255,0.1)",color:"#94a3b8",fontWeight:500,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .25s ease" }}
             onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(14,165,233,0.4)";e.currentTarget.style.color="#e2e8f0";e.currentTarget.style.background="rgba(14,165,233,0.05)";}}
             onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.1)";e.currentTarget.style.color="#94a3b8";e.currentTarget.style.background="transparent";}}>
-            {th.demo}
+            Watch 2-min Demo
           </button>
         </div>
 
@@ -758,6 +758,29 @@ function Hero({ onCTA, t, lang }) {
   );
 }
 
+
+// ── SOCIAL PROOF STRIP ───────────────────────────────────────────────────────
+function SocialProofStrip() {
+  const companies = ["Google","Microsoft","Amazon","Flipkart","Swiggy","Infosys","TCS","PhonePe","Zomato","Razorpay","Wipro","HCL"];
+  return(
+    <section style={{ background:"rgba(255,255,255,0.02)",borderTop:"1px solid rgba(255,255,255,0.05)",borderBottom:"1px solid rgba(255,255,255,0.05)",padding:"14px 0",overflow:"hidden" }}>
+      <style>{`@keyframes stripScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}`}</style>
+      <p style={{ textAlign:"center",fontFamily:"'Inter',sans-serif",fontSize:"0.65rem",color:"#334155",marginBottom:"10px",letterSpacing:"0.08em" }}>
+        PROFESSIONALS FROM THESE COMPANIES GOT THEIR HIKE
+      </p>
+      <div style={{ display:"flex",alignItems:"center",overflow:"hidden" }}>
+        <div style={{ display:"inline-flex",alignItems:"center",animation:"stripScroll 22s linear infinite",whiteSpace:"nowrap" }}>
+          {[...companies,...companies].map((c,i)=>(
+            <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:"6px",padding:"0 1.8rem",fontFamily:"'Inter',sans-serif",fontSize:"0.8rem",fontWeight:600,color:"#475569" }}>
+              <span style={{ width:4,height:4,borderRadius:"50%",background:"#0ea5e9",display:"inline-block" }}/>
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // -- HOW IT WORKS --------------------------------------------------------------
 function HowItWorks({ t, onCTA }) {
@@ -1045,6 +1068,7 @@ export default function Hikezo() {
         {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
         <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
+        <SocialProofStrip/>
         <HowItWorks t={t} onCTA={handleCTA}/>
         <Features t={t}/>
         <Testimonials t={t}/>
