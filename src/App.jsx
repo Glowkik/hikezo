@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Auth from "./Auth";
 
 function useBreakpoint() {
   const get = () => window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop";
@@ -1214,7 +1215,7 @@ export default function Hikezo() {
       {showAuth&&(
         <div style={{ position:"fixed",inset:0,zIndex:400,background:"rgba(2,8,23,0.92)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowAuth(false)}>
-          <AuthWall onAuth={handleAuth} ta={ta} isMobile={isMobile}/>
+          <Auth onAuth={handleAuth} t={ta}/>
         </div>
       )}
 
