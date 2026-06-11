@@ -440,8 +440,8 @@ function ChatModal({ onClose, t, lang, user }) {
     const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd);
     try{
       const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
-      const AKEY = import.meta.env.VITE_ANTHROPIC_KEY || "";
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":AKEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-3-5-haiku-20241022",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
+      const AKEY = "";
+      const res=await fetch("/api/chat/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":AKEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-3-5-haiku-20241022",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
       const d=await res.json();
       const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment! ";
       setMsgs(p=>{
