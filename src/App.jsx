@@ -329,31 +329,72 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
 function ConnectingScreen({ c, lang, onDone }) {
   const [step,setStep]=useState(0);
   const [prog,setProg]=useState(0);
-  const steps = lang==="hi" ? c.hiSteps(c.name) : c.steps(c.name);
+  const [tipIdx,setTipIdx]=useState(0);
+  
+  const tips = lang==="hi" ? [
+    { icon:"💰", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
+    { icon:"🗺️", title:"Career roadmap lo", desc:"Apni role aur experience batao — next steps milenge" },
+    { icon:"🎯", title:"Interview prep karo", desc:"Company ka naam batao — specific prep milegi" },
+    { icon:"📝", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
+  ] : [
+    { icon:"💰", title:"Negotiate your salary", desc:"Share your current salary and target — get a script" },
+    { icon:"🗺️", title:"Get a career roadmap", desc:"Tell your role and experience — get next steps" },
+    { icon:"🎯", title:"Prep for interviews", desc:"Share the company name — get specific prep" },
+    { icon:"📝", title:"Improve your resume", desc:"Share your role and wins — get a rewrite" },
+  ];
+
   useEffect(()=>{
     const ts=[8000,14000,24000].map((d,i)=>setTimeout(()=>setStep(i),d));
     const iv=setInterval(()=>setProg(p=>Math.min(p+1.5,100)),450);
+    const tipIv=setInterval(()=>setTipIdx(i=>(i+1)%tips.length),2500);
     const dn=setTimeout(onDone,30000);
-    return()=>{ts.forEach(clearTimeout);clearInterval(iv);clearTimeout(dn);}
+    return()=>{ts.forEach(clearTimeout);clearInterval(iv);clearInterval(tipIv);clearTimeout(dn);}
   },[]);
+
+  const steps = lang==="hi"
+    ? [`Consultant availability check ho rahi hai...`, `Aapke liye best match dhundha ja raha hai...`, `${c.name} aapke liye taiyar hain!`]
+    : [`Checking consultant availability...`, `Matching you with the best fit...`, `${c.name} is ready for you!`];
+
   return(
     <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.97)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .4s ease" }}>
-      <div style={{ textAlign:"center",maxWidth:"360px",width:"100%",animation:"scaleIn .4s ease" }}>
-        <div style={{ position:"relative",width:96,height:96,margin:"0 auto 2rem" }}>
-          <div style={{ position:"absolute",inset:-12,borderRadius:"50%",border:`2px solid ${c.color}30`,animation:"ringPulse 2s ease-in-out infinite" }}/>
-          <div style={{ position:"absolute",inset:-6,borderRadius:"50%",border:`2px solid ${c.color}50`,animation:"ringPulse 2s ease-in-out .4s infinite" }}/>
-          <div style={{ width:96,height:96,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}99)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2.5rem",boxShadow:`0 8px 32px ${c.color}40`,animation:"consultBob 3s ease-in-out infinite" }}>{c.emoji}</div>
+      <div style={{ textAlign:"center",maxWidth:"420px",width:"100%",animation:"scaleIn .4s ease" }}>
+        
+        {/* Consultant avatar */}
+        <div style={{ position:"relative",width:80,height:80,margin:"0 auto 1.5rem" }}>
+          <div style={{ position:"absolute",inset:-10,borderRadius:"50%",border:`2px solid ${c.color}30`,animation:"ringPulse 2s ease-in-out infinite" }}/>
+          <div style={{ position:"absolute",inset:-5,borderRadius:"50%",border:`2px solid ${c.color}50`,animation:"ringPulse 2s ease-in-out .4s infinite" }}/>
+          <div style={{ width:80,height:80,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}99)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem",boxShadow:`0 8px 32px ${c.color}40`,animation:"consultBob 3s ease-in-out infinite" }}>{c.emoji}</div>
         </div>
-        <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontSize:"1.3rem",fontWeight:700,marginBottom:"0.5rem" }}>
-          {lang==="hi" ? "आपका Consultant ढूंढ रहे हैं..." : "Finding Your Consultant..."}
+
+        <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontSize:"1.15rem",fontWeight:700,marginBottom:"0.3rem" }}>
+          {lang==="hi" ? "Aapka Consultant dhundh rahe hain..." : "Finding Your Consultant..."}
         </h2>
-        <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.88rem",marginBottom:"0.3rem",minHeight:"1.4em",transition:"all .5s" }}>{steps[step]}</p>
-        {step===2&&<p style={{ fontFamily:"'Inter',sans-serif",color:c.color,fontSize:"0.78rem",marginBottom:"1.4rem" }}>{c.specialty} Specialist</p>}
-        {step<2&&<div style={{ marginBottom:"1.4rem" }}/>}
-        <div style={{ width:"100%",height:"3px",background:"rgba(255,255,255,0.06)",borderRadius:"3px",overflow:"hidden" }}>
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.82rem",marginBottom:"1.5rem",minHeight:"1.4em" }}>{steps[step]}</p>
+
+        {/* Progress */}
+        <div style={{ width:"100%",height:"3px",background:"rgba(255,255,255,0.06)",borderRadius:"3px",overflow:"hidden",marginBottom:"2rem" }}>
           <div style={{ height:"100%",background:`linear-gradient(90deg,${c.color},${c.color}80)`,width:`${prog}%`,transition:"width .45s ease",borderRadius:"3px" }}/>
         </div>
-        <p style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.7rem",marginTop:"0.5rem" }}>{Math.round(prog)}%</p>
+
+        {/* While you wait tips */}
+        <div style={{ background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",padding:"1rem 1.2rem",marginBottom:"1rem" }}>
+          <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.1em",marginBottom:"0.8rem" }}>
+            {lang==="hi" ? "WHILE YOU WAIT — YEH READY RAKHO:" : "WHILE YOU WAIT — GET READY TO SHARE:"}
+          </p>
+          <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem" }}>
+            {tips.map((tip,i)=>(
+              <div key={i} style={{ background:i===tipIdx?"rgba(14,165,233,0.08)":"rgba(255,255,255,0.02)",border:`1px solid ${i===tipIdx?"rgba(14,165,233,0.2)":"rgba(255,255,255,0.05)"}`,borderRadius:"8px",padding:"0.7rem",textAlign:"left",transition:"all .4s ease" }}>
+                <div style={{ fontSize:"1.1rem",marginBottom:"0.3rem" }}>{tip.icon}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:i===tipIdx?"#e2e8f0":"#64748b",fontSize:"0.72rem",fontWeight:600,marginBottom:"0.2rem",transition:"color .4s" }}>{tip.title}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.65rem",lineHeight:1.4 }}>{tip.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"#1e293b",fontSize:"0.68rem" }}>
+          {lang==="hi" ? "Jitna zyada batayenge — utna better guidance milegi!" : "The more context you share, the better your guidance!"}
+        </p>
       </div>
     </div>
   );
