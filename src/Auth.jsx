@@ -24,9 +24,9 @@ export default function Auth({ onAuth, t }) {
 
   const handleSubmit = async () => {
     setError("");
-    if (!email || !password) { setError("Email aur password zaroori hai!"); return; }
-    if (!isLogin && !name) { setError("Naam zaroori hai!"); return; }
-    if (password.length < 6) { setError("Password kam se kam 6 characters ka hona chahiye!"); return; }
+    if (!email || !password) { setError("Email and password are required!"); return; }
+    if (!isLogin && !name) { setError("Name is required!"); return; }
+    if (password.length < 6) { setError("Password must be at least 6 characters!"); return; }
     setLoading(true);
     try {
       if (isLogin) {
@@ -38,11 +38,11 @@ export default function Auth({ onAuth, t }) {
         await result.user.sendEmailVerification(); await result.user.sendEmailVerification(); onAuth({ name, email: result.user.email });
       }
     } catch (e) {
-      if (e.code === "auth/user-not-found") setError("Email registered nahi hai!");
-      else if (e.code === "auth/wrong-password") setError("Password galat hai!");
-      else if (e.code === "auth/email-already-in-use") setError("Email already registered hai!");
-      else if (e.code === "auth/invalid-email") setError("Email format galat hai!");
-      else setError("Kuch galat hua. Dobara try karo.");
+      if (e.code === "auth/user-not-found") setError("Email not registered!");
+      else if (e.code === "auth/wrong-password") setError("Wrong password!");
+      else if (e.code === "auth/email-already-in-use") setError("Email already registered!");
+      else if (e.code === "auth/invalid-email") setError("Invalid email format!");
+      else setError("Something went wrong. Please try again.");
     }
     setLoading(false);
   };
