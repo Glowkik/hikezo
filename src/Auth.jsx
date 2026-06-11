@@ -35,7 +35,7 @@ export default function Auth({ onAuth, t }) {
       } else {
         const result = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(result.user, { displayName: name });
-        onAuth({ name, email: result.user.email });
+        await result.user.sendEmailVerification(); await result.user.sendEmailVerification(); onAuth({ name, email: result.user.email });
       }
     } catch (e) {
       if (e.code === "auth/user-not-found") setError("Email registered nahi hai!");
