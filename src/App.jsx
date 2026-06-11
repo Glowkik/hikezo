@@ -1183,7 +1183,7 @@ export default function Hikezo() {
               </div>
               {/* Social icons */}
               <div style={{ display:"flex",gap:"0.5rem" }}>
-                {[{h:"https://wa.me/919999999999",ic:Icon.wasvg},{h:"https://linkedin.com/company/hikezo",ic:Icon.lisvg},{h:"https://instagram.com/hikezo.in",ic:Icon.igsvg},{h:"https://youtube.com/@hikezo",ic:Icon.ytsvg}].map((s,i)=>(
+                {[{h:"https://wa.me/917048918369",ic:Icon.wasvg},{h:"https://linkedin.com/company/hikezo",ic:Icon.lisvg},{h:"https://instagram.com/hikezo.in",ic:Icon.igsvg},{h:"https://youtube.com/@hikezo",ic:Icon.ytsvg}].map((s,i)=>(
                   <a key={i} href={s.h} target="_blank" rel="noopener noreferrer" style={{ width:32,height:32,borderRadius:"6px",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.07)",display:"flex",alignItems:"center",justifyContent:"center",color:"#475569",textDecoration:"none",transition:"all .2s" }}
                     onMouseEnter={e=>{e.currentTarget.style.background="rgba(14,165,233,0.08)";e.currentTarget.style.color="#0ea5e9";e.currentTarget.style.borderColor="rgba(14,165,233,0.2)";}} onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.04)";e.currentTarget.style.color="#475569";e.currentTarget.style.borderColor="rgba(255,255,255,0.07)";}}>
                     {s.ic}
@@ -1204,7 +1204,7 @@ export default function Hikezo() {
         </footer>
 
         {/* WhatsApp FAB */}
-        <a href="https://wa.me/919999999999?text=Hi%20Hikezo%2C%20I%20need%20career%20help" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/917048918369?text=Hi%20Hikezo%2C%20I%20need%20career%20help" target="_blank" rel="noopener noreferrer"
           style={{ position:"fixed",bottom:isMobile?"1.2rem":"1.8rem",right:isMobile?"1.2rem":"1.8rem",zIndex:150,width:50,height:50,borderRadius:"50%",background:"#25D366",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 18px rgba(37,211,102,0.4)",animation:"waFloat 3s ease-in-out infinite",textDecoration:"none",color:"#fff" }}>
           {Icon.wasvg}
         </a>
