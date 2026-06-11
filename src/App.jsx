@@ -441,7 +441,7 @@ function ChatModal({ onClose, t, lang, user }) {
     try{
       const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
       const AKEY = "";
-      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:"claude-3-5-haiku-20241022",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
+      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:"claude-haiku-4-5-20251001",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
       const d=await res.json();
       const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment! ";
       setMsgs(p=>{
