@@ -67,11 +67,21 @@ function AnimCounter({ to, suffix="", prefix="", start, dur=1400 }) {
   return <>{prefix}{val >= 1000 ? (val/1000).toFixed(0)+"K" : val}{suffix}</>;
 }
 const CONSULTANTS = [
-  { name: "Priya Sharma", role: "Senior Career Consultant", exp: "8 yrs - 2400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at Hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
-  { name: "Arjun Mehta", role: "Career Growth Specialist", exp: "6 yrs - 1800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at Hikezo with 6 years creating career roadmaps for Indian professionals." },
-  { name: "Neha Gupta", role: "LinkedIn & Resume Expert", exp: "5 yrs - 1600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at Hikezo with 5 years transforming Indian professionals' career presence." },
-  { name: "Rahul Verma", role: "Interview Coach", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at Hikezo with 7 years preparing Indian professionals for top company interviews." },
+  { name: "Priya Sharma", role: "Career Consultant", exp: "8 yrs - 2400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at Hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
+  { name: "Arjun Mehta", role: "Career Consultant", exp: "6 yrs - 1800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at Hikezo with 6 years creating career roadmaps for Indian professionals." },
+  { name: "Neha Gupta", role: "Career Consultant", exp: "5 yrs - 1600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at Hikezo with 5 years transforming Indian professionals' career presence." },
+  { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at Hikezo with 7 years preparing Indian professionals for top company interviews." },
 ];
+function getConsultantForUser(userEmail) {
+  // Always return same consultant for same user
+  try {
+    const saved = sessionStorage.getItem("hz_consultant_" + userEmail);
+    if (saved) return JSON.parse(saved);
+  } catch {}
+  const c = CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)];
+  try { sessionStorage.setItem("hz_consultant_" + userEmail, JSON.stringify(c)); } catch {}
+  return c;
+}
 function getRandConsultant() { return CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)]; }
 
 const T = {
@@ -351,10 +361,15 @@ function ConnectingScreen({ c, lang, onDone }) {
 
 // -- CHAT MODAL ----------------------------------------------------------------
 function ChatModal({ onClose, t, lang, user }) {
-  const [c]=useState(()=>getRandConsultant());
+  const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
   const { isMobile }=useBreakpoint();
-  const [phase,setPhase]=useState("connecting");
-  const [msgs,setMsgs]=useState([]);
+  const chatKey = user?.email ? "hz_chat_" + user.email : "hz_chat_guest";
+  const [phase,setPhase]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h && JSON.parse(h).length > 0 ? "chat" : "connecting"; } catch { return "connecting"; }
+  });
+  const [msgs,setMsgs]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h ? JSON.parse(h) : []; } catch { return []; }
+  });
   const [input,setInput]=useState("");
   const [loading,setLoading]=useState(false);
   const [showUp,setShowUp]=useState(false);
@@ -377,14 +392,21 @@ function ChatModal({ onClose, t, lang, user }) {
     if(!input.trim()||loading)return;
     if(!isPro&&usage.count>=FREE_LIMIT){setShowUp(true);return;}
     const txt=input.trim(); setInput("");
-    setMsgs(p=>[...p,{r:"u",t:txt}]); setLoading(true);
+    const updatedWithUser=[...msgs,{r:"u",t:txt}];
+    setMsgs(updatedWithUser);
+    try{sessionStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
+    setLoading(true);
     const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd);
     try{
       const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
       const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":import.meta.env.VITE_ANTHROPIC_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
       const d=await res.json();
       const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment! ";
-      setMsgs(p=>[...p,{r:"a",t:rep}]);
+      setMsgs(p=>{
+      const updated=[...p,{r:"a",t:rep}];
+      try{sessionStorage.setItem(chatKey,JSON.stringify(updated));}catch{}
+      return updated;
+    });
       if(!isPro&&nd.count>=FREE_LIMIT)setTimeout(()=>setShowUp(true),1500);
     }catch{ setMsgs(p=>[...p,{r:"a",t:"Sorry, connection issue. Give me a moment! "}]); }
     setLoading(false);
@@ -415,6 +437,13 @@ function ChatModal({ onClose, t, lang, user }) {
               </div>
               <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
                 <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.62rem",color:"#334155",border:"1px solid rgba(255,255,255,0.07)",padding:"2px 7px",borderRadius:"4px" }}>{tc.badge}</span>
+                {msgs.length>0&&<button onClick={()=>{
+                  setMsgs([]);
+                  try{sessionStorage.removeItem(chatKey);}catch{}
+                  setPhase("connecting");
+                }} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>
+                  New Chat
+                </button>}
                 <button onClick={onClose} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem",transition:"background .2s" }}
                   onMouseEnter={e=>e.target.style.background="rgba(255,255,255,0.1)"} onMouseLeave={e=>e.target.style.background="rgba(255,255,255,0.05)"}>x</button>
               </div>
@@ -571,7 +600,7 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
     </div>
   );
 }
-function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true }) {
+function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout }) {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [menuOpen, setMenuOpen] = useState(false);
   const tn = t.nav;
@@ -595,6 +624,10 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true }) {
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem" }}>{user.name?.split(" ")[0]}</span>
+            <button onClick={onLogout} style={{ background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"5px",color:"#f87171",cursor:"pointer",fontSize:"0.68rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif",fontWeight:600,transition:"all .2s" }}
+              onMouseEnter={e=>{e.target.style.background="rgba(239,68,68,0.2)";}} onMouseLeave={e=>{e.target.style.background="rgba(239,68,68,0.1)";}}>
+              Logout
+            </button>
           </div>}
           <button onClick={onCTA} style={{ padding:"8px 18px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.82rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"opacity .2s,transform .2s" }}
             onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{tn.cta}</button>
@@ -1023,6 +1056,14 @@ export default function Hikezo() {
 
   const [showBanner, setShowBanner] = useState(true);
   const handleCTA=()=>{ if(!user){setShowAuth(true);}else{setShowChat(true);} };
+  const handleLogout=()=>{
+    try{
+      // Clear user but keep consultant assignment
+      sessionStorage.removeItem("hz_user");
+    }catch{}
+    setUser(null);
+    setShowChat(false);
+  };
   const handleAuth=(d)=>{ setUser(d); setShowAuth(false); setTimeout(()=>setShowChat(true),300); };
 
   return(
@@ -1067,7 +1108,7 @@ export default function Hikezo() {
 
       <div style={{ background:"#020817",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
         {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
-        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner}/>
+        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
         <SocialProofStrip/>
         <HowItWorks t={t} onCTA={handleCTA}/>
