@@ -1028,7 +1028,7 @@ function Pricing({ onCTA, t, lang }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={onCTA} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
+              <button onClick={()=>plan.price==="₹0"?onCTA():window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
                 onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{plan.cta}</button>
             </div>
             </SR>
