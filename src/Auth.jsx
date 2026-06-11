@@ -54,7 +54,7 @@ export default function Auth({ onAuth, t }) {
         <p style={{ color:"#64748b", marginBottom:24, fontSize:"0.9rem" }}>{isLogin ? "Login to continue" : "Free - No credit card needed"}</p>
 
         <button onClick={handleGoogle} disabled={loading} style={{ width:"100%", padding:"12px", borderRadius:8, border:"1px solid rgba(255,255,255,0.2)", background:"transparent", color:"#fff", cursor:"pointer", marginBottom:16, fontSize:"0.95rem" }}>
-          🔵 Continue with Google
+          <img src="https://www.google.com/favicon.ico" style={{width:18,height:18,marginRight:8}}/> Continue with Google
         </button>
 
         <div style={{ textAlign:"center", color:"#64748b", marginBottom:16 }}>— ya —</div>
