@@ -662,7 +662,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -681,7 +681,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
             <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
           </>}
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
           {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
@@ -1091,7 +1091,7 @@ export default function hikezo() {
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
-  const [lang,setLang]=useState("en");
+  const [lang,setLang]=useState("en"); // hindi removed // hindi removed // hindi removed
   const { isMobile, isTablet }=useBreakpoint();
   const t=T[lang]; const ta=t.auth;
 
