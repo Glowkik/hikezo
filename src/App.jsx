@@ -50,7 +50,7 @@ const FREE_LIMIT = 3;
 function getLimitData() { try { const t = new Date().toDateString(), r = sessionStorage.getItem("hz_usage"); const d = r ? JSON.parse(r) : { date: t, count: 0, plan: "free" }; return d.date !== t ? { date: t, count: 0, plan: d.plan } : d; } catch { return { date: new Date().toDateString(), count: 0, plan: "free" }; } }
 function saveLimitData(d) { try { sessionStorage.setItem("hz_usage", JSON.stringify(d)); } catch {} }
 
-//  SCROLL REVEAL + COUNTER -
+// -- SCROLL REVEAL + COUNTER ---------------------------------------------------
 function SR({ children, cls="sr", delay=0, style={}, onMouseEnter, onMouseLeave }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -91,7 +91,7 @@ const T = {
     hero: {
       badge: "10,000+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
-      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep  free to start.",
+      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
       cta: "Talk to a Consultant — Free", demo: "See How It Works",
       social: "got salary hikes with hikezo",
     },
@@ -107,17 +107,17 @@ const T = {
       items: [
         { title: "Salary Negotiation", desc: "Exact words to say in your next appraisal. Proven to get 30-45% hikes." },
         { title: "Career Roadmap", desc: "Know exactly what to do next week, next month, and next year to level up." },
-        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for  and how to get them." },
+        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for -- and how to get them." },
         { title: "Resume Overhaul", desc: "Rewrite your resume in 1 session. Get 3x more callbacks guaranteed." },
         { title: "Interview Coaching", desc: "Walk into any interview confident. We prep you for the exact questions they'll ask." },
-        { title: "Salary Benchmarking", desc: "Find out if you're underpaid  compare your salary with 50,000+ data points." },
+        { title: "Salary Benchmarking", desc: "Find out if you're underpaid -- compare your salary with 50,000+ data points." },
       ]
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike  from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
-        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA  60% jump from my previous 11 LPA.", av: "AK" },
+        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
     pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
@@ -129,17 +129,17 @@ const T = {
     },
     faq: { title: "Frequently Asked Questions",
       items: [
-        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching  all specialized for India's job market." },
+        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching -- all specialized for India's job market." },
         { q: "How does billing work?", a: "Plans are billed monthly and renew automatically. You can manage your subscription from account settings." },
         { q: "How soon will I see results?", a: "Most users get a clear action plan and negotiation strategy in their very first session." },
         { q: "Is my data safe?", a: "All conversations are encrypted with 256-bit SSL. We never share or sell your personal data." },
         { q: "What's the difference between Pro and Elite?", a: "Pro covers all core tools. Elite adds mock interviews, LinkedIn review, priority access, and weekly progress reports." },
-        { q: "Is this relevant for the Indian market?", a: "Yes  built specifically for Indian professionals with India-specific salary data, company context, and negotiation culture." },
-        { q: "Is payment secure?", a: "All payments are processed through Razorpay  India's most trusted payment gateway." },
+        { q: "Is this relevant for the Indian market?", a: "Yes -- built specifically for Indian professionals with India-specific salary data, company context, and negotiation culture." },
+        { q: "Is payment secure?", a: "All payments are processed through Razorpay -- India's most trusted payment gateway." },
       ]
     },
-    cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 10,000+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant  Free ->" },
-    footer: "(c) 2025 hikezo.in  India's Career Growth Platform",
+    cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 10,000+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant -- Free ->" },
+    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
     auth: { signupTitle: "Create Free Account", loginTitle: "Welcome Back", signupSub: "Free - No credit card needed", loginSub: "Login to continue your career journey", namePh: "Full Name", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Create Account & Start ->", loginBtn: "Login & Continue ->", thinking: "Please wait...", toLogin: "Already have an account?", toSignup: "Don't have an account?", loginLink: "Login", signupLink: "Sign Up Free", privacy: "[Secure] Your data is secure. We never spam or sell your information.", success: "Opening your consultation..." },
     chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
@@ -149,13 +149,13 @@ const T = {
     hero: {
       badge: "India का #1 Career Growth Platform",
       h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
-      sub: "hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao  free mein.",
+      sub: "hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
       cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
       social: "professionals ने hikezo trust किया",
     },
     how: { label: "PROCESS", title: "4 Steps में Career Transform करो", sub: "Simple. Fast. Effective.", cta: "Free में शुरू करो ->",
       steps: [
-        { title: "Account बनाओ", desc: "30 seconds में free signup  कोई credit card नहीं।" },
+        { title: "Account बनाओ", desc: "30 seconds में free signup -- कोई credit card नहीं।" },
         { title: "Consultant से मिलो", desc: "Specialist career expert से instantly match हो जाओ।" },
         { title: "Strategy पाओ", desc: "Personalized negotiation script और career plan मिलेगा।" },
         { title: "Hike लो", desc: "Strategy use करो और deserve की salary claim करो।" },
@@ -164,11 +164,11 @@ const T = {
     features: { label: "हम क्या देते हैं", title: "Grow करने के लिए सब कुछ",
       items: [
         { title: "Salary Negotiation", desc: "आपकी role, company और experience के हिसाब से word-for-word script।" },
-        { title: "Career Roadmap", desc: "6-12 month plan  skills, milestones और job switch timing सब clear।" },
+        { title: "Career Roadmap", desc: "6-12 month plan -- skills, milestones और job switch timing सब clear।" },
         { title: "Skills Gap Analysis", desc: "Exactly पता करो क्या रोक रहा है और fast fix कैसे करें।" },
         { title: "Resume Overhaul", desc: "Bullet points को achievement statements में convert करो जो callbacks दिलाएं।" },
         { title: "Interview Coaching", desc: "Role-specific Q&A with STAR answers और live feedback।" },
-        { title: "Salary Benchmarking", desc: "India की top companies की real market data  role, city और experience के हिसाब से।" },
+        { title: "Salary Benchmarking", desc: "India की top companies की real market data -- role, city और experience के हिसाब से।" },
       ]
     },
     testi: { label: "सक्सेस स्टोरीज़", title: "Real Professionals के Real Results",
@@ -187,17 +187,17 @@ const T = {
     },
     faq: { title: "अक्सर पूछे जाने वाले सवाल",
       items: [
-        { q: "hikezo के consultants कौन हैं?", a: "Experienced career professionals  HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
+        { q: "hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
         { q: "Billing कैसे काम करती है?", a: "Plans monthly bill होते हैं और automatically renew होते हैं। Account settings से subscription manage करें।" },
         { q: "Result कब आएगा?", a: "ज़्यादातर users को पहले session में ही clear action plan और negotiation strategy मिल जाती है।" },
         { q: "क्या मेरा data safe है?", a: "सभी conversations 256-bit SSL से encrypted हैं। हम कभी personal data share या sell नहीं करते।" },
         { q: "Pro और Elite में क्या फर्क है?", a: "Pro में सभी core tools। Elite में mock interviews, LinkedIn review, priority access और weekly reports भी।" },
-        { q: "क्या यह Indian market के लिए relevant है?", a: "हां  specifically Indian professionals के लिए बना है  Indian salary data, company context और negotiation culture के साथ।" },
-        { q: "Payment secure है?", a: "सभी payments Razorpay के through  India का सबसे trusted payment gateway।" },
+        { q: "क्या यह Indian market के लिए relevant है?", a: "हां -- specifically Indian professionals के लिए बना है -- Indian salary data, company context और negotiation culture के साथ।" },
+        { q: "Payment secure है?", a: "सभी payments Razorpay के through -- India का सबसे trusted payment gateway।" },
       ]
     },
-    cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "10,000+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो  Free ->" },
-    footer: "(c) 2025 hikezo.in  India's Career Growth Platform",
+    cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "10,000+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो -- Free ->" },
+    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
     auth: { signupTitle: "Free Account बनाओ", loginTitle: "Welcome Back", signupSub: "Free - कोई credit card नहीं", loginSub: "अपना career journey continue करो", namePh: "पूरा नाम", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account बनाओ और शुरू करो ->", loginBtn: "Login करो ->", thinking: "Please wait...", toLogin: "Already account है?", toSignup: "Account नहीं है?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] आपका data secure है। हम कभी spam या sell नहीं करते।", success: "Consultation open हो रहा है..." },
     chat: { thinking: " type कर रहे हैं...", inputPh: "अपना message लिखो...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} बचे आज के लिए`, upgradeTitle: "Free Limit पूरी हो गई", upgradeSub: `आपने आज के ${FREE_LIMIT} free messages use कर लिए हैं।`, upgradeBtn: "Upgrade करो ->", later: "बाद में" },
     connect: { title: "आपका Consultant ढूंढ रहे हैं...", steps: (name) => ["Consultant availability check हो रही है...", "आपके लिए best match ढूंढा जा रहा है...", `${name} आपके लिए तैयार हैं!`] },
@@ -220,7 +220,7 @@ const Icon = {
 };
 const FEAT_ICONS = [Icon.salary, Icon.map, Icon.search, Icon.doc, Icon.user, Icon.chart];
 
-//  CUSTOM CURSOR -
+// -- CUSTOM CURSOR -------------------------------------------------------------
 function CustomCursor() {
   const cursorRef = useRef(null);
   const glowRef = useRef(null);
@@ -326,7 +326,7 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
   );
 }
 
-//  CONNECTING SCREEN -
+// -- CONNECTING SCREEN ---------------------------------------------------------
 function ConnectingScreen({ c, lang, onDone }) {
   const [step,setStep]=useState(0);
   const [prog,setProg]=useState(0);
@@ -401,7 +401,7 @@ function ConnectingScreen({ c, lang, onDone }) {
   );
 }
 
-//  CHAT MODAL 
+// -- CHAT MODAL ----------------------------------------------------------------
 function ChatModal({ onClose, t, lang, user }) {
   const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
   const { isMobile }=useBreakpoint();
@@ -532,7 +532,7 @@ function ChatModal({ onClose, t, lang, user }) {
   );
 }
 
-//  AUTH WALL -
+// -- AUTH WALL -----------------------------------------------------------------
 function AuthWall({ onAuth, ta, isMobile }) {
   const [mode,setMode]=useState("signup");
   const [form,setForm]=useState({name:"",email:"",mobile:"",password:""});
@@ -601,7 +601,7 @@ function AuthWall({ onAuth, ta, isMobile }) {
   );
 }
 
-//  URGENCY BANNER 
+// -- URGENCY BANNER ------------------------------------------------------------
 function UrgencyBanner({ onCTA, lang, onClose }) {
   const [show, setShow] = useState(true);
   const [mins, setMins] = useState(23);
@@ -700,7 +700,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
   );
 }
 
-//  HERO 
+// -- HERO ----------------------------------------------------------------------
 function Hero({ onCTA, t, lang }) {
   const { isMobile, isTablet } = useBreakpoint();
   const th = t.hero;
@@ -712,7 +712,7 @@ function Hero({ onCTA, t, lang }) {
   const [wi, setWi] = useState(0);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
-    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){del=true;}} else{setTyped(cur.slice(0,i-1));i;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?50:90);
+    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){del=true;}} else{setTyped(cur.slice(0,i-1));i--;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?50:90);
     return()=>clearInterval(iv);
   },[wi]);
 
@@ -757,7 +757,7 @@ function Hero({ onCTA, t, lang }) {
 
       <div style={{ position:"relative",zIndex:1,maxWidth:"780px",width:"100%" }}>
 
-        {/* Live users badge  FOMO */}
+        {/* Live users badge -- FOMO */}
         <div style={{ display:"inline-flex",alignItems:"center",gap:"8px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"6px",padding:"5px 14px",marginBottom:"1.2rem",animation:"fadeUp .5s ease both" }}>
           <div style={{ width:7,height:7,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite" }}/>
           <span style={{ color:"#86efac",fontSize:"0.7rem",fontWeight:600,fontFamily:"'Inter',sans-serif",letterSpacing:"0.06em" }}>
@@ -765,7 +765,7 @@ function Hero({ onCTA, t, lang }) {
           </span>
         </div>
 
-        {/* Headline  clear value */}
+        {/* Headline -- clear value */}
         <h1 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"clamp(1.9rem,8vw,2.6rem)":isTablet?"clamp(2.3rem,5vw,3.2rem)":"clamp(2.8rem,4.5vw,3.8rem)",fontWeight:800,lineHeight:1.1,color:"#f8fafc",maxWidth:"700px",margin:"0 auto 0.8rem",letterSpacing:"-0.04em",animation:"fadeUp .7s ease .1s both" }}>
           {th.h1a}{" "}
           <span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1,#0ea5e9)",backgroundSize:"200% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"gradShift 3s ease infinite" }}>{th.h1b}</span>
@@ -777,7 +777,7 @@ function Hero({ onCTA, t, lang }) {
           <span style={{ animation:"blink 1s step-end infinite",color:"#0ea5e9" }}>|</span>
         </div>
 
-        {/* Sub  specific outcome */}
+        {/* Sub -- specific outcome */}
         <p style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.86rem":"0.92rem",color:"#475569",maxWidth:"460px",lineHeight:1.65,margin:"0 auto 1.8rem",animation:"fadeUp .7s ease .2s both" }}>
           {th.sub}
         </p>
@@ -858,7 +858,7 @@ function SocialProofStrip() {
   );
 }
 
-//  HOW IT WORKS 
+// -- HOW IT WORKS --------------------------------------------------------------
 function HowItWorks({ t, onCTA }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile }=useBreakpoint();
@@ -903,7 +903,7 @@ function HowItWorks({ t, onCTA }) {
   );
 }
 
-//  FEATURES -
+// -- FEATURES -----------------------------------------------------------------
 function Features({ t }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile, isTablet }=useBreakpoint();
@@ -933,7 +933,7 @@ function Features({ t }) {
   );
 }
 
-//  TESTIMONIALS 
+// -- TESTIMONIALS --------------------------------------------------------------
 function Testimonials({ t }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile }=useBreakpoint();
@@ -972,7 +972,7 @@ function Testimonials({ t }) {
   );
 }
 
-//  PRICING -
+// -- PRICING -------------------------------------------------------------------
 function Pricing({ onCTA, t, lang }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile, isTablet }=useBreakpoint();
@@ -1028,13 +1028,13 @@ function Pricing({ onCTA, t, lang }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>plan.price==="₹0"?onCTA():plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
+              <button onClick={()=>plan.price==="₹0"?onCTA():!user?(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
                 onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
         </div>
-        {/* Trust Badges  proper SVG icons */}
+        {/* Trust Badges -- proper SVG icons */}
         <div style={{ marginTop:"2.5rem",display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"0.75rem" }}>
           {[
             { label:"SSL Secured", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> },
@@ -1055,7 +1055,7 @@ function Pricing({ onCTA, t, lang }) {
   );
 }
 
-//  FAQ -
+// -- FAQ -----------------------------------------------------------------------
 function FAQ({ t }) {
   const [open,setOpen]=useState(null);
   const { isMobile }=useBreakpoint();
@@ -1084,7 +1084,7 @@ function FAQ({ t }) {
   );
 }
 
-//  APP -
+// -- APP -----------------------------------------------------------------------
 export default function hikezo() {
   const [showChat,setShowChat]=useState(false);
   const [showAuth,setShowAuth]=useState(false);
