@@ -928,7 +928,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setPendingPlan(plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setPendingPlan(plan.price);try{sessionStorage.setItem("hz_pending_plan",plan.price);}catch{}setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -1011,6 +1011,7 @@ export default function hikezo() {
     try{
       sessionStorage.removeItem("hz_user");
       sessionStorage.removeItem("hz_usage");
+      sessionStorage.removeItem("hz_pending_plan");
       // Sign out from Firebase to prevent auto-login
       import("./firebase").then(m => m.auth.signOut()).catch(()=>{});
     }catch{}
@@ -1020,8 +1021,9 @@ export default function hikezo() {
   const handleAuth=(d)=>{ 
     setUser(d); 
     setShowAuth(false);
-    const p = pendingPlan;
+    const p = pendingPlan || sessionStorage.getItem("hz_pending_plan");
     setPendingPlan(null);
+    try{sessionStorage.removeItem("hz_pending_plan");}catch{}
     localStorage.removeItem("hz_pending_plan");
     if(p==="Rs.799"){ window.open("https://rzp.io/rzp/HqU3cDU","_blank"); }
     else if(p==="Rs.399"){ window.open("https://rzp.io/rzp/DNfBx2L3","_blank"); }
