@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
 
 function useBreakpoint() {
@@ -92,7 +92,7 @@ const T = {
       badge: "10,000+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
       sub: "India's professionals earn 40% more after using Hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
-      cta: "Talk to a Consultant — Free", demo: "See How It Works",
+      cta: "Talk to a Consultant â€” Free", demo: "See How It Works",
       social: "got salary hikes with Hikezo",
     },
     how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
@@ -115,16 +115,16 @@ const T = {
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used Hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used Hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best â‚¹399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
         { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "Hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg Hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
+    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg Hikezo user earns â‚¹2.8L more per year. Plans start at â‚¹399.",
       plans: [
-        { name: "Free", price: "₹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
-        { name: "Pro", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
-        { name: "Elite", price: "₹799", originalPrice: "₹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
+        { name: "Free", price: "â‚¹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
+        { name: "Pro", price: "â‚¹399", originalPrice: "â‚¹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
+        { name: "Elite", price: "â‚¹799", originalPrice: "â‚¹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
       ]
     },
     faq: { title: "Frequently Asked Questions",
@@ -145,62 +145,62 @@ const T = {
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
   },
   hi: {
-    nav: { features: "फीचर्स", pricing: "प्राइसिंग", cta: "शुरू करो" },
+    nav: { features: "à¤«à¥€à¤šà¤°à¥à¤¸", pricing: "à¤ªà¥à¤°à¤¾à¤‡à¤¸à¤¿à¤‚à¤—", cta: "à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹" },
     hero: {
-      badge: "India का #1 Career Growth Platform",
-      h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
+      badge: "India à¤•à¤¾ #1 Career Growth Platform",
+      h1a: "à¤µà¥‹ Salary à¤ªà¤¾à¤“", h1b: "à¤œà¥‹ Deserve à¤•à¤°à¤¤à¥‡ à¤¹à¥‹",
       sub: "Hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
-      cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
-      social: "professionals ने Hikezo trust किया",
+      cta: "Consultant à¤¸à¥‡ à¤¬à¤¾à¤¤ à¤•à¤°à¥‹", demo: "à¤•à¥ˆà¤¸à¥‡ à¤•à¤¾à¤® à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆ à¤¦à¥‡à¤–à¥‹",
+      social: "professionals à¤¨à¥‡ Hikezo trust à¤•à¤¿à¤¯à¤¾",
     },
-    how: { label: "PROCESS", title: "4 Steps में Career Transform करो", sub: "Simple. Fast. Effective.", cta: "Free में शुरू करो ->",
+    how: { label: "PROCESS", title: "4 Steps à¤®à¥‡à¤‚ Career Transform à¤•à¤°à¥‹", sub: "Simple. Fast. Effective.", cta: "Free à¤®à¥‡à¤‚ à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹ ->",
       steps: [
-        { title: "Account बनाओ", desc: "30 seconds में free signup -- कोई credit card नहीं।" },
-        { title: "Consultant से मिलो", desc: "Specialist career expert से instantly match हो जाओ।" },
-        { title: "Strategy पाओ", desc: "Personalized negotiation script और career plan मिलेगा।" },
-        { title: "Hike लो", desc: "Strategy use करो और deserve की salary claim करो।" },
+        { title: "Account à¤¬à¤¨à¤¾à¤“", desc: "30 seconds à¤®à¥‡à¤‚ free signup -- à¤•à¥‹à¤ˆ credit card à¤¨à¤¹à¥€à¤‚à¥¤" },
+        { title: "Consultant à¤¸à¥‡ à¤®à¤¿à¤²à¥‹", desc: "Specialist career expert à¤¸à¥‡ instantly match à¤¹à¥‹ à¤œà¤¾à¤“à¥¤" },
+        { title: "Strategy à¤ªà¤¾à¤“", desc: "Personalized negotiation script à¤”à¤° career plan à¤®à¤¿à¤²à¥‡à¤—à¤¾à¥¤" },
+        { title: "Hike à¤²à¥‹", desc: "Strategy use à¤•à¤°à¥‹ à¤”à¤° deserve à¤•à¥€ salary claim à¤•à¤°à¥‹à¥¤" },
       ]
     },
-    features: { label: "हम क्या देते हैं", title: "Grow करने के लिए सब कुछ",
+    features: { label: "à¤¹à¤® à¤•à¥à¤¯à¤¾ à¤¦à¥‡à¤¤à¥‡ à¤¹à¥ˆà¤‚", title: "Grow à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤¸à¤¬ à¤•à¥à¤›",
       items: [
-        { title: "Salary Negotiation", desc: "आपकी role, company और experience के हिसाब से word-for-word script।" },
-        { title: "Career Roadmap", desc: "6-12 month plan -- skills, milestones और job switch timing सब clear।" },
-        { title: "Skills Gap Analysis", desc: "Exactly पता करो क्या रोक रहा है और fast fix कैसे करें।" },
-        { title: "Resume Overhaul", desc: "Bullet points को achievement statements में convert करो जो callbacks दिलाएं।" },
-        { title: "Interview Coaching", desc: "Role-specific Q&A with STAR answers और live feedback।" },
-        { title: "Salary Benchmarking", desc: "India की top companies की real market data -- role, city और experience के हिसाब से।" },
+        { title: "Salary Negotiation", desc: "à¤†à¤ªà¤•à¥€ role, company à¤”à¤° experience à¤•à¥‡ à¤¹à¤¿à¤¸à¤¾à¤¬ à¤¸à¥‡ word-for-word scriptà¥¤" },
+        { title: "Career Roadmap", desc: "6-12 month plan -- skills, milestones à¤”à¤° job switch timing à¤¸à¤¬ clearà¥¤" },
+        { title: "Skills Gap Analysis", desc: "Exactly à¤ªà¤¤à¤¾ à¤•à¤°à¥‹ à¤•à¥à¤¯à¤¾ à¤°à¥‹à¤• à¤°à¤¹à¤¾ à¤¹à¥ˆ à¤”à¤° fast fix à¤•à¥ˆà¤¸à¥‡ à¤•à¤°à¥‡à¤‚à¥¤" },
+        { title: "Resume Overhaul", desc: "Bullet points à¤•à¥‹ achievement statements à¤®à¥‡à¤‚ convert à¤•à¤°à¥‹ à¤œà¥‹ callbacks à¤¦à¤¿à¤²à¤¾à¤à¤‚à¥¤" },
+        { title: "Interview Coaching", desc: "Role-specific Q&A with STAR answers à¤”à¤° live feedbackà¥¤" },
+        { title: "Salary Benchmarking", desc: "India à¤•à¥€ top companies à¤•à¥€ real market data -- role, city à¤”à¤° experience à¤•à¥‡ à¤¹à¤¿à¤¸à¤¾à¤¬ à¤¸à¥‡à¥¤" },
       ]
     },
-    testi: { label: "सक्सेस स्टोरीज़", title: "Real Professionals के Real Results",
+    testi: { label: "à¤¸à¤•à¥à¤¸à¥‡à¤¸ à¤¸à¥à¤Ÿà¥‹à¤°à¥€à¤œà¤¼", title: "Real Professionals à¤•à¥‡ Real Results",
       items: [
-        { name: "राहुल शर्मा", role: "Software Engineer, बेंगलुरु", text: "Priya की negotiation script से 40% hike मिला। इतना straightforward होगा यह नहीं सोचा था।", av: "RS" },
-        { name: "प्रिया मेनन", role: "Product Manager, मुंबई", text: "पहले session में career roadmap crystal clear हो गया। अगला step exactly पता चल गया।", av: "PM" },
-        { name: "अर्जुन कपूर", role: "Data Analyst, हैदराबाद", text: "आखिरकार market value समझ आई। Plan follow करके 3 हफ्ते में 2 competing offers मिले।", av: "AK" },
+        { name: "à¤°à¤¾à¤¹à¥à¤² à¤¶à¤°à¥à¤®à¤¾", role: "Software Engineer, à¤¬à¥‡à¤‚à¤—à¤²à¥à¤°à¥", text: "Priya à¤•à¥€ negotiation script à¤¸à¥‡ 40% hike à¤®à¤¿à¤²à¤¾à¥¤ à¤‡à¤¤à¤¨à¤¾ straightforward à¤¹à¥‹à¤—à¤¾ à¤¯à¤¹ à¤¨à¤¹à¥€à¤‚ à¤¸à¥‹à¤šà¤¾ à¤¥à¤¾à¥¤", av: "RS" },
+        { name: "à¤ªà¥à¤°à¤¿à¤¯à¤¾ à¤®à¥‡à¤¨à¤¨", role: "Product Manager, à¤®à¥à¤‚à¤¬à¤ˆ", text: "à¤ªà¤¹à¤²à¥‡ session à¤®à¥‡à¤‚ career roadmap crystal clear à¤¹à¥‹ à¤—à¤¯à¤¾à¥¤ à¤…à¤—à¤²à¤¾ step exactly à¤ªà¤¤à¤¾ à¤šà¤² à¤—à¤¯à¤¾à¥¤", av: "PM" },
+        { name: "à¤…à¤°à¥à¤œà¥à¤¨ à¤•à¤ªà¥‚à¤°", role: "Data Analyst, à¤¹à¥ˆà¤¦à¤°à¤¾à¤¬à¤¾à¤¦", text: "à¤†à¤–à¤¿à¤°à¤•à¤¾à¤° market value à¤¸à¤®à¤ à¤†à¤ˆà¥¤ Plan follow à¤•à¤°à¤•à¥‡ 3 à¤¹à¤«à¥à¤¤à¥‡ à¤®à¥‡à¤‚ 2 competing offers à¤®à¤¿à¤²à¥‡à¥¤", av: "AK" },
       ]
     },
-    pricing: { label: "प्राइसिंग", title: "Simple, Transparent Pricing", sub: "कोई hidden charges नहीं। Monthly billing।",
+    pricing: { label: "à¤ªà¥à¤°à¤¾à¤‡à¤¸à¤¿à¤‚à¤—", title: "Simple, Transparent Pricing", sub: "à¤•à¥‹à¤ˆ hidden charges à¤¨à¤¹à¥€à¤‚à¥¤ Monthly billingà¥¤",
       plans: [
-        { name: "फ्री", price: "₹0", period: "हमेशा के लिए", features: ["3 consultations/दिन", "Basic salary range", "General career advice"], bonuses: [], cta: "Free मein शुरू करो", highlight: false },
-        { name: "प्रो", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "प्रति महीना", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Pro Plan शुरू करो", highlight: true },
-        { name: "एलीट", price: "₹799", originalPrice: "₹1,299", discount: "38% OFF", period: "प्रति महीना", features: ["Pro सब कुछ", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Elite Plan शुरू करो", highlight: false },
+        { name: "à¤«à¥à¤°à¥€", price: "â‚¹0", period: "à¤¹à¤®à¥‡à¤¶à¤¾ à¤•à¥‡ à¤²à¤¿à¤", features: ["3 consultations/à¤¦à¤¿à¤¨", "Basic salary range", "General career advice"], bonuses: [], cta: "Free à¤®ein à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹", highlight: false },
+        { name: "à¤ªà¥à¤°à¥‹", price: "â‚¹399", originalPrice: "â‚¹649", discount: "38% OFF", period: "à¤ªà¥à¤°à¤¤à¤¿ à¤®à¤¹à¥€à¤¨à¤¾", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Pro Plan à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹", highlight: true },
+        { name: "à¤à¤²à¥€à¤Ÿ", price: "â‚¹799", originalPrice: "â‚¹1,299", discount: "38% OFF", period: "à¤ªà¥à¤°à¤¤à¤¿ à¤®à¤¹à¥€à¤¨à¤¾", features: ["Pro à¤¸à¤¬ à¤•à¥à¤›", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Elite Plan à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹", highlight: false },
       ]
     },
-    faq: { title: "अक्सर पूछे जाने वाले सवाल",
+    faq: { title: "à¤…à¤•à¥à¤¸à¤° à¤ªà¥‚à¤›à¥‡ à¤œà¤¾à¤¨à¥‡ à¤µà¤¾à¤²à¥‡ à¤¸à¤µà¤¾à¤²",
       items: [
-        { q: "Hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
-        { q: "Billing कैसे काम करती है?", a: "Plans monthly bill होते हैं और automatically renew होते हैं। Account settings से subscription manage करें।" },
-        { q: "Result कब आएगा?", a: "ज़्यादातर users को पहले session में ही clear action plan और negotiation strategy मिल जाती है।" },
-        { q: "क्या मेरा data safe है?", a: "सभी conversations 256-bit SSL से encrypted हैं। हम कभी personal data share या sell नहीं करते।" },
-        { q: "Pro और Elite में क्या फर्क है?", a: "Pro में सभी core tools। Elite में mock interviews, LinkedIn review, priority access और weekly reports भी।" },
-        { q: "क्या यह Indian market के लिए relevant है?", a: "हां -- specifically Indian professionals के लिए बना है -- Indian salary data, company context और negotiation culture के साथ।" },
-        { q: "Payment secure है?", a: "सभी payments Razorpay के through -- India का सबसे trusted payment gateway।" },
+        { q: "Hikezo à¤•à¥‡ consultants à¤•à¥Œà¤¨ à¤¹à¥ˆà¤‚?", a: "Experienced career professionals -- HR, recruitment à¤”à¤° coaching background à¤•à¥‡ à¤¸à¤¾à¤¥, Indian job market à¤•à¥‡ à¤²à¤¿à¤ specially trainedà¥¤" },
+        { q: "Billing à¤•à¥ˆà¤¸à¥‡ à¤•à¤¾à¤® à¤•à¤°à¤¤à¥€ à¤¹à¥ˆ?", a: "Plans monthly bill à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚ à¤”à¤° automatically renew à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤ Account settings à¤¸à¥‡ subscription manage à¤•à¤°à¥‡à¤‚à¥¤" },
+        { q: "Result à¤•à¤¬ à¤†à¤à¤—à¤¾?", a: "à¤œà¤¼à¥à¤¯à¤¾à¤¦à¤¾à¤¤à¤° users à¤•à¥‹ à¤ªà¤¹à¤²à¥‡ session à¤®à¥‡à¤‚ à¤¹à¥€ clear action plan à¤”à¤° negotiation strategy à¤®à¤¿à¤² à¤œà¤¾à¤¤à¥€ à¤¹à¥ˆà¥¤" },
+        { q: "à¤•à¥à¤¯à¤¾ à¤®à¥‡à¤°à¤¾ data safe à¤¹à¥ˆ?", a: "à¤¸à¤­à¥€ conversations 256-bit SSL à¤¸à¥‡ encrypted à¤¹à¥ˆà¤‚à¥¤ à¤¹à¤® à¤•à¤­à¥€ personal data share à¤¯à¤¾ sell à¤¨à¤¹à¥€à¤‚ à¤•à¤°à¤¤à¥‡à¥¤" },
+        { q: "Pro à¤”à¤° Elite à¤®à¥‡à¤‚ à¤•à¥à¤¯à¤¾ à¤«à¤°à¥à¤• à¤¹à¥ˆ?", a: "Pro à¤®à¥‡à¤‚ à¤¸à¤­à¥€ core toolsà¥¤ Elite à¤®à¥‡à¤‚ mock interviews, LinkedIn review, priority access à¤”à¤° weekly reports à¤­à¥€à¥¤" },
+        { q: "à¤•à¥à¤¯à¤¾ à¤¯à¤¹ Indian market à¤•à¥‡ à¤²à¤¿à¤ relevant à¤¹à¥ˆ?", a: "à¤¹à¤¾à¤‚ -- specifically Indian professionals à¤•à¥‡ à¤²à¤¿à¤ à¤¬à¤¨à¤¾ à¤¹à¥ˆ -- Indian salary data, company context à¤”à¤° negotiation culture à¤•à¥‡ à¤¸à¤¾à¤¥à¥¤" },
+        { q: "Payment secure à¤¹à¥ˆ?", a: "à¤¸à¤­à¥€ payments Razorpay à¤•à¥‡ through -- India à¤•à¤¾ à¤¸à¤¬à¤¸à¥‡ trusted payment gatewayà¥¤" },
       ]
     },
-    cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "10,000+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो -- Free ->" },
+    cta: { title: "Career à¤•à¥‹ Next Level à¤ªà¤° à¤²à¥‡ à¤œà¤¾à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ Ready à¤¹à¥‹?", sub: "10,000+ Indian professionals à¤ªà¤¹à¤²à¥‡ à¤¸à¥‡ à¤…à¤ªà¤¨à¤¾ career transform à¤•à¤° à¤šà¥à¤•à¥‡ à¤¹à¥ˆà¤‚à¥¤", btn: "Consultant à¤¸à¥‡ à¤¬à¤¾à¤¤ à¤•à¤°à¥‹ -- Free ->" },
     footer: "(c) 2025 Hikezo.in -- India's Career Growth Platform",
-    auth: { signupTitle: "Free Account बनाओ", loginTitle: "Welcome Back", signupSub: "Free - कोई credit card नहीं", loginSub: "अपना career journey continue करो", namePh: "पूरा नाम", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account बनाओ और शुरू करो ->", loginBtn: "Login करो ->", thinking: "Please wait...", toLogin: "Already account है?", toSignup: "Account नहीं है?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] आपका data secure है। हम कभी spam या sell नहीं करते।", success: "Consultation open हो रहा है..." },
-    chat: { thinking: " type कर रहे हैं...", inputPh: "अपना message लिखो...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} बचे आज के लिए`, upgradeTitle: "Free Limit पूरी हो गई", upgradeSub: `आपने आज के ${FREE_LIMIT} free messages use कर लिए हैं।`, upgradeBtn: "Upgrade करो ->", later: "बाद में" },
-    connect: { title: "आपका Consultant ढूंढ रहे हैं...", steps: (name) => ["Consultant availability check हो रही है...", "आपके लिए best match ढूंढा जा रहा है...", `${name} आपके लिए तैयार हैं!`] },
+    auth: { signupTitle: "Free Account à¤¬à¤¨à¤¾à¤“", loginTitle: "Welcome Back", signupSub: "Free - à¤•à¥‹à¤ˆ credit card à¤¨à¤¹à¥€à¤‚", loginSub: "à¤…à¤ªà¤¨à¤¾ career journey continue à¤•à¤°à¥‹", namePh: "à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤®", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account à¤¬à¤¨à¤¾à¤“ à¤”à¤° à¤¶à¥à¤°à¥‚ à¤•à¤°à¥‹ ->", loginBtn: "Login à¤•à¤°à¥‹ ->", thinking: "Please wait...", toLogin: "Already account à¤¹à¥ˆ?", toSignup: "Account à¤¨à¤¹à¥€à¤‚ à¤¹à¥ˆ?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] à¤†à¤ªà¤•à¤¾ data secure à¤¹à¥ˆà¥¤ à¤¹à¤® à¤•à¤­à¥€ spam à¤¯à¤¾ sell à¤¨à¤¹à¥€à¤‚ à¤•à¤°à¤¤à¥‡à¥¤", success: "Consultation open à¤¹à¥‹ à¤°à¤¹à¤¾ à¤¹à¥ˆ..." },
+    chat: { thinking: " type à¤•à¤° à¤°à¤¹à¥‡ à¤¹à¥ˆà¤‚...", inputPh: "à¤…à¤ªà¤¨à¤¾ message à¤²à¤¿à¤–à¥‹...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} à¤¬à¤šà¥‡ à¤†à¤œ à¤•à¥‡ à¤²à¤¿à¤`, upgradeTitle: "Free Limit à¤ªà¥‚à¤°à¥€ à¤¹à¥‹ à¤—à¤ˆ", upgradeSub: `à¤†à¤ªà¤¨à¥‡ à¤†à¤œ à¤•à¥‡ ${FREE_LIMIT} free messages use à¤•à¤° à¤²à¤¿à¤ à¤¹à¥ˆà¤‚à¥¤`, upgradeBtn: "Upgrade à¤•à¤°à¥‹ ->", later: "à¤¬à¤¾à¤¦ à¤®à¥‡à¤‚" },
+    connect: { title: "à¤†à¤ªà¤•à¤¾ Consultant à¤¢à¥‚à¤‚à¤¢ à¤°à¤¹à¥‡ à¤¹à¥ˆà¤‚...", steps: (name) => ["Consultant availability check à¤¹à¥‹ à¤°à¤¹à¥€ à¤¹à¥ˆ...", "à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ best match à¤¢à¥‚à¤‚à¤¢à¤¾ à¤œà¤¾ à¤°à¤¹à¤¾ à¤¹à¥ˆ...", `${name} à¤†à¤ªà¤•à¥‡ à¤²à¤¿à¤ à¤¤à¥ˆà¤¯à¤¾à¤° à¤¹à¥ˆà¤‚!`] },
   }
 };
 
@@ -312,7 +312,7 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
         </div>
         <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.15rem",marginBottom:"0.5rem" }}>{tc.upgradeTitle}</h3>
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.85rem",lineHeight:1.6,marginBottom:"1.5rem" }}>{tc.upgradeSub}</p>
-        {[{n:"Pro",p:"₹399/mo",h:true},{n:"Elite",p:"₹799/mo",h:false}].map(pl=>(
+        {[{n:"Pro",p:"â‚¹399/mo",h:true},{n:"Elite",p:"â‚¹799/mo",h:false}].map(pl=>(
           <div key={pl.n} onClick={onUpgrade} style={{ padding:"0.85rem 1rem",marginBottom:"0.6rem",background:pl.h?"rgba(16,185,129,0.06)":"rgba(255,255,255,0.03)",border:`1px solid ${pl.h?"rgba(16,185,129,0.25)":"rgba(255,255,255,0.08)"}`,borderRadius:"10px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .2s" }}
             onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{pl.n}</span>
@@ -333,15 +333,15 @@ function ConnectingScreen({ c, lang, onDone }) {
   const [tipIdx,setTipIdx]=useState(0);
   
   const tips = lang==="hi" ? [
-    { icon:"💰", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
-    { icon:"🗺️", title:"Career roadmap lo", desc:"Apni role aur experience batao — next steps milenge" },
-    { icon:"🎯", title:"Interview prep karo", desc:"Company ka naam batao — specific prep milegi" },
-    { icon:"📝", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
+    { icon:"ðŸ’°", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
+    { icon:"ðŸ—ºï¸", title:"Career roadmap lo", desc:"Apni role aur experience batao â€” next steps milenge" },
+    { icon:"ðŸŽ¯", title:"Interview prep karo", desc:"Company ka naam batao â€” specific prep milegi" },
+    { icon:"ðŸ“", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
   ] : [
-    { icon:"💰", title:"Negotiate your salary", desc:"Share your current salary and target — get a script" },
-    { icon:"🗺️", title:"Get a career roadmap", desc:"Tell your role and experience — get next steps" },
-    { icon:"🎯", title:"Prep for interviews", desc:"Share the company name — get specific prep" },
-    { icon:"📝", title:"Improve your resume", desc:"Share your role and wins — get a rewrite" },
+    { icon:"ðŸ’°", title:"Negotiate your salary", desc:"Share your current salary and target â€” get a script" },
+    { icon:"ðŸ—ºï¸", title:"Get a career roadmap", desc:"Tell your role and experience â€” get next steps" },
+    { icon:"ðŸŽ¯", title:"Prep for interviews", desc:"Share the company name â€” get specific prep" },
+    { icon:"ðŸ“", title:"Improve your resume", desc:"Share your role and wins â€” get a rewrite" },
   ];
 
   useEffect(()=>{
@@ -380,7 +380,7 @@ function ConnectingScreen({ c, lang, onDone }) {
         {/* While you wait tips */}
         <div style={{ background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",padding:"1rem 1.2rem",marginBottom:"1rem" }}>
           <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.1em",marginBottom:"0.8rem" }}>
-            {lang==="hi" ? "WHILE YOU WAIT — YEH READY RAKHO:" : "WHILE YOU WAIT — GET READY TO SHARE:"}
+            {lang==="hi" ? "WHILE YOU WAIT â€” YEH READY RAKHO:" : "WHILE YOU WAIT â€” GET READY TO SHARE:"}
           </p>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem" }}>
             {tips.map((tip,i)=>(
@@ -394,7 +394,7 @@ function ConnectingScreen({ c, lang, onDone }) {
         </div>
 
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#1e293b",fontSize:"0.68rem" }}>
-          {lang==="hi" ? "Jitna zyada batayenge — utna better guidance milegi!" : "The more context you share, the better your guidance!"}
+          {lang==="hi" ? "Jitna zyada batayenge â€” utna better guidance milegi!" : "The more context you share, the better your guidance!"}
         </p>
       </div>
     </div>
@@ -422,7 +422,7 @@ function ChatModal({ onClose, t, lang, user }) {
   const tc=t.chat;
 
   const welcome=lang==="hi"
-    ?`नमस्ते${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi मैं ${c.name} हूं, Hikezo का ${c.role}।\n\nमैं आपकी help कर सकता/सकती हूं:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nआज क्या discuss करना है?`
+    ?`à¤¨à¤®à¤¸à¥à¤¤à¥‡${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi à¤®à¥ˆà¤‚ ${c.name} à¤¹à¥‚à¤‚, Hikezo à¤•à¤¾ ${c.role}à¥¤\n\nà¤®à¥ˆà¤‚ à¤†à¤ªà¤•à¥€ help à¤•à¤° à¤¸à¤•à¤¤à¤¾/à¤¸à¤•à¤¤à¥€ à¤¹à¥‚à¤‚:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nà¤†à¤œ à¤•à¥à¤¯à¤¾ discuss à¤•à¤°à¤¨à¤¾ à¤¹à¥ˆ?`
     :`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi I'm ${c.name}, ${c.role} at Hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
 
   const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at Hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable.\n${lang==="hi"?"Respond in warm Hinglish.":"Respond in English."}`;
@@ -630,7 +630,7 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
                 <span style={{ color:"#64748b" }}>|</span>
                 <span style={{ color:"#fca5a5",fontSize:"0.7rem" }}>Ends in</span>
                 <span style={{ color:"#f87171",fontWeight:700,fontVariantNumeric:"tabular-nums" }}>{timerText}</span>
-                <span style={{ color:"#334155" }}>•</span>
+                <span style={{ color:"#334155" }}>â€¢</span>
               </span>
             ))}
           </div>
@@ -662,7 +662,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"à¤¹à¤¿"}</button>)}
           </div>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -681,7 +681,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
             <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
           </>}
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"à¤¹à¤¿"}</button>)}
           </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
           {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
@@ -708,7 +708,7 @@ function Hero({ onCTA, t, lang }) {
   const [liveUsers] = useState(()=>Math.floor(Math.random()*80)+120);
   useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=10000){clearInterval(iv);return 10000;} return c+200; }),20); return()=>clearInterval(iv); },[]);
   const [typed, setTyped] = useState("");
-  const words = lang==="hi" ? ["Salary Negotiate करो","Skills Gap भरो","Interview Ace करो","Career Roadmap बनाओ","Resume Transform करो"] : ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
+  const words = lang==="hi" ? ["Salary Negotiate à¤•à¤°à¥‹","Skills Gap à¤­à¤°à¥‹","Interview Ace à¤•à¤°à¥‹","Career Roadmap à¤¬à¤¨à¤¾à¤“","Resume Transform à¤•à¤°à¥‹"] : ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
   const [wi, setWi] = useState(0);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
@@ -835,7 +835,7 @@ function Hero({ onCTA, t, lang }) {
 }
 
 
-// ── SOCIAL PROOF STRIP ───────────────────────────────────────────────────────
+// â”€â”€ SOCIAL PROOF STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function SocialProofStrip() {
   const companies = ["Google","Microsoft","Amazon","Flipkart","Swiggy","Infosys","TCS","PhonePe","Zomato","Razorpay","Wipro","HCL"];
   return(
@@ -1006,7 +1006,7 @@ function Pricing({ onCTA, t, lang }) {
                 </div>
                 <div style={{ display:"flex",alignItems:"baseline",gap:"6px" }}>
                   <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"2.4rem",fontWeight:800,color:plan.highlight?"#0f172a":"#f1f5f9",letterSpacing:"-0.04em",lineHeight:1 }}>{plan.price}</span>
-                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/{t.lang==="hi"?"माह":"mo"}</span>}
+                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/{t.lang==="hi"?"à¤®à¤¾à¤¹":"mo"}</span>}
                   {plan.originalPrice && <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.85rem",textDecoration:"line-through",marginLeft:"2px" }}>{plan.originalPrice}</span>}
                 </div>
                 {i===0&&<div style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem",marginTop:"2px" }}>{plan.period}</div>}
