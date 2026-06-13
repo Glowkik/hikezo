@@ -1058,7 +1058,20 @@ export default function hikezo() {
     setUser(null);
     setShowChat(false);
   };
-  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); setTimeout(()=>setShowChat(true),300); };
+  const handleAuth=(d)=>{ 
+    setUser(d); 
+    setShowAuth(false); 
+    const pendingPlan = sessionStorage.getItem("hz_pending_plan");
+    if(pendingPlan==="Rs.799"){
+      sessionStorage.removeItem("hz_pending_plan");
+      setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);
+    } else if(pendingPlan==="Rs.399"){
+      sessionStorage.removeItem("hz_pending_plan");
+      setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);
+    } else {
+      setTimeout(()=>setShowChat(true),300);
+    }
+  };
 
   return(
     <>
