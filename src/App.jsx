@@ -1215,7 +1215,7 @@ export default function Hikezo() {
       {showAuth&&(
         <div style={{ position:"fixed",inset:0,zIndex:400,background:"rgba(2,8,23,0.92)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowAuth(false)}>
-          <Auth onAuth={handleAuth} t={ta}/>
+          <Auth onAuth={handleAuth} t={ta} onClose={()=>setShowAuth(false)}/>
         </div>
       )}
 
