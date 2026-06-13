@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
 
 function useBreakpoint() {
   const get = () => window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop";
@@ -930,7 +928,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){sessionStorage.setItem("hz_pending_plan",plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){localStorage.setItem("hz_pending_plan",plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -998,20 +996,12 @@ export default function hikezo() {
 
   const [user,setUser]=useState(()=>{ try{ const s=sessionStorage.getItem("hz_user"); return s?JSON.parse(s):null; }catch{ return null; }});
 
-  // Keep user logged in on refresh using Firebase
+  // Keep user logged in on refresh - simple sessionStorage check
   useEffect(()=>{
-    const unsub = onAuthStateChanged(auth, (firebaseUser)=>{
-      if(firebaseUser && firebaseUser.emailVerified){
-        const userData = { name: firebaseUser.displayName || firebaseUser.email, email: firebaseUser.email };
-        try{ sessionStorage.setItem("hz_user", JSON.stringify(userData)); }catch{}
-        setUser(userData);
-      } else if(!firebaseUser) {
-        // Only clear if Firebase says logged out
-        const stored = sessionStorage.getItem("hz_user");
-        if(!stored) setUser(null);
-      }
-    });
-    return ()=>unsub();
+    try{
+      const s = sessionStorage.getItem("hz_user");
+      if(s) setUser(JSON.parse(s));
+    }catch{}
   },[]);
 
   const [showBanner, setShowBanner] = useState(true);
@@ -1020,11 +1010,13 @@ export default function hikezo() {
     try{
       sessionStorage.removeItem("hz_user");
       sessionStorage.removeItem("hz_usage");
+      // Sign out from Firebase to prevent auto-login
+      import("./firebase").then(m => m.auth.signOut()).catch(()=>{});
     }catch{}
     setUser(null);
     setShowChat(false);
   };
-  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=sessionStorage.getItem("hz_pending_plan"); if(p==="Rs.799"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
+  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=localStorage.getItem("hz_pending_plan"); if(p==="Rs.799"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
 
   return(
     <>
