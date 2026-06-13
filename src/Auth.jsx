@@ -35,6 +35,15 @@ export default function Auth({ onAuth, t, onClose }) {
       const result = await signInWithPopup(auth, provider);
       const userData = { name: result.user.displayName, email: result.user.email };
       try { sessionStorage.setItem("hz_user", JSON.stringify(userData)); } catch {}
+      // Check pending plan before calling onAuth
+      const pendingPlan = sessionStorage.getItem("hz_pending_plan");
+      if(pendingPlan === "Rs.799") {
+        sessionStorage.removeItem("hz_pending_plan");
+        window.open("https://rzp.io/rzp/HqU3cDU", "_blank");
+      } else if(pendingPlan === "Rs.399") {
+        sessionStorage.removeItem("hz_pending_plan");
+        window.open("https://rzp.io/rzp/DNfBx2L3", "_blank");
+      }
       onAuth(userData);
     } catch (e) {
       if (e.code === "auth/popup-blocked") {
