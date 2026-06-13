@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
 
 function useBreakpoint() {
@@ -115,16 +115,16 @@ const T = {
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best Rs.399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
         { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
+    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns Rs.2.8L more per year. Plans start at Rs.399.",
       plans: [
-        { name: "Free", price: "₹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
-        { name: "Pro", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
-        { name: "Elite", price: "₹799", originalPrice: "₹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
+        { name: "Free", price: "Rs.0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
+        { name: "Pro", price: "Rs.399", originalPrice: "Rs.649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
+        { name: "Elite", price: "Rs.799", originalPrice: "Rs.1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
       ]
     },
     faq: { title: "Frequently Asked Questions",
@@ -144,7 +144,64 @@ const T = {
     chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
   },
-
+  hi: {
+    nav: { features: "फीचर्स", pricing: "प्राइसिंग", cta: "शुरू करो" },
+    hero: {
+      badge: "India का #1 Career Growth Platform",
+      h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
+      sub: "hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
+      cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
+      social: "professionals ने hikezo trust किया",
+    },
+    how: { label: "PROCESS", title: "4 Steps में Career Transform करो", sub: "Simple. Fast. Effective.", cta: "Free में शुरू करो ->",
+      steps: [
+        { title: "Account बनाओ", desc: "30 seconds में free signup -- कोई credit card नहीं।" },
+        { title: "Consultant से मिलो", desc: "Specialist career expert से instantly match हो जाओ।" },
+        { title: "Strategy पाओ", desc: "Personalized negotiation script और career plan मिलेगा।" },
+        { title: "Hike लो", desc: "Strategy use करो और deserve की salary claim करो।" },
+      ]
+    },
+    features: { label: "हम क्या देते हैं", title: "Grow करने के लिए सब कुछ",
+      items: [
+        { title: "Salary Negotiation", desc: "आपकी role, company और experience के हिसाब से word-for-word script।" },
+        { title: "Career Roadmap", desc: "6-12 month plan -- skills, milestones और job switch timing सब clear।" },
+        { title: "Skills Gap Analysis", desc: "Exactly पता करो क्या रोक रहा है और fast fix कैसे करें।" },
+        { title: "Resume Overhaul", desc: "Bullet points को achievement statements में convert करो जो callbacks दिलाएं।" },
+        { title: "Interview Coaching", desc: "Role-specific Q&A with STAR answers और live feedback।" },
+        { title: "Salary Benchmarking", desc: "India की top companies की real market data -- role, city और experience के हिसाब से।" },
+      ]
+    },
+    testi: { label: "सक्सेस स्टोरीज़", title: "Real Professionals के Real Results",
+      items: [
+        { name: "राहुल शर्मा", role: "Software Engineer, बेंगलुरु", text: "Priya की negotiation script से 40% hike मिला। इतना straightforward होगा यह नहीं सोचा था।", av: "RS" },
+        { name: "प्रिया मेनन", role: "Product Manager, मुंबई", text: "पहले session में career roadmap crystal clear हो गया। अगला step exactly पता चल गया।", av: "PM" },
+        { name: "अर्जुन कपूर", role: "Data Analyst, हैदराबाद", text: "आखिरकार market value समझ आई। Plan follow करके 3 हफ्ते में 2 competing offers मिले।", av: "AK" },
+      ]
+    },
+    pricing: { label: "प्राइसिंग", title: "Simple, Transparent Pricing", sub: "कोई hidden charges नहीं। Monthly billing।",
+      plans: [
+        { name: "फ्री", price: "Rs.0", period: "हमेशा के लिए", features: ["3 consultations/दिन", "Basic salary range", "General career advice"], bonuses: [], cta: "Free मein शुरू करो", highlight: false },
+        { name: "प्रो", price: "Rs.399", originalPrice: "Rs.649", discount: "38% OFF", period: "प्रति महीना", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Pro Plan शुरू करो", highlight: true },
+        { name: "एलीट", price: "Rs.799", originalPrice: "Rs.1,299", discount: "38% OFF", period: "प्रति महीना", features: ["Pro सब कुछ", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Elite Plan शुरू करो", highlight: false },
+      ]
+    },
+    faq: { title: "अक्सर पूछे जाने वाले सवाल",
+      items: [
+        { q: "hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
+        { q: "Billing कैसे काम करती है?", a: "Plans monthly bill होते हैं और automatically renew होते हैं। Account settings से subscription manage करें।" },
+        { q: "Result कब आएगा?", a: "ज़्यादातर users को पहले session में ही clear action plan और negotiation strategy मिल जाती है।" },
+        { q: "क्या मेरा data safe है?", a: "सभी conversations 256-bit SSL से encrypted हैं। हम कभी personal data share या sell नहीं करते।" },
+        { q: "Pro और Elite में क्या फर्क है?", a: "Pro में सभी core tools। Elite में mock interviews, LinkedIn review, priority access और weekly reports भी।" },
+        { q: "क्या यह Indian market के लिए relevant है?", a: "हां -- specifically Indian professionals के लिए बना है -- Indian salary data, company context और negotiation culture के साथ।" },
+        { q: "Payment secure है?", a: "सभी payments Razorpay के through -- India का सबसे trusted payment gateway।" },
+      ]
+    },
+    cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "500+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो -- Free ->" },
+    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
+    auth: { signupTitle: "Free Account बनाओ", loginTitle: "Welcome Back", signupSub: "Free - कोई credit card नहीं", loginSub: "अपना career journey continue करो", namePh: "पूरा नाम", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account बनाओ और शुरू करो ->", loginBtn: "Login करो ->", thinking: "Please wait...", toLogin: "Already account है?", toSignup: "Account नहीं है?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] आपका data secure है। हम कभी spam या sell नहीं करते।", success: "Consultation open हो रहा है..." },
+    chat: { thinking: " type कर रहे हैं...", inputPh: "अपना message लिखो...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} बचे आज के लिए`, upgradeTitle: "Free Limit पूरी हो गई", upgradeSub: `आपने आज के ${FREE_LIMIT} free messages use कर लिए हैं।`, upgradeBtn: "Upgrade करो ->", later: "बाद में" },
+    connect: { title: "आपका Consultant ढूंढ रहे हैं...", steps: (name) => ["Consultant availability check हो रही है...", "आपके लिए best match ढूंढा जा रहा है...", `${name} आपके लिए तैयार हैं!`] },
+  }
 };
 
 // SVG Icons
@@ -255,14 +312,165 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
         </div>
         <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.15rem",marginBottom:"0.5rem" }}>{tc.upgradeTitle}</h3>
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.85rem",lineHeight:1.6,marginBottom:"1.5rem" }}>{tc.upgradeSub}</p>
-        {[{n:"Pro",p:"₹399/mo",h:true},{n:"Elite",p:"₹799/mo",h:false}].map(pl=>(
+        {[{n:"Pro",p:"Rs399/mo",h:true},{n:"Elite",p:"Rs799/mo",h:false}].map(pl=>(
           <div key={pl.n} onClick={onUpgrade} style={{ padding:"0.85rem 1rem",marginBottom:"0.6rem",background:pl.h?"rgba(16,185,129,0.06)":"rgba(255,255,255,0.03)",border:`1px solid ${pl.h?"rgba(16,185,129,0.25)":"rgba(255,255,255,0.08)"}`,borderRadius:"10px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .2s" }}
             onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{pl.n}</span>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#10b981",fontWeight:700 }}>{pl.p}</span>
           </div>
         ))}
-        <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
+        <button onClick={onUpgrade} style={{ width:"100%",padding:"12px",background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"10px",color:"#fff",fontWeight:700,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem",marginBottom:"0.6rem" }}>{tc.upgradeBtn}</button>
+        <button onClick={onClose} style={{ background:"none",border:"none",color:"#475569",cursor:"pointer",fontFamily:"'Inter',sans-serif",fontSize:"0.8rem" }}>{tc.later}</button>
+      </div>
+    </div>
+  );
+}
+
+// -- CONNECTING SCREEN ---------------------------------------------------------
+function ConnectingScreen({ c, lang, onDone }) {
+  const [step,setStep]=useState(0);
+  const [prog,setProg]=useState(0);
+  const [tipIdx,setTipIdx]=useState(0);
+  const tips = [
+    { icon:"💰", title:"Negotiate your salary", desc:"Share your current salary and target - get a script" },
+    { icon:"🗺️", title:"Get a career roadmap", desc:"Tell your role and experience - get next steps" },
+    { icon:"🎯", title:"Prep for interviews", desc:"Share the company name - get specific prep" },
+    { icon:"📝", title:"Improve your resume", desc:"Share your role and wins - get a rewrite" },
+  ];
+  useEffect(()=>{
+    const ts=[8000,14000,24000].map((d,i)=>setTimeout(()=>setStep(i),d));
+    const iv=setInterval(()=>setProg(p=>Math.min(p+1.5,100)),450);
+    const tipIv=setInterval(()=>setTipIdx(i=>(i+1)%tips.length),2500);
+    const dn=setTimeout(onDone,30000);
+    return()=>{ts.forEach(clearTimeout);clearInterval(iv);clearInterval(tipIv);clearTimeout(dn);}
+  },[]);
+  const steps=[`Checking consultant availability...`,`Matching you with the best fit...`,`${c.name} is ready for you!`];
+  return(
+    <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.97)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .4s ease" }}>
+      <div style={{ textAlign:"center",maxWidth:"420px",width:"100%" }}>
+        <div style={{ position:"relative",width:80,height:80,margin:"0 auto 1.5rem" }}>
+          <div style={{ position:"absolute",inset:-10,borderRadius:"50%",border:`2px solid ${c.color}30`,animation:"ringPulse 2s ease-in-out infinite" }}/>
+          <div style={{ position:"absolute",inset:-5,borderRadius:"50%",border:`2px solid ${c.color}50`,animation:"ringPulse 2s ease-in-out .4s infinite" }}/>
+          <div style={{ width:80,height:80,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}99)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem",boxShadow:`0 8px 32px ${c.color}40`,animation:"consultBob 3s ease-in-out infinite" }}>{c.emoji}</div>
+        </div>
+        <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontSize:"1.15rem",fontWeight:700,marginBottom:"0.3rem" }}>Finding Your Consultant...</h2>
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.82rem",marginBottom:"1.5rem",minHeight:"1.4em" }}>{steps[step]}</p>
+        <div style={{ width:"100%",height:"3px",background:"rgba(255,255,255,0.06)",borderRadius:"3px",overflow:"hidden",marginBottom:"2rem" }}>
+          <div style={{ height:"100%",background:`linear-gradient(90deg,${c.color},${c.color}80)`,width:`${prog}%`,transition:"width .45s ease",borderRadius:"3px" }}/>
+        </div>
+        <div style={{ background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",padding:"1rem 1.2rem" }}>
+          <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.1em",marginBottom:"0.8rem" }}>WHILE YOU WAIT - GET READY TO SHARE:</p>
+          <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem" }}>
+            {tips.map((tip,i)=>(
+              <div key={i} style={{ background:i===tipIdx?"rgba(14,165,233,0.08)":"rgba(255,255,255,0.02)",border:`1px solid ${i===tipIdx?"rgba(14,165,233,0.2)":"rgba(255,255,255,0.05)"}`,borderRadius:"8px",padding:"0.7rem",textAlign:"left",transition:"all .4s ease" }}>
+                <div style={{ fontSize:"1.1rem",marginBottom:"0.3rem" }}>{tip.icon}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:i===tipIdx?"#e2e8f0":"#64748b",fontSize:"0.72rem",fontWeight:600,marginBottom:"0.2rem" }}>{tip.title}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.65rem",lineHeight:1.4 }}>{tip.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// -- CHAT MODAL ----------------------------------------------------------------
+function ChatModal({ onClose, t, lang, user }) {
+  const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
+  const { isMobile }=useBreakpoint();
+  const chatKey = user?.email ? "hz_chat_" + user.email : "hz_chat_guest";
+  const [phase,setPhase]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h && JSON.parse(h).length > 0 ? "chat" : "connecting"; } catch { return "connecting"; }
+  });
+  const [msgs,setMsgs]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h ? JSON.parse(h) : []; } catch { return []; }
+  });
+  const [input,setInput]=useState("");
+  const [loading,setLoading]=useState(false);
+  const [showUp,setShowUp]=useState(false);
+  const [usage,setUsage]=useState(getLimitData);
+  const ref=useRef(null);
+  const isPro=usage.plan==="pro"||usage.plan==="elite";
+  const rem=isPro?Infinity:Math.max(0,FREE_LIMIT-usage.count);
+  const tc=t.chat;
+
+  const welcome=`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! I'm ${c.name}, ${c.role} at hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
+
+  const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable. Respond in English.`;
+
+  const connected=()=>{ setPhase("chat"); setTimeout(()=>setMsgs([{r:"a",t:welcome}]),600); };
+  useEffect(()=>{ ref.current?.scrollIntoView({behavior:"smooth"}); },[msgs]);
+
+  const send=async()=>{
+    if(!input.trim()||loading)return;
+    if(!isPro&&usage.count>=FREE_LIMIT){setShowUp(true);return;}
+    const txt=input.trim(); setInput("");
+    const updatedWithUser=[...msgs,{r:"u",t:txt}];
+    setMsgs(updatedWithUser);
+    try{sessionStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
+    setLoading(true);
+    const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd);
+    try{
+      const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
+      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","x-user-plan":usage.plan||"free"},body:JSON.stringify({system:sys,messages:[...hist,{role:"user",content:txt}]})});
+      const d=await res.json();
+      const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment!";
+      setMsgs(p=>{const updated=[...p,{r:"a",t:rep}];try{sessionStorage.setItem(chatKey,JSON.stringify(updated));}catch{}return updated;});
+      if(!isPro&&nd.count>=FREE_LIMIT)setTimeout(()=>setShowUp(true),1500);
+    }catch{ setMsgs(p=>[...p,{r:"a",t:"Sorry, connection issue. Give me a moment!"}]); }
+    setLoading(false);
+  };
+
+  const isSmall=isMobile;
+
+  return(
+    <>
+      {phase==="connecting"&&<ConnectingScreen c={c} lang={lang} onDone={connected}/>}
+      {phase==="chat"&&(
+        <div style={{ position:"fixed",inset:0,zIndex:200,background:isSmall?"#0f172a":"rgba(2,8,23,0.9)",backdropFilter:isSmall?"none":"blur(12px)",display:"flex",alignItems:isSmall?"stretch":"center",justifyContent:"center",padding:isSmall?"0":"1rem",animation:"fadeIn .3s ease" }}
+          onClick={e=>!isSmall&&e.target===e.currentTarget&&onClose()}>
+          <div style={{ width:"100%",maxWidth:isSmall?"100%":"560px",height:isSmall?"100%":"660px",background:"#0f172a",border:isSmall?"none":"1px solid rgba(255,255,255,0.08)",borderRadius:isSmall?"0":"20px",display:"flex",flexDirection:"column",overflow:"hidden",boxShadow:"0 32px 80px rgba(0,0,0,0.6)",position:"relative" }}>
+            {showUp&&<UpgradePopup onClose={()=>setShowUp(false)} onUpgrade={()=>{onClose();document.getElementById("pricing")?.scrollIntoView({behavior:"smooth"});}} tc={tc}/>}
+            <div style={{ padding:"1rem 1.2rem",borderBottom:"1px solid rgba(255,255,255,0.06)",display:"flex",alignItems:"center",justifyContent:"space-between",background:"rgba(255,255,255,0.02)",flexShrink:0 }}>
+              <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+                <div style={{ position:"relative" }}>
+                  <div style={{ width:40,height:40,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem" }}>{c.emoji}</div>
+                  <div style={{ position:"absolute",bottom:1,right:1,width:9,height:9,borderRadius:"50%",background:"#10b981",border:"2px solid #0f172a" }}/>
+                </div>
+                <div>
+                  <div style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{c.name}</div>
+                  <div style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.68rem" }}>{c.role} - {c.exp}</div>
+                </div>
+              </div>
+              <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
+                <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.62rem",color:"#334155",border:"1px solid rgba(255,255,255,0.07)",padding:"2px 7px",borderRadius:"4px" }}>{tc.badge}</span>
+                {msgs.length>0&&<button onClick={()=>{setMsgs([]);try{sessionStorage.removeItem(chatKey);}catch{}setPhase("connecting");}} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>New Chat</button>}
+                <button onClick={onClose} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem" }}>x</button>
+              </div>
+            </div>
+            <div style={{ flex:1,overflowY:"auto",padding:"1.2rem",display:"flex",flexDirection:"column",gap:"0.8rem" }}>
+              {msgs.map((m,i)=>(
+                <div key={i} style={{ display:"flex",justifyContent:m.r==="u"?"flex-end":"flex-start",gap:"8px",alignItems:"flex-end",animation:"fadeUp .3s ease" }}>
+                  {m.r==="a"&&<div style={{ width:26,height:26,borderRadius:"50%",flexShrink:0,background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.78rem" }}>{c.emoji}</div>}
+                  <div style={{ maxWidth:"82%",padding:"0.75rem 1rem",borderRadius:m.r==="u"?"16px 16px 4px 16px":"16px 16px 16px 4px",background:m.r==="u"?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",color:m.r==="u"?"#fff":"#cbd5e1",fontFamily:"'Inter',sans-serif",fontSize:"0.88rem",lineHeight:1.6,whiteSpace:"pre-wrap",fontWeight:m.r==="u"?500:400 }}>{m.t}</div>
+                </div>
+              ))}
+              {loading&&(
+                <div style={{ display:"flex",gap:"8px",alignItems:"flex-end" }}>
+                  <div style={{ width:26,height:26,borderRadius:"50%",flexShrink:0,background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.78rem" }}>{c.emoji}</div>
+                  <div style={{ padding:"0.75rem 1rem",background:"rgba(255,255,255,0.06)",borderRadius:"16px 16px 16px 4px",display:"flex",gap:"4px",alignItems:"center" }}>
+                    {[0,.2,.4].map((d,i)=><div key={i} style={{ width:6,height:6,borderRadius:"50%",background:"#475569",animation:`dot 1.3s infinite ${d}s` }}/>)}
+                  </div>
+                </div>
+              )}
+              <div ref={ref}/>
+            </div>
+            <div style={{ padding:"0.8rem 1rem",borderTop:"1px solid rgba(255,255,255,0.06)",display:"flex",flexDirection:"column",gap:"6px",background:"rgba(0,0,0,0.2)",flexShrink:0,paddingBottom:isSmall?"calc(0.8rem + env(safe-area-inset-bottom))":"0.8rem" }}>
+              {!isPro&&(
+                <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 10px",background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"6px" }}>
+                  <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#475569" }}>{tc.freeLeft(rem)}</span>
+                  <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
                 </div>
               )}
               <div style={{ display:"flex",gap:"8px" }}>
@@ -772,8 +980,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>plan.price==="₹0"?onCTA():plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
-                onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
