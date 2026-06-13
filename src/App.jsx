@@ -1069,7 +1069,7 @@ export default function hikezo() {
       sessionStorage.removeItem("hz_pending_plan");
       setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);
     } else {
-      setTimeout(()=>setShowChat(true),300);
+      const p=sessionStorage.getItem("hz_pending_plan");if(p==="Rs.799"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);}
     }
   };
 
