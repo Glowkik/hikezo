@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
 
 function useBreakpoint() {
@@ -92,7 +92,7 @@ const T = {
       badge: "500+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
       sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
-      cta: "Talk to a Consultant â€” Free", demo: "See How It Works",
+      cta: "Talk to a Consultant - Free", demo: "See How It Works",
       social: "got salary hikes with hikezo",
     },
     how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
@@ -115,16 +115,16 @@ const T = {
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best â‚¹399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best &#8377;399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
         { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns â‚¹2.8L more per year. Plans start at â‚¹399.",
+    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns &#8377;2.8L more per year. Plans start at &#8377;399.",
       plans: [
-        { name: "Free", price: "â‚¹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
-        { name: "Pro", price: "â‚¹399", originalPrice: "â‚¹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
-        { name: "Elite", price: "â‚¹799", originalPrice: "â‚¹1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
+        { name: "Free", price: "&#8377;0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
+        { name: "Pro", price: "&#8377;399", originalPrice: "&#8377;649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
+        { name: "Elite", price: "&#8377;799", originalPrice: "&#8377;1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
       ]
     },
     faq: { title: "Frequently Asked Questions",
@@ -255,7 +255,7 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
         </div>
         <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.15rem",marginBottom:"0.5rem" }}>{tc.upgradeTitle}</h3>
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.85rem",lineHeight:1.6,marginBottom:"1.5rem" }}>{tc.upgradeSub}</p>
-        {[{n:"Pro",p:"â‚¹399/mo",h:true},{n:"Elite",p:"â‚¹799/mo",h:false}].map(pl=>(
+        {[{n:"Pro",p:"&#8377;399/mo",h:true},{n:"Elite",p:"&#8377;799/mo",h:false}].map(pl=>(
           <div key={pl.n} onClick={onUpgrade} style={{ padding:"0.85rem 1rem",marginBottom:"0.6rem",background:pl.h?"rgba(16,185,129,0.06)":"rgba(255,255,255,0.03)",border:`1px solid ${pl.h?"rgba(16,185,129,0.25)":"rgba(255,255,255,0.08)"}`,borderRadius:"10px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .2s" }}
             onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{pl.n}</span>
@@ -276,15 +276,15 @@ function ConnectingScreen({ c, lang, onDone }) {
   const [tipIdx,setTipIdx]=useState(0);
   
   const tips = lang==="hi" ? [
-    { icon:"ðŸ’°", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
-    { icon:"ðŸ—ºï¸", title:"Career roadmap lo", desc:"Apni role aur experience batao â€” next steps milenge" },
-    { icon:"ðŸŽ¯", title:"Interview prep karo", desc:"Company ka naam batao â€” specific prep milegi" },
-    { icon:"ðŸ“", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
+    { icon:"💰", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
+    { icon:"🗺️", title:"Career roadmap lo", desc:"Apni role aur experience batao - next steps milenge" },
+    { icon:"🎯", title:"Interview prep karo", desc:"Company ka naam batao - specific prep milegi" },
+    { icon:"📝", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
   ] : [
-    { icon:"ðŸ’°", title:"Negotiate your salary", desc:"Share your current salary and target â€” get a script" },
-    { icon:"ðŸ—ºï¸", title:"Get a career roadmap", desc:"Tell your role and experience â€” get next steps" },
-    { icon:"ðŸŽ¯", title:"Prep for interviews", desc:"Share the company name â€” get specific prep" },
-    { icon:"ðŸ“", title:"Improve your resume", desc:"Share your role and wins â€” get a rewrite" },
+    { icon:"💰", title:"Negotiate your salary", desc:"Share your current salary and target - get a script" },
+    { icon:"🗺️", title:"Get a career roadmap", desc:"Tell your role and experience - get next steps" },
+    { icon:"🎯", title:"Prep for interviews", desc:"Share the company name - get specific prep" },
+    { icon:"📝", title:"Improve your resume", desc:"Share your role and wins - get a rewrite" },
   ];
 
   useEffect(()=>{
@@ -323,7 +323,7 @@ function ConnectingScreen({ c, lang, onDone }) {
         {/* While you wait tips */}
         <div style={{ background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",padding:"1rem 1.2rem",marginBottom:"1rem" }}>
           <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.1em",marginBottom:"0.8rem" }}>
-            {lang==="hi" ? "WHILE YOU WAIT â€” YEH READY RAKHO:" : "WHILE YOU WAIT â€” GET READY TO SHARE:"}
+            {lang==="hi" ? "WHILE YOU WAIT - YEH READY RAKHO:" : "WHILE YOU WAIT - GET READY TO SHARE:"}
           </p>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem" }}>
             {tips.map((tip,i)=>(
@@ -337,7 +337,7 @@ function ConnectingScreen({ c, lang, onDone }) {
         </div>
 
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#1e293b",fontSize:"0.68rem" }}>
-          {lang==="hi" ? "Jitna zyada batayenge â€” utna better guidance milegi!" : "The more context you share, the better your guidance!"}
+          {lang==="hi" ? "Jitna zyada batayenge - utna better guidance milegi!" : "The more context you share, the better your guidance!"}
         </p>
       </div>
     </div>
@@ -365,7 +365,7 @@ function ChatModal({ onClose, t, lang, user }) {
   const tc=t.chat;
 
   const welcome=lang==="hi"
-    ?`à¤¨à¤®à¤¸à¥à¤¤à¥‡${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi à¤®à¥ˆà¤‚ ${c.name} à¤¹à¥‚à¤‚, hikezo à¤•à¤¾ ${c.role}à¥¤\n\nà¤®à¥ˆà¤‚ à¤†à¤ªà¤•à¥€ help à¤•à¤° à¤¸à¤•à¤¤à¤¾/à¤¸à¤•à¤¤à¥€ à¤¹à¥‚à¤‚:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nà¤†à¤œ à¤•à¥à¤¯à¤¾ discuss à¤•à¤°à¤¨à¤¾ à¤¹à¥ˆ?`
+    ?`नमस्ते${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi मैं ${c.name} हूं, hikezo का ${c.role}।\n\nमैं आपकी help कर सकता/सकती हूं:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nआज क्या discuss करना है?`
     :`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi I'm ${c.name}, ${c.role} at hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
 
   const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable.\n${lang==="hi"?"Respond in warm Hinglish.":"Respond in English."}`;
@@ -573,7 +573,7 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
                 <span style={{ color:"#64748b" }}>|</span>
                 <span style={{ color:"#fca5a5",fontSize:"0.7rem" }}>Ends in</span>
                 <span style={{ color:"#f87171",fontWeight:700,fontVariantNumeric:"tabular-nums" }}>{timerText}</span>
-                <span style={{ color:"#334155" }}>â€¢</span>
+                <span style={{ color:"#334155" }}>•</span>
               </span>
             ))}
           </div>
@@ -605,7 +605,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"à¤¹à¤¿"}</button>)}
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -624,7 +624,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
             <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
           </>}
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"à¤¹à¤¿"}</button>)}
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
           {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
@@ -651,7 +651,7 @@ function Hero({ onCTA, t, lang }) {
   const [liveUsers] = useState(()=>Math.floor(Math.random()*80)+120);
   useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+10; }),20); return()=>clearInterval(iv); },[]);
   const [typed, setTyped] = useState("");
-  const words = lang==="hi" ? ["Salary Negotiate à¤•à¤°à¥‹","Skills Gap à¤­à¤°à¥‹","Interview Ace à¤•à¤°à¥‹","Career Roadmap à¤¬à¤¨à¤¾à¤“","Resume Transform à¤•à¤°à¥‹"] : ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
+  const words = lang==="hi" ? ["Salary Negotiate करो","Skills Gap भरो","Interview Ace करो","Career Roadmap बनाओ","Resume Transform करो"] : ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
   const [wi, setWi] = useState(0);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
@@ -778,7 +778,7 @@ function Hero({ onCTA, t, lang }) {
 }
 
 
-// â”€â”€ SOCIAL PROOF STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SOCIAL PROOF STRIP ───────────────────────────────────────────────────────
 function SocialProofStrip() {
   const companies = ["Google","Microsoft","Amazon","Flipkart","Swiggy","Infosys","TCS","PhonePe","Zomato","Razorpay","Wipro","HCL"];
   return(
@@ -949,7 +949,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                 </div>
                 <div style={{ display:"flex",alignItems:"baseline",gap:"6px" }}>
                   <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"2.4rem",fontWeight:800,color:plan.highlight?"#0f172a":"#f1f5f9",letterSpacing:"-0.04em",lineHeight:1 }}>{plan.price}</span>
-                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/{t.lang==="hi"?"à¤®à¤¾à¤¹":"mo"}</span>}
+                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/{t.lang==="hi"?"माह":"mo"}</span>}
                   {plan.originalPrice && <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.85rem",textDecoration:"line-through",marginLeft:"2px" }}>{plan.originalPrice}</span>}
                 </div>
                 {i===0&&<div style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem",marginTop:"2px" }}>{plan.period}</div>}
@@ -971,7 +971,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="â‚¹0"){onCTA();}else if(plan.price==="â‚¹799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="&#8377;0"){onCTA();}else if(!user){setShowAuth(true);}else if(plan.price==="&#8377;799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -1275,4 +1275,3 @@ export default function hikezo() {
     </>
   );
 }
-
