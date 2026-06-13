@@ -393,7 +393,7 @@ function ChatModal({ onClose, t, lang, user }) {
               </div>
               <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
                 <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.62rem",color:"#334155",border:"1px solid rgba(255,255,255,0.07)",padding:"2px 7px",borderRadius:"4px" }}>{tc.badge}</span>
-                {msgs.length>0&&<button onClick={()=>{setMsgs([]);try{sessionStorage.removeItem(chatKey);}catch{}setPhase("connecting");}} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>New Chat</button>}
+                {msgs.length>0&&!showUp&&rem>0&&<button onClick={()=>{setMsgs([]);try{sessionStorage.removeItem(chatKey);}catch{}setPhase("connecting");}} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>New Chat</button>}
                 <button onClick={onClose} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem" }}>x</button>
               </div>
             </div>
