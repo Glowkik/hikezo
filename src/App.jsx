@@ -255,14 +255,14 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
         </div>
         <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.15rem",marginBottom:"0.5rem" }}>{tc.upgradeTitle}</h3>
         <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.85rem",lineHeight:1.6,marginBottom:"1.5rem" }}>{tc.upgradeSub}</p>
-        {[{n:"Pro",p:"Rs399/mo",h:true},{n:"Elite",p:"Rs799/mo",h:false}].map(pl=>(
-          <div key={pl.n} onClick={onUpgrade} style={{ padding:"0.85rem 1rem",marginBottom:"0.6rem",background:pl.h?"rgba(16,185,129,0.06)":"rgba(255,255,255,0.03)",border:`1px solid ${pl.h?"rgba(16,185,129,0.25)":"rgba(255,255,255,0.08)"}`,borderRadius:"10px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .2s" }}
+        {[{n:"Pro",p:"Rs399/mo",h:true,link:"https://rzp.io/rzp/DNfBx2L3"},{n:"Elite",p:"Rs799/mo",h:false,link:"https://rzp.io/rzp/HqU3cDU"}].map(pl=>(
+          <div key={pl.n} onClick={()=>window.open(pl.link,"_blank")} style={{ padding:"0.85rem 1rem",marginBottom:"0.6rem",background:pl.h?"rgba(16,185,129,0.06)":"rgba(255,255,255,0.03)",border:`1px solid ${pl.h?"rgba(16,185,129,0.25)":"rgba(255,255,255,0.08)"}`,borderRadius:"10px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .2s" }}
             onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{pl.n}</span>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#10b981",fontWeight:700 }}>{pl.p}</span>
           </div>
         ))}
-        <button onClick={onUpgrade} style={{ width:"100%",padding:"12px",background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"10px",color:"#fff",fontWeight:700,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem",marginBottom:"0.6rem" }}>{tc.upgradeBtn}</button>
+        <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"10px",color:"#fff",fontWeight:700,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem",marginBottom:"0.6rem" }}>{tc.upgradeBtn}</button>
         <button onClick={onClose} style={{ background:"none",border:"none",color:"#475569",cursor:"pointer",fontFamily:"'Inter',sans-serif",fontSize:"0.8rem" }}>{tc.later}</button>
       </div>
     </div>
@@ -873,7 +873,7 @@ function Testimonials({ t }) {
 }
 
 // -- PRICING -------------------------------------------------------------------
-function Pricing({ onCTA, t, lang, user, setShowAuth }) {
+function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile, isTablet }=useBreakpoint();
   const tp=t.pricing;
@@ -928,7 +928,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){localStorage.setItem("hz_pending_plan",plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setPendingPlan(plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -1005,6 +1005,7 @@ export default function hikezo() {
   },[]);
 
   const [showBanner, setShowBanner] = useState(true);
+  const [pendingPlan, setPendingPlan] = useState(null);
   const handleCTA=()=>{ if(!user){setShowAuth(true);}else{setShowChat(true);} };
   const handleLogout=()=>{
     try{
@@ -1016,7 +1017,16 @@ export default function hikezo() {
     setUser(null);
     setShowChat(false);
   };
-  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=localStorage.getItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); if(p==="Rs.799"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
+  const handleAuth=(d)=>{ 
+    setUser(d); 
+    setShowAuth(false);
+    const p = pendingPlan;
+    setPendingPlan(null);
+    localStorage.removeItem("hz_pending_plan");
+    if(p==="Rs.799"){ window.open("https://rzp.io/rzp/HqU3cDU","_blank"); }
+    else if(p==="Rs.399"){ window.open("https://rzp.io/rzp/DNfBx2L3","_blank"); }
+    else { setTimeout(()=>setShowChat(true),300); }
+  };
 
   return(
     <>
@@ -1066,7 +1076,7 @@ export default function hikezo() {
         <HowItWorks t={t} onCTA={handleCTA}/>
         <Features t={t}/>
         <Testimonials t={t}/>
-        <Pricing onCTA={handleCTA} t={t} lang={lang} user={user} setShowAuth={setShowAuth}/>
+        <Pricing onCTA={handleCTA} t={t} lang={lang} user={user} setShowAuth={setShowAuth} setPendingPlan={setPendingPlan}/>
         <FAQ t={t}/>
 
         {/* CTA Banner */}
