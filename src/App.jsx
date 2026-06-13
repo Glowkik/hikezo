@@ -91,7 +91,7 @@ const T = {
     hero: {
       badge: "500+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
-      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
+      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep — free to start.",
       cta: "Talk to a Consultant - Free", demo: "See How It Works",
       social: "got salary hikes with hikezo",
     },
@@ -107,17 +107,17 @@ const T = {
       items: [
         { title: "Salary Negotiation", desc: "Exact words to say in your next appraisal. Proven to get 30-45% hikes." },
         { title: "Career Roadmap", desc: "Know exactly what to do next week, next month, and next year to level up." },
-        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for -- and how to get them." },
+        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for — and how to get them." },
         { title: "Resume Overhaul", desc: "Rewrite your resume in 1 session. Get 3x more callbacks guaranteed." },
         { title: "Interview Coaching", desc: "Walk into any interview confident. We prep you for the exact questions they'll ask." },
-        { title: "Salary Benchmarking", desc: "Find out if you're underpaid -- compare your salary with 50,000+ data points." },
+        { title: "Salary Benchmarking", desc: "Find out if you're underpaid — compare your salary with 50,000+ data points." },
       ]
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best Rs.399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike — from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best Rs.399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
-        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
+        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA — 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
     pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns Rs.2.8L more per year. Plans start at Rs.399.",
@@ -129,17 +129,17 @@ const T = {
     },
     faq: { title: "Frequently Asked Questions",
       items: [
-        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching -- all specialized for India's job market." },
+        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching — all specialized for India's job market." },
         { q: "How does billing work?", a: "Plans are billed monthly and renew automatically. You can manage your subscription from account settings." },
         { q: "How soon will I see results?", a: "Most users get a clear action plan and negotiation strategy in their very first session." },
         { q: "Is my data safe?", a: "All conversations are encrypted with 256-bit SSL. We never share or sell your personal data." },
         { q: "What's the difference between Pro and Elite?", a: "Pro covers all core tools. Elite adds mock interviews, LinkedIn review, priority access, and weekly progress reports." },
-        { q: "Is this relevant for the Indian market?", a: "Yes -- built specifically for Indian professionals with India-specific salary data, company context, and negotiation culture." },
-        { q: "Is payment secure?", a: "All payments are processed through Razorpay -- India's most trusted payment gateway." },
+        { q: "Is this relevant for the Indian market?", a: "Yes — built specifically for Indian professionals with India-specific salary data, company context, and negotiation culture." },
+        { q: "Is payment secure?", a: "All payments are processed through Razorpay — India's most trusted payment gateway." },
       ]
     },
-    cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 500+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant -- Free ->" },
-    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
+    cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 500+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant - Free ->" },
+    footer: "(c) 2025 hikezo.in | India's Career Growth Platform",
     auth: { signupTitle: "Create Free Account", loginTitle: "Welcome Back", signupSub: "Free - No credit card needed", loginSub: "Login to continue your career journey", namePh: "Full Name", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Create Account & Start ->", loginBtn: "Login & Continue ->", thinking: "Please wait...", toLogin: "Already have an account?", toSignup: "Don't have an account?", loginLink: "Login", signupLink: "Sign Up Free", privacy: "[Secure] Your data is secure. We never spam or sell your information.", success: "Opening your consultation..." },
     chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
@@ -163,7 +163,7 @@ const Icon = {
 };
 const FEAT_ICONS = [Icon.salary, Icon.map, Icon.search, Icon.doc, Icon.user, Icon.chart];
 
-// -- CUSTOM CURSOR -------------------------------------------------------------
+// — CUSTOM CURSOR ——————————————————————————————-
 function CustomCursor() {
   const cursorRef = useRef(null);
   const glowRef = useRef(null);
@@ -269,7 +269,7 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
   );
 }
 
-// -- CONNECTING SCREEN ---------------------------------------------------------
+// — CONNECTING SCREEN ————————————————————————————-
 function ConnectingScreen({ c, lang, onDone }) {
   const [step,setStep]=useState(0);
   const [prog,setProg]=useState(0);
@@ -318,7 +318,7 @@ function ConnectingScreen({ c, lang, onDone }) {
   );
 }
 
-// -- CHAT MODAL ----------------------------------------------------------------
+// — CHAT MODAL ————————————————————————————————
 function ChatModal({ onClose, t, lang, user }) {
   const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
   const { isMobile }=useBreakpoint();
@@ -872,7 +872,7 @@ function Testimonials({ t }) {
   );
 }
 
-// -- PRICING -------------------------------------------------------------------
+// — PRICING —————————————————————————————————-
 function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile, isTablet }=useBreakpoint();
@@ -933,7 +933,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
             </SR>
           ))}
         </div>
-        {/* Trust Badges -- proper SVG icons */}
+        {/* Trust Badges — proper SVG icons */}
         <div style={{ marginTop:"2.5rem",display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"0.75rem" }}>
           {[
             { label:"SSL Secured", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> },
@@ -954,7 +954,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
   );
 }
 
-// -- FAQ -----------------------------------------------------------------------
+// — FAQ ———————————————————————————————————-
 function FAQ({ t }) {
   const [open,setOpen]=useState(null);
   const { isMobile }=useBreakpoint();
@@ -983,7 +983,7 @@ function FAQ({ t }) {
   );
 }
 
-// -- APP -----------------------------------------------------------------------
+// — APP ———————————————————————————————————-
 export default function hikezo() {
   const [showChat,setShowChat]=useState(false);
   const [showAuth,setShowAuth]=useState(false);
