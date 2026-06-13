@@ -1016,7 +1016,7 @@ export default function hikezo() {
     setUser(null);
     setShowChat(false);
   };
-  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=localStorage.getItem("hz_pending_plan"); if(p==="Rs.799"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
+  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=localStorage.getItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); localStorage.removeItem("hz_pending_plan"); if(p==="Rs.799"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){localStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
 
   return(
     <>
