@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
+import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function useBreakpoint() {
   const get = () => window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop";
@@ -144,64 +146,7 @@ const T = {
     chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
   },
-  hi: {
-    nav: { features: "फीचर्स", pricing: "प्राइसिंग", cta: "शुरू करो" },
-    hero: {
-      badge: "India का #1 Career Growth Platform",
-      h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
-      sub: "hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
-      cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
-      social: "professionals ने hikezo trust किया",
-    },
-    how: { label: "PROCESS", title: "4 Steps में Career Transform करो", sub: "Simple. Fast. Effective.", cta: "Free में शुरू करो ->",
-      steps: [
-        { title: "Account बनाओ", desc: "30 seconds में free signup -- कोई credit card नहीं।" },
-        { title: "Consultant से मिलो", desc: "Specialist career expert से instantly match हो जाओ।" },
-        { title: "Strategy पाओ", desc: "Personalized negotiation script और career plan मिलेगा।" },
-        { title: "Hike लो", desc: "Strategy use करो और deserve की salary claim करो।" },
-      ]
-    },
-    features: { label: "हम क्या देते हैं", title: "Grow करने के लिए सब कुछ",
-      items: [
-        { title: "Salary Negotiation", desc: "आपकी role, company और experience के हिसाब से word-for-word script।" },
-        { title: "Career Roadmap", desc: "6-12 month plan -- skills, milestones और job switch timing सब clear।" },
-        { title: "Skills Gap Analysis", desc: "Exactly पता करो क्या रोक रहा है और fast fix कैसे करें।" },
-        { title: "Resume Overhaul", desc: "Bullet points को achievement statements में convert करो जो callbacks दिलाएं।" },
-        { title: "Interview Coaching", desc: "Role-specific Q&A with STAR answers और live feedback।" },
-        { title: "Salary Benchmarking", desc: "India की top companies की real market data -- role, city और experience के हिसाब से।" },
-      ]
-    },
-    testi: { label: "सक्सेस स्टोरीज़", title: "Real Professionals के Real Results",
-      items: [
-        { name: "राहुल शर्मा", role: "Software Engineer, बेंगलुरु", text: "Priya की negotiation script से 40% hike मिला। इतना straightforward होगा यह नहीं सोचा था।", av: "RS" },
-        { name: "प्रिया मेनन", role: "Product Manager, मुंबई", text: "पहले session में career roadmap crystal clear हो गया। अगला step exactly पता चल गया।", av: "PM" },
-        { name: "अर्जुन कपूर", role: "Data Analyst, हैदराबाद", text: "आखिरकार market value समझ आई। Plan follow करके 3 हफ्ते में 2 competing offers मिले।", av: "AK" },
-      ]
-    },
-    pricing: { label: "प्राइसिंग", title: "Simple, Transparent Pricing", sub: "कोई hidden charges नहीं। Monthly billing।",
-      plans: [
-        { name: "फ्री", price: "Rs.0", period: "हमेशा के लिए", features: ["3 consultations/दिन", "Basic salary range", "General career advice"], bonuses: [], cta: "Free मein शुरू करो", highlight: false },
-        { name: "प्रो", price: "Rs.399", originalPrice: "Rs.649", discount: "38% OFF", period: "प्रति महीना", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Pro Plan शुरू करो", highlight: true },
-        { name: "एलीट", price: "Rs.799", originalPrice: "Rs.1,299", discount: "38% OFF", period: "प्रति महीना", features: ["Pro सब कुछ", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Elite Plan शुरू करो", highlight: false },
-      ]
-    },
-    faq: { title: "अक्सर पूछे जाने वाले सवाल",
-      items: [
-        { q: "hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
-        { q: "Billing कैसे काम करती है?", a: "Plans monthly bill होते हैं और automatically renew होते हैं। Account settings से subscription manage करें।" },
-        { q: "Result कब आएगा?", a: "ज़्यादातर users को पहले session में ही clear action plan और negotiation strategy मिल जाती है।" },
-        { q: "क्या मेरा data safe है?", a: "सभी conversations 256-bit SSL से encrypted हैं। हम कभी personal data share या sell नहीं करते।" },
-        { q: "Pro और Elite में क्या फर्क है?", a: "Pro में सभी core tools। Elite में mock interviews, LinkedIn review, priority access और weekly reports भी।" },
-        { q: "क्या यह Indian market के लिए relevant है?", a: "हां -- specifically Indian professionals के लिए बना है -- Indian salary data, company context और negotiation culture के साथ।" },
-        { q: "Payment secure है?", a: "सभी payments Razorpay के through -- India का सबसे trusted payment gateway।" },
-      ]
-    },
-    cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "500+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो -- Free ->" },
-    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
-    auth: { signupTitle: "Free Account बनाओ", loginTitle: "Welcome Back", signupSub: "Free - कोई credit card नहीं", loginSub: "अपना career journey continue करो", namePh: "पूरा नाम", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account बनाओ और शुरू करो ->", loginBtn: "Login करो ->", thinking: "Please wait...", toLogin: "Already account है?", toSignup: "Account नहीं है?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] आपका data secure है। हम कभी spam या sell नहीं करते।", success: "Consultation open हो रहा है..." },
-    chat: { thinking: " type कर रहे हैं...", inputPh: "अपना message लिखो...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} बचे आज के लिए`, upgradeTitle: "Free Limit पूरी हो गई", upgradeSub: `आपने आज के ${FREE_LIMIT} free messages use कर लिए हैं।`, upgradeBtn: "Upgrade करो ->", later: "बाद में" },
-    connect: { title: "आपका Consultant ढूंढ रहे हैं...", steps: (name) => ["Consultant availability check हो रही है...", "आपके लिए best match ढूंढा जा रहा है...", `${name} आपके लिए तैयार हैं!`] },
-  }
+
 };
 
 // SVG Icons
@@ -379,6 +324,11 @@ function ConnectingScreen({ c, lang, onDone }) {
 function ChatModal({ onClose, t, lang, user }) {
   const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
   const { isMobile }=useBreakpoint();
+  useEffect(()=>{
+    const handleEsc=(e)=>{ if(e.key==="Escape") onClose(); };
+    window.addEventListener("keydown", handleEsc);
+    return ()=>window.removeEventListener("keydown", handleEsc);
+  },[]);
   const chatKey = user?.email ? "hz_chat_" + user.email : "hz_chat_guest";
   const [phase,setPhase]=useState(()=>{
     try { const h = sessionStorage.getItem(chatKey); return h && JSON.parse(h).length > 0 ? "chat" : "connecting"; } catch { return "connecting"; }
@@ -980,7 +930,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){sessionStorage.setItem("hz_pending_plan",plan.price);setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -1048,30 +998,33 @@ export default function hikezo() {
 
   const [user,setUser]=useState(()=>{ try{ const s=sessionStorage.getItem("hz_user"); return s?JSON.parse(s):null; }catch{ return null; }});
 
+  // Keep user logged in on refresh using Firebase
+  useEffect(()=>{
+    const unsub = onAuthStateChanged(auth, (firebaseUser)=>{
+      if(firebaseUser && firebaseUser.emailVerified){
+        const userData = { name: firebaseUser.displayName || firebaseUser.email, email: firebaseUser.email };
+        try{ sessionStorage.setItem("hz_user", JSON.stringify(userData)); }catch{}
+        setUser(userData);
+      } else if(!firebaseUser) {
+        // Only clear if Firebase says logged out
+        const stored = sessionStorage.getItem("hz_user");
+        if(!stored) setUser(null);
+      }
+    });
+    return ()=>unsub();
+  },[]);
+
   const [showBanner, setShowBanner] = useState(true);
   const handleCTA=()=>{ if(!user){setShowAuth(true);}else{setShowChat(true);} };
   const handleLogout=()=>{
     try{
-      // Clear user but keep consultant assignment
       sessionStorage.removeItem("hz_user");
+      sessionStorage.removeItem("hz_usage");
     }catch{}
     setUser(null);
     setShowChat(false);
   };
-  const handleAuth=(d)=>{ 
-    setUser(d); 
-    setShowAuth(false); 
-    const pendingPlan = sessionStorage.getItem("hz_pending_plan");
-    if(pendingPlan==="Rs.799"){
-      sessionStorage.removeItem("hz_pending_plan");
-      setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);
-    } else if(pendingPlan==="Rs.399"){
-      sessionStorage.removeItem("hz_pending_plan");
-      setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);
-    } else {
-      const p=sessionStorage.getItem("hz_pending_plan");if(p==="Rs.799"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);}
-    }
-  };
+  const handleAuth=(d)=>{ setUser(d); setShowAuth(false); const p=sessionStorage.getItem("hz_pending_plan"); if(p==="Rs.799"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/HqU3cDU","_blank"),300);}else if(p==="Rs.399"){sessionStorage.removeItem("hz_pending_plan");setTimeout(()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank"),300);}else{setTimeout(()=>setShowChat(true),300);} };
 
   return(
     <>
