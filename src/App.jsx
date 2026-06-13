@@ -92,7 +92,7 @@ const T = {
       badge: "500+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
       sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
-      cta: "Talk to a Consultant - Free", demo: "See How It Works",
+      cta: "Talk to a Consultant — Free", demo: "See How It Works",
       social: "got salary hikes with hikezo",
     },
     how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
@@ -262,7 +262,202 @@ function UpgradePopup({ onClose, onUpgrade, tc }) {
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#10b981",fontWeight:700 }}>{pl.p}</span>
           </div>
         ))}
-        <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
+        <button onClick={onUpgrade} style={{ width:"100%",padding:"12px",background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"10px",color:"#fff",fontWeight:700,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem",marginBottom:"0.6rem" }}>{tc.upgradeBtn}</button>
+        <button onClick={onClose} style={{ background:"none",border:"none",color:"#475569",cursor:"pointer",fontFamily:"'Inter',sans-serif",fontSize:"0.8rem" }}>{tc.later}</button>
+      </div>
+    </div>
+  );
+}
+
+// -- CONNECTING SCREEN ---------------------------------------------------------
+function ConnectingScreen({ c, lang, onDone }) {
+  const [step,setStep]=useState(0);
+  const [prog,setProg]=useState(0);
+  const [tipIdx,setTipIdx]=useState(0);
+  
+  const tips = lang==="hi" ? [
+    { icon:"💰", title:"Salary negotiate karo", desc:"Apni current salary aur target salary batao" },
+    { icon:"🗺️", title:"Career roadmap lo", desc:"Apni role aur experience batao — next steps milenge" },
+    { icon:"🎯", title:"Interview prep karo", desc:"Company ka naam batao — specific prep milegi" },
+    { icon:"📝", title:"Resume improve karo", desc:"Apni current role aur achievements share karo" },
+  ] : [
+    { icon:"💰", title:"Negotiate your salary", desc:"Share your current salary and target — get a script" },
+    { icon:"🗺️", title:"Get a career roadmap", desc:"Tell your role and experience — get next steps" },
+    { icon:"🎯", title:"Prep for interviews", desc:"Share the company name — get specific prep" },
+    { icon:"📝", title:"Improve your resume", desc:"Share your role and wins — get a rewrite" },
+  ];
+
+  useEffect(()=>{
+    const ts=[8000,14000,24000].map((d,i)=>setTimeout(()=>setStep(i),d));
+    const iv=setInterval(()=>setProg(p=>Math.min(p+1.5,100)),450);
+    const tipIv=setInterval(()=>setTipIdx(i=>(i+1)%tips.length),2500);
+    const dn=setTimeout(onDone,30000);
+    return()=>{ts.forEach(clearTimeout);clearInterval(iv);clearInterval(tipIv);clearTimeout(dn);}
+  },[]);
+
+  const steps = lang==="hi"
+    ? [`Consultant availability check ho rahi hai...`, `Aapke liye best match dhundha ja raha hai...`, `${c.name} aapke liye taiyar hain!`]
+    : [`Checking consultant availability...`, `Matching you with the best fit...`, `${c.name} is ready for you!`];
+
+  return(
+    <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.97)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .4s ease" }}>
+      <div style={{ textAlign:"center",maxWidth:"420px",width:"100%",animation:"scaleIn .4s ease" }}>
+        
+        {/* Consultant avatar */}
+        <div style={{ position:"relative",width:80,height:80,margin:"0 auto 1.5rem" }}>
+          <div style={{ position:"absolute",inset:-10,borderRadius:"50%",border:`2px solid ${c.color}30`,animation:"ringPulse 2s ease-in-out infinite" }}/>
+          <div style={{ position:"absolute",inset:-5,borderRadius:"50%",border:`2px solid ${c.color}50`,animation:"ringPulse 2s ease-in-out .4s infinite" }}/>
+          <div style={{ width:80,height:80,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}99)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem",boxShadow:`0 8px 32px ${c.color}40`,animation:"consultBob 3s ease-in-out infinite" }}>{c.emoji}</div>
+        </div>
+
+        <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontSize:"1.15rem",fontWeight:700,marginBottom:"0.3rem" }}>
+          {lang==="hi" ? "Aapka Consultant dhundh rahe hain..." : "Finding Your Consultant..."}
+        </h2>
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.82rem",marginBottom:"1.5rem",minHeight:"1.4em" }}>{steps[step]}</p>
+
+        {/* Progress */}
+        <div style={{ width:"100%",height:"3px",background:"rgba(255,255,255,0.06)",borderRadius:"3px",overflow:"hidden",marginBottom:"2rem" }}>
+          <div style={{ height:"100%",background:`linear-gradient(90deg,${c.color},${c.color}80)`,width:`${prog}%`,transition:"width .45s ease",borderRadius:"3px" }}/>
+        </div>
+
+        {/* While you wait tips */}
+        <div style={{ background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",padding:"1rem 1.2rem",marginBottom:"1rem" }}>
+          <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.1em",marginBottom:"0.8rem" }}>
+            {lang==="hi" ? "WHILE YOU WAIT — YEH READY RAKHO:" : "WHILE YOU WAIT — GET READY TO SHARE:"}
+          </p>
+          <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem" }}>
+            {tips.map((tip,i)=>(
+              <div key={i} style={{ background:i===tipIdx?"rgba(14,165,233,0.08)":"rgba(255,255,255,0.02)",border:`1px solid ${i===tipIdx?"rgba(14,165,233,0.2)":"rgba(255,255,255,0.05)"}`,borderRadius:"8px",padding:"0.7rem",textAlign:"left",transition:"all .4s ease" }}>
+                <div style={{ fontSize:"1.1rem",marginBottom:"0.3rem" }}>{tip.icon}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:i===tipIdx?"#e2e8f0":"#64748b",fontSize:"0.72rem",fontWeight:600,marginBottom:"0.2rem",transition:"color .4s" }}>{tip.title}</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.65rem",lineHeight:1.4 }}>{tip.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"#1e293b",fontSize:"0.68rem" }}>
+          {lang==="hi" ? "Jitna zyada batayenge — utna better guidance milegi!" : "The more context you share, the better your guidance!"}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// -- CHAT MODAL ----------------------------------------------------------------
+function ChatModal({ onClose, t, lang, user }) {
+  const [c]=useState(()=>user?.email ? getConsultantForUser(user.email) : getRandConsultant());
+  const { isMobile }=useBreakpoint();
+  const chatKey = user?.email ? "hz_chat_" + user.email : "hz_chat_guest";
+  const [phase,setPhase]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h && JSON.parse(h).length > 0 ? "chat" : "connecting"; } catch { return "connecting"; }
+  });
+  const [msgs,setMsgs]=useState(()=>{
+    try { const h = sessionStorage.getItem(chatKey); return h ? JSON.parse(h) : []; } catch { return []; }
+  });
+  const [input,setInput]=useState("");
+  const [loading,setLoading]=useState(false);
+  const [showUp,setShowUp]=useState(false);
+  const [usage,setUsage]=useState(getLimitData);
+  const ref=useRef(null);
+  const isPro=usage.plan==="pro"||usage.plan==="elite";
+  const rem=isPro?Infinity:Math.max(0,FREE_LIMIT-usage.count);
+  const tc=t.chat;
+
+  const welcome=lang==="hi"
+    ?`नमस्ते${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi मैं ${c.name} हूं, hikezo का ${c.role}।\n\nमैं आपकी help कर सकता/सकती हूं:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nआज क्या discuss करना है?`
+    :`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi I'm ${c.name}, ${c.role} at hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
+
+  const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable.\n${lang==="hi"?"Respond in warm Hinglish.":"Respond in English."}`;
+
+  const connected=()=>{ setPhase("chat"); setTimeout(()=>setMsgs([{r:"a",t:welcome}]),600); };
+  useEffect(()=>{ ref.current?.scrollIntoView({behavior:"smooth"}); },[msgs]);
+
+  const send=async()=>{
+    if(!input.trim()||loading)return;
+    if(!isPro&&usage.count>=FREE_LIMIT){setShowUp(true);return;}
+    const txt=input.trim(); setInput("");
+    const updatedWithUser=[...msgs,{r:"u",t:txt}];
+    setMsgs(updatedWithUser);
+    try{sessionStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
+    setLoading(true);
+    const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd);
+    try{
+      const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
+      const AKEY = "";
+      const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01"},body:JSON.stringify({model:"claude-haiku-4-5-20251001",max_tokens:1000,system:sys,messages:[...hist,{role:"user",content:txt}]})});
+      const d=await res.json();
+      const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment! ";
+      setMsgs(p=>{
+      const updated=[...p,{r:"a",t:rep}];
+      try{sessionStorage.setItem(chatKey,JSON.stringify(updated));}catch{}
+      return updated;
+    });
+      if(!isPro&&nd.count>=FREE_LIMIT)setTimeout(()=>setShowUp(true),1500);
+    }catch{ setMsgs(p=>[...p,{r:"a",t:"Sorry, connection issue. Give me a moment! "}]); }
+    setLoading(false);
+  };
+
+  const isSmall=isMobile;
+  const cObj={...c,hiSteps:t.connect.steps,steps:t.connect.steps};
+
+  return(
+    <>
+      {phase==="connecting"&&<ConnectingScreen c={{...c,steps:T.en.connect.steps,hiSteps:T.hi.connect.steps}} lang={lang} onDone={connected}/>}
+      {phase==="chat"&&(
+        <div style={{ position:"fixed",inset:0,zIndex:200,background:isSmall?"#0f172a":"rgba(2,8,23,0.9)",backdropFilter:isSmall?"none":"blur(12px)",display:"flex",alignItems:isSmall?"stretch":"center",justifyContent:"center",padding:isSmall?"0":"1rem",animation:"fadeIn .3s ease" }}
+          onClick={e=>!isSmall&&e.target===e.currentTarget&&onClose()}>
+          <div style={{ width:"100%",maxWidth:isSmall?"100%":"560px",height:isSmall?"100%":"660px",background:"#0f172a",border:isSmall?"none":"1px solid rgba(255,255,255,0.08)",borderRadius:isSmall?"0":"20px",display:"flex",flexDirection:"column",overflow:"hidden",boxShadow:"0 32px 80px rgba(0,0,0,0.6)",animation:isSmall?"none":"scaleIn .35s ease",position:"relative" }}>
+            {showUp&&<UpgradePopup onClose={()=>setShowUp(false)} onUpgrade={()=>{onClose();document.getElementById("pricing")?.scrollIntoView({behavior:"smooth"});}} tc={tc}/>}
+            {/* Header */}
+            <div style={{ padding:"1rem 1.2rem",borderBottom:"1px solid rgba(255,255,255,0.06)",display:"flex",alignItems:"center",justifyContent:"space-between",background:"rgba(255,255,255,0.02)",flexShrink:0 }}>
+              <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+                <div style={{ position:"relative" }}>
+                  <div style={{ width:40,height:40,borderRadius:"50%",background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.2rem" }}>{c.emoji}</div>
+                  <div style={{ position:"absolute",bottom:1,right:1,width:9,height:9,borderRadius:"50%",background:"#10b981",border:"2px solid #0f172a" }}/>
+                </div>
+                <div>
+                  <div style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.9rem" }}>{c.name}</div>
+                  <div style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.68rem" }}>{c.role} - {c.exp}</div>
+                </div>
+              </div>
+              <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
+                <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.62rem",color:"#334155",border:"1px solid rgba(255,255,255,0.07)",padding:"2px 7px",borderRadius:"4px" }}>{tc.badge}</span>
+                {msgs.length>0&&<button onClick={()=>{
+                  setMsgs([]);
+                  try{sessionStorage.removeItem(chatKey);}catch{}
+                  setPhase("connecting");
+                }} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>
+                  New Chat
+                </button>}
+                <button onClick={onClose} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem",transition:"background .2s" }}
+                  onMouseEnter={e=>e.target.style.background="rgba(255,255,255,0.1)"} onMouseLeave={e=>e.target.style.background="rgba(255,255,255,0.05)"}>x</button>
+              </div>
+            </div>
+            {/* Messages */}
+            <div style={{ flex:1,overflowY:"auto",padding:"1.2rem",display:"flex",flexDirection:"column",gap:"0.8rem" }}>
+              {msgs.map((m,i)=>(
+                <div key={i} style={{ display:"flex",justifyContent:m.r==="u"?"flex-end":"flex-start",gap:"8px",alignItems:"flex-end",animation:"fadeUp .3s ease" }}>
+                  {m.r==="a"&&<div style={{ width:26,height:26,borderRadius:"50%",flexShrink:0,background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.78rem" }}>{c.emoji}</div>}
+                  <div style={{ maxWidth:"82%",padding:"0.75rem 1rem",borderRadius:m.r==="u"?"16px 16px 4px 16px":"16px 16px 16px 4px",background:m.r==="u"?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",color:m.r==="u"?"#fff":"#cbd5e1",fontFamily:"'Inter',sans-serif",fontSize:"0.88rem",lineHeight:1.6,whiteSpace:"pre-wrap",fontWeight:m.r==="u"?500:400 }}>{m.t}</div>
+                </div>
+              ))}
+              {loading&&(
+                <div style={{ display:"flex",gap:"8px",alignItems:"flex-end" }}>
+                  <div style={{ width:26,height:26,borderRadius:"50%",flexShrink:0,background:`linear-gradient(135deg,${c.color},${c.color}80)`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.78rem" }}>{c.emoji}</div>
+                  <div style={{ padding:"0.75rem 1rem",background:"rgba(255,255,255,0.06)",borderRadius:"16px 16px 16px 4px",display:"flex",gap:"4px",alignItems:"center" }}>
+                    {[0,.2,.4].map((d,i)=><div key={i} style={{ width:6,height:6,borderRadius:"50%",background:"#475569",animation:`dot 1.3s infinite ${d}s` }}/>)}
+                  </div>
+                </div>
+              )}
+              <div ref={ref}/>
+            </div>
+            {/* Input */}
+            <div style={{ padding:"0.8rem 1rem",borderTop:"1px solid rgba(255,255,255,0.06)",display:"flex",flexDirection:"column",gap:"6px",background:"rgba(0,0,0,0.2)",flexShrink:0,paddingBottom:isSmall?"calc(0.8rem + env(safe-area-inset-bottom))":"0.8rem" }}>
+              {!isPro&&(
+                <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 10px",background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"6px" }}>
+                  <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#475569" }}>{tc.freeLeft(rem)}</span>
+                  <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
                 </div>
               )}
               <div style={{ display:"flex",gap:"8px" }}>
@@ -409,7 +604,9 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
               onMouseEnter={e=>{e.target.style.color="#f1f5f9";e.target.style.background="rgba(255,255,255,0.05)";}} onMouseLeave={e=>{e.target.style.color="#64748b";e.target.style.background="transparent";}}>{l}</a>
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
-          
+          <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
+          </div>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem" }}>{user.name?.split(" ")[0]}</span>
@@ -426,7 +623,9 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
           {isTablet&&<>
             <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
           </>}
-          
+          <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
+            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
+          </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
           {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
         </div>
@@ -772,8 +971,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>plan.price==="₹0"?onCTA():plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
-                onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="₹0"){onCTA();}else if(plan.price==="₹799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
@@ -1077,4 +1275,3 @@ export default function hikezo() {
     </>
   );
 }
-  
