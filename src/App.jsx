@@ -68,10 +68,10 @@ function AnimCounter({ to, suffix="", prefix="", start, dur=1400 }) {
   return <>{prefix}{val >= 1000 ? (val/1000).toFixed(0)+"K" : val}{suffix}</>;
 }
 const CONSULTANTS = [
-  { name: "Priya Sharma", role: "Career Consultant", exp: "8 yrs - 2400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
-  { name: "Arjun Mehta", role: "Career Consultant", exp: "6 yrs - 1800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at hikezo with 6 years creating career roadmaps for Indian professionals." },
-  { name: "Neha Gupta", role: "Career Consultant", exp: "5 yrs - 1600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at hikezo with 5 years transforming Indian professionals' career presence." },
-  { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at hikezo with 7 years preparing Indian professionals for top company interviews." },
+  { name: "Priya Sharma", role: "Career Consultant", exp: "8 yrs - 2400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at Hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
+  { name: "Arjun Mehta", role: "Career Consultant", exp: "6 yrs - 1800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at Hikezo with 6 years creating career roadmaps for Indian professionals." },
+  { name: "Neha Gupta", role: "Career Consultant", exp: "5 yrs - 1600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at Hikezo with 5 years transforming Indian professionals' career presence." },
+  { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at Hikezo with 7 years preparing Indian professionals for top company interviews." },
 ];
 function getConsultantForUser(userEmail) {
   // Always return same consultant for same user
@@ -91,9 +91,9 @@ const T = {
     hero: {
       badge: "10,000+ Professionals Got Their Hike",
       h1a: "Get the Salary", h1b: "You Deserve",
-      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
+      sub: "India's professionals earn 40% more after using Hikezo. Get your personalized salary script, career roadmap, and interview prep -- free to start.",
       cta: "Talk to a Consultant — Free", demo: "See How It Works",
-      social: "got salary hikes with hikezo",
+      social: "got salary hikes with Hikezo",
     },
     how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
       steps: [
@@ -115,12 +115,12 @@ const T = {
     },
     testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
       items: [
-        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
+        { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used Hikezo's script in my appraisal. Got 40% hike -- from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best ₹399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
-        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
+        { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "Hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA -- 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
+    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg Hikezo user earns ₹2.8L more per year. Plans start at ₹399.",
       plans: [
         { name: "Free", price: "₹0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
         { name: "Pro", price: "₹399", originalPrice: "₹649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
@@ -129,7 +129,7 @@ const T = {
     },
     faq: { title: "Frequently Asked Questions",
       items: [
-        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching -- all specialized for India's job market." },
+        { q: "Who are Hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching -- all specialized for India's job market." },
         { q: "How does billing work?", a: "Plans are billed monthly and renew automatically. You can manage your subscription from account settings." },
         { q: "How soon will I see results?", a: "Most users get a clear action plan and negotiation strategy in their very first session." },
         { q: "Is my data safe?", a: "All conversations are encrypted with 256-bit SSL. We never share or sell your personal data." },
@@ -139,7 +139,7 @@ const T = {
       ]
     },
     cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 10,000+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant -- Free ->" },
-    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
+    footer: "(c) 2025 Hikezo.in -- India's Career Growth Platform",
     auth: { signupTitle: "Create Free Account", loginTitle: "Welcome Back", signupSub: "Free - No credit card needed", loginSub: "Login to continue your career journey", namePh: "Full Name", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Create Account & Start ->", loginBtn: "Login & Continue ->", thinking: "Please wait...", toLogin: "Already have an account?", toSignup: "Don't have an account?", loginLink: "Login", signupLink: "Sign Up Free", privacy: "[Secure] Your data is secure. We never spam or sell your information.", success: "Opening your consultation..." },
     chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
     connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
@@ -149,9 +149,9 @@ const T = {
     hero: {
       badge: "India का #1 Career Growth Platform",
       h1a: "वो Salary पाओ", h1b: "जो Deserve करते हो",
-      sub: "hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
+      sub: "Hikezo use karne ke baad Indian professionals 40% zyada earn karte hain. Apna personalized salary script, career roadmap aur interview prep paao -- free mein.",
       cta: "Consultant से बात करो", demo: "कैसे काम करता है देखो",
-      social: "professionals ने hikezo trust किया",
+      social: "professionals ने Hikezo trust किया",
     },
     how: { label: "PROCESS", title: "4 Steps में Career Transform करो", sub: "Simple. Fast. Effective.", cta: "Free में शुरू करो ->",
       steps: [
@@ -187,7 +187,7 @@ const T = {
     },
     faq: { title: "अक्सर पूछे जाने वाले सवाल",
       items: [
-        { q: "hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
+        { q: "Hikezo के consultants कौन हैं?", a: "Experienced career professionals -- HR, recruitment और coaching background के साथ, Indian job market के लिए specially trained।" },
         { q: "Billing कैसे काम करती है?", a: "Plans monthly bill होते हैं और automatically renew होते हैं। Account settings से subscription manage करें।" },
         { q: "Result कब आएगा?", a: "ज़्यादातर users को पहले session में ही clear action plan और negotiation strategy मिल जाती है।" },
         { q: "क्या मेरा data safe है?", a: "सभी conversations 256-bit SSL से encrypted हैं। हम कभी personal data share या sell नहीं करते।" },
@@ -197,7 +197,7 @@ const T = {
       ]
     },
     cta: { title: "Career को Next Level पर ले जाने के लिए Ready हो?", sub: "10,000+ Indian professionals पहले से अपना career transform कर चुके हैं।", btn: "Consultant से बात करो -- Free ->" },
-    footer: "(c) 2025 hikezo.in -- India's Career Growth Platform",
+    footer: "(c) 2025 Hikezo.in -- India's Career Growth Platform",
     auth: { signupTitle: "Free Account बनाओ", loginTitle: "Welcome Back", signupSub: "Free - कोई credit card नहीं", loginSub: "अपना career journey continue करो", namePh: "पूरा नाम", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Account बनाओ और शुरू करो ->", loginBtn: "Login करो ->", thinking: "Please wait...", toLogin: "Already account है?", toSignup: "Account नहीं है?", loginLink: "Login", signupLink: "Free Sign Up", privacy: "[Secure] आपका data secure है। हम कभी spam या sell नहीं करते।", success: "Consultation open हो रहा है..." },
     chat: { thinking: " type कर रहे हैं...", inputPh: "अपना message लिखो...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} बचे आज के लिए`, upgradeTitle: "Free Limit पूरी हो गई", upgradeSub: `आपने आज के ${FREE_LIMIT} free messages use कर लिए हैं।`, upgradeBtn: "Upgrade करो ->", later: "बाद में" },
     connect: { title: "आपका Consultant ढूंढ रहे हैं...", steps: (name) => ["Consultant availability check हो रही है...", "आपके लिए best match ढूंढा जा रहा है...", `${name} आपके लिए तैयार हैं!`] },
@@ -422,10 +422,10 @@ function ChatModal({ onClose, t, lang, user }) {
   const tc=t.chat;
 
   const welcome=lang==="hi"
-    ?`नमस्ते${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi मैं ${c.name} हूं, hikezo का ${c.role}।\n\nमैं आपकी help कर सकता/सकती हूं:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nआज क्या discuss करना है?`
-    :`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi I'm ${c.name}, ${c.role} at hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
+    ?`नमस्ते${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi मैं ${c.name} हूं, Hikezo का ${c.role}।\n\nमैं आपकी help कर सकता/सकती हूं:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nआज क्या discuss करना है?`
+    :`Hi${user?.name?` ${user.name.split(" ")[0]}`:""}! Hi I'm ${c.name}, ${c.role} at Hikezo.\n\nI'm here to help with:\n Salary negotiation\n Career roadmap\n Skills gap analysis\n Resume improvement\n Interview preparation\n\nWhat's on your mind today?`;
 
-  const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable.\n${lang==="hi"?"Respond in warm Hinglish.":"Respond in English."}`;
+  const sys=`${c.persona}\n\nYou are NOT an AI. You are a human consultant at Hikezo. Speak warmly and professionally. Reference India-specific context (salaries in INR, companies like TCS/Infosys/Flipkart, cities like Bengaluru/Mumbai/Hyderabad). Never say you are AI. Keep responses concise and actionable.\n${lang==="hi"?"Respond in warm Hinglish.":"Respond in English."}`;
 
   const connected=()=>{ setPhase("chat"); setTimeout(()=>setMsgs([{r:"a",t:welcome}]),600); };
   useEffect(()=>{ ref.current?.scrollIntoView({behavior:"smooth"}); },[msgs]);
@@ -514,7 +514,7 @@ function ChatModal({ onClose, t, lang, user }) {
               {!isPro&&(
                 <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 10px",background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"6px" }}>
                   <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#475569" }}>{tc.freeLeft(rem)}</span>
-                  <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
+                  <button onClick={()=>setShowUp(true)} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
                 </div>
               )}
               <div style={{ display:"flex",gap:"8px" }}>
@@ -662,7 +662,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"4px 10px",borderRadius:"5px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.72rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -681,7 +681,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
             <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
           </>}
           <div style={{ display:"flex",background:"rgba(255,255,255,0.05)",borderRadius:"6px",padding:"2px",gap:"1px" }}>
-            {["en"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
+            {["en","hi"].map(l=><button key={l} onClick={()=>setLang(l)} style={{ padding:"3px 8px",borderRadius:"4px",border:"none",background:lang===l?"rgba(14,165,233,0.2)":"transparent",color:lang===l?"#0ea5e9":"#475569",fontWeight:600,fontSize:"0.68rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{l==="en"?"EN":"हि"}</button>)}
           </div>
           {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
           {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
@@ -1028,7 +1028,7 @@ function Pricing({ onCTA, t, lang }) {
                   {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>plan.price==="₹0"?onCTA():!user?(setShowAuth(true),sessionStorage.setItem("hz_pending_plan",plan.price)):plan.price==="₹799"?window.open("https://rzp.io/rzp/HqU3cDU","_blank"):window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
+              <button onClick={onCTA} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
                 onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{plan.cta}</button>
             </div>
             </SR>
@@ -1085,13 +1085,13 @@ function FAQ({ t }) {
 }
 
 // -- APP -----------------------------------------------------------------------
-export default function hikezo() {
+export default function Hikezo() {
   const [showChat,setShowChat]=useState(false);
   const [showAuth,setShowAuth]=useState(false);
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
-  const [lang,setLang]=useState("en"); // hindi removed // hindi removed // hindi removed
+  const [lang,setLang]=useState("en");
   const { isMobile, isTablet }=useBreakpoint();
   const t=T[lang]; const ta=t.auth;
 
@@ -1205,7 +1205,7 @@ export default function hikezo() {
         </footer>
 
         {/* WhatsApp FAB */}
-        <a href="https://wa.me/917048918369?text=Hi%20hikezo%2C%20I%20need%20career%20help" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/917048918369?text=Hi%20Hikezo%2C%20I%20need%20career%20help" target="_blank" rel="noopener noreferrer"
           style={{ position:"fixed",bottom:isMobile?"1.2rem":"1.8rem",right:isMobile?"1.2rem":"1.8rem",zIndex:150,width:50,height:50,borderRadius:"50%",background:"#25D366",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 18px rgba(37,211,102,0.4)",animation:"waFloat 3s ease-in-out infinite",textDecoration:"none",color:"#fff" }}>
           {Icon.wasvg}
         </a>
@@ -1233,19 +1233,19 @@ export default function hikezo() {
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1.1rem" }}>
               <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
-              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>By accessing or using hikezo.in, you agree to be bound by these Terms of Service. If you do not agree, do not use this platform.</p>
+              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>By accessing or using Hikezo.in, you agree to be bound by these Terms of Service. If you do not agree, do not use this platform.</p>
               {[
-                {title:"1. Acceptance of Terms",body:"By creating an account or using any service on hikezo.in, you confirm that you are at least 18 years of age, legally capable of entering into binding agreements, and agree to these Terms in full."},
-                {title:"2. Description of Service",body:"hikezo.in provides AI-assisted career consultation services including salary negotiation guidance, career roadmaps, skills gap analysis, resume assistance, and interview preparation. The service is provided 'as is' and results may vary based on individual circumstances, employer policies, and market conditions."},
-                {title:"3. No Guarantee of Outcomes",body:"hikezo provides guidance and tools to help users in their career journey. We do not guarantee specific salary increases, job placements, promotions, or any other career outcomes. Success depends on individual effort, market conditions, and factors beyond our control. Any results mentioned are examples and not promises."},
-                {title:"4. Account Responsibility",body:"You are solely responsible for maintaining the confidentiality of your account credentials. You agree not to share your account with others. hikezo reserves the right to terminate accounts found to be shared or misused."},
+                {title:"1. Acceptance of Terms",body:"By creating an account or using any service on Hikezo.in, you confirm that you are at least 18 years of age, legally capable of entering into binding agreements, and agree to these Terms in full."},
+                {title:"2. Description of Service",body:"Hikezo.in provides AI-assisted career consultation services including salary negotiation guidance, career roadmaps, skills gap analysis, resume assistance, and interview preparation. The service is provided 'as is' and results may vary based on individual circumstances, employer policies, and market conditions."},
+                {title:"3. No Guarantee of Outcomes",body:"Hikezo provides guidance and tools to help users in their career journey. We do not guarantee specific salary increases, job placements, promotions, or any other career outcomes. Success depends on individual effort, market conditions, and factors beyond our control. Any results mentioned are examples and not promises."},
+                {title:"4. Account Responsibility",body:"You are solely responsible for maintaining the confidentiality of your account credentials. You agree not to share your account with others. Hikezo reserves the right to terminate accounts found to be shared or misused."},
                 {title:"5. Acceptable Use",body:"You agree not to: (a) Use the platform for any unlawful purpose; (b) Attempt to access other users' data; (c) Reverse engineer or copy any part of the platform; (d) Use the service to generate content for competing platforms; (e) Misrepresent yourself or provide false information."},
-                {title:"6. Intellectual Property",body:"All content, features, and functionality on hikezo.in are owned by hikezo and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works without our express written permission."},
-                {title:"7. AI Disclaimer",body:"Career guidance on this platform is AI-assisted. While we strive for accuracy and personalization, AI-generated advice should be used as a supplementary tool, not as a substitute for professional legal, financial, or HR advice. hikezo is not liable for decisions made solely based on AI-generated content."},
-                {title:"8. Limitation of Liability",body:"To the maximum extent permitted by law, hikezo shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill. Our total liability shall not exceed the amount paid by you in the 3 months preceding the claim."},
-                {title:"9. Indemnification",body:"You agree to indemnify and hold harmless hikezo, its directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the platform or violation of these Terms."},
-                {title:"10. Modification of Terms",body:"hikezo reserves the right to modify these Terms at any time. Updated Terms will be posted on this page. Continued use of the platform after changes constitutes acceptance of the new Terms."},
-                {title:"11. Termination",body:"hikezo reserves the right to suspend or terminate your account at any time for violation of these Terms, without notice or liability. Upon termination, your right to use the platform ceases immediately."},
+                {title:"6. Intellectual Property",body:"All content, features, and functionality on Hikezo.in are owned by Hikezo and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works without our express written permission."},
+                {title:"7. AI Disclaimer",body:"Career guidance on this platform is AI-assisted. While we strive for accuracy and personalization, AI-generated advice should be used as a supplementary tool, not as a substitute for professional legal, financial, or HR advice. Hikezo is not liable for decisions made solely based on AI-generated content."},
+                {title:"8. Limitation of Liability",body:"To the maximum extent permitted by law, Hikezo shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill. Our total liability shall not exceed the amount paid by you in the 3 months preceding the claim."},
+                {title:"9. Indemnification",body:"You agree to indemnify and hold harmless Hikezo, its directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the platform or violation of these Terms."},
+                {title:"10. Modification of Terms",body:"Hikezo reserves the right to modify these Terms at any time. Updated Terms will be posted on this page. Continued use of the platform after changes constitutes acceptance of the new Terms."},
+                {title:"11. Termination",body:"Hikezo reserves the right to suspend or terminate your account at any time for violation of these Terms, without notice or liability. Upon termination, your right to use the platform ceases immediately."},
                 {title:"12. Governing Law & Disputes",body:"These Terms are governed by the laws of India. Any disputes shall be resolved through arbitration in India before resorting to litigation. The courts of India shall have exclusive jurisdiction."},
                 {title:"13. Contact",body:"For questions about these Terms, contact: support@hikezo.in"},
               ].map(s=>(
@@ -1269,19 +1269,19 @@ export default function hikezo() {
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1.1rem" }}>
               <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
-              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>Please read this Privacy Policy carefully before using hikezo.in. By accessing or using our platform, you agree to be bound by this policy.</p>
+              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>Please read this Privacy Policy carefully before using Hikezo.in. By accessing or using our platform, you agree to be bound by this policy.</p>
               {[
                 {title:"1. Information We Collect",body:"We collect: (a) Personal identification information including full name, email address, and mobile number provided during registration; (b) Career and professional information you voluntarily share during consultations; (c) Usage data including IP address, browser type, pages visited, and time spent; (d) Device information for analytics and security purposes. Payment information is processed exclusively by Razorpay and is never stored on our servers."},
                 {title:"2. How We Use Your Information",body:"Your information is used to: (a) Provide personalized career consultation services; (b) Send service-related communications and updates; (c) Improve our platform and user experience; (d) Comply with legal obligations; (e) Prevent fraud and ensure security. We do NOT sell, rent, or trade your personal data to any third parties under any circumstances."},
                 {title:"3. Data Sharing",body:"We may share your data with: (a) Service providers who assist in operating our platform (under strict confidentiality agreements); (b) Law enforcement or regulatory bodies when legally required; (c) Successors in the event of a merger or acquisition (with prior notice to users). We do not share your data with advertisers or marketing firms."},
-                {title:"4. AI-Assisted Services Disclosure",body:"hikezo uses AI technology to assist career consultants in providing personalized guidance. Conversations may be processed and stored to improve service quality. By using our consultation services, you consent to this processing. Conversation data is anonymized for training purposes."},
+                {title:"4. AI-Assisted Services Disclosure",body:"Hikezo uses AI technology to assist career consultants in providing personalized guidance. Conversations may be processed and stored to improve service quality. By using our consultation services, you consent to this processing. Conversation data is anonymized for training purposes."},
                 {title:"5. Data Security",body:"We implement industry-standard security measures including 256-bit SSL encryption, secure servers, regular security audits, and access controls. However, no method of internet transmission is 100% secure. We cannot guarantee absolute security of your data."},
                 {title:"6. Cookies & Tracking",body:"We use cookies and similar tracking technologies including analytics tools and Meta Pixel to understand usage patterns and improve our services. You may opt out via your browser settings, but this may affect platform functionality."},
                 {title:"7. Data Retention",body:"We retain your personal data for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data by emailing support@hikezo.in. We will process such requests within 30 days, subject to legal retention requirements."},
                 {title:"8. User Rights",body:"You have the right to: (a) Access your personal data; (b) Correct inaccurate data; (c) Request deletion of your data; (d) Object to processing of your data; (e) Data portability. To exercise these rights, contact support@hikezo.in."},
-                {title:"9. Children's Privacy",body:"hikezo is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from minors. If we discover that a minor has provided personal information, we will delete it immediately."},
+                {title:"9. Children's Privacy",body:"Hikezo is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from minors. If we discover that a minor has provided personal information, we will delete it immediately."},
                 {title:"10. Changes to This Policy",body:"We reserve the right to modify this Privacy Policy at any time. Changes will be posted on this page with an updated effective date. Continued use of the platform after changes constitutes acceptance of the new policy."},
-                {title:"11. Contact Us",body:"For privacy-related concerns, data requests, or complaints, contact us at: support@hikezo.in. We aim to respond within 48 business hours. Registered business: hikezo.in, India."},
+                {title:"11. Contact Us",body:"For privacy-related concerns, data requests, or complaints, contact us at: support@hikezo.in. We aim to respond within 48 business hours. Registered business: Hikezo.in, India."},
               ].map(s=>(
                 <div key={s.title}>
                   <p style={{ color:"#e2e8f0",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
@@ -1305,18 +1305,18 @@ export default function hikezo() {
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1rem" }}>
               <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
-              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>By purchasing any plan on hikezo.in, you acknowledge that you have read, understood, and agreed to this Refund and Cancellation Policy.</p>
+              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>By purchasing any plan on Hikezo.in, you acknowledge that you have read, understood, and agreed to this Refund and Cancellation Policy.</p>
               <div style={{ background:"rgba(239,68,68,0.06)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",padding:"1rem" }}>
                 <p style={{ color:"#fca5a5",fontWeight:700,marginBottom:"0.4rem",fontSize:"0.9rem" }}>STRICT NO-REFUND POLICY</p>
-                <p>All payments made on hikezo.in are <strong style={{ color:"#f1f5f9" }}>final, non-refundable, and non-transferable</strong>. Once a payment is processed, no refunds will be issued under any circumstances, including but not limited to: dissatisfaction with service, accidental purchase, change of mind, technical issues on the user's end, or non-usage of the platform.</p>
+                <p>All payments made on Hikezo.in are <strong style={{ color:"#f1f5f9" }}>final, non-refundable, and non-transferable</strong>. Once a payment is processed, no refunds will be issued under any circumstances, including but not limited to: dissatisfaction with service, accidental purchase, change of mind, technical issues on the user's end, or non-usage of the platform.</p>
               </div>
               {[
-                {title:"1. Nature of Service",body:"hikezo provides digital career consultation services delivered instantly upon payment. As the service is intangible and immediately accessible, it is categorically exempt from refund claims under standard digital services norms."},
+                {title:"1. Nature of Service",body:"Hikezo provides digital career consultation services delivered instantly upon payment. As the service is intangible and immediately accessible, it is categorically exempt from refund claims under standard digital services norms."},
                 {title:"2. No Cancellation Policy",body:"Subscriptions do not support mid-cycle cancellations. You may cancel future auto-renewal by contacting support@hikezo.in at least 7 days before your next billing date. No refund will be provided for the current billing period under any circumstances."},
-                {title:"3. Auto-Renewal",body:"All paid plans are automatically renewed at the end of each billing cycle. By subscribing, you authorize hikezo to charge your payment method for recurring fees. It is your responsibility to cancel before renewal. Charges made due to failure to cancel in time are non-refundable."},
-                {title:"4. Disputed Transactions",body:"Any unauthorized chargeback or payment dispute filed against hikezo without first contacting our support team will result in immediate account suspension and may be subject to legal action for breach of contract. We encourage users to contact support@hikezo.in to resolve any billing concerns before initiating a chargeback."},
+                {title:"3. Auto-Renewal",body:"All paid plans are automatically renewed at the end of each billing cycle. By subscribing, you authorize Hikezo to charge your payment method for recurring fees. It is your responsibility to cancel before renewal. Charges made due to failure to cancel in time are non-refundable."},
+                {title:"4. Disputed Transactions",body:"Any unauthorized chargeback or payment dispute filed against Hikezo without first contacting our support team will result in immediate account suspension and may be subject to legal action for breach of contract. We encourage users to contact support@hikezo.in to resolve any billing concerns before initiating a chargeback."},
                 {title:"5. Free Trial Recommendation",body:"We strongly recommend using our Free Plan to evaluate the platform before making any purchase. The availability of a free tier removes any justification for a refund based on dissatisfaction with service quality."},
-                {title:"6. Platform Downtime",body:"In the rare event of extended platform downtime exceeding 72 consecutive hours, hikezo may, at its sole discretion, provide service credits. This is not a guarantee and does not constitute a right to a cash refund."},
+                {title:"6. Platform Downtime",body:"In the rare event of extended platform downtime exceeding 72 consecutive hours, Hikezo may, at its sole discretion, provide service credits. This is not a guarantee and does not constitute a right to a cash refund."},
                 {title:"7. Governing Law",body:"This policy is governed by the laws of India. Any disputes arising from this policy shall be subject to the exclusive jurisdiction of courts in India."},
                 {title:"8. Contact",body:"For billing concerns, contact support@hikezo.in within 24 hours of the transaction. While we do not offer refunds, we are committed to resolving genuine billing errors promptly."},
               ].map(s=>(
