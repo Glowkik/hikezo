@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import { auth } from "./firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, sendEmailVerification } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+  sendEmailVerification,
+  getRedirectResult
+} from "firebase/auth";
 
-export default function Auth({ onAuth, t, onClose }) {
+export default function Auth({ onAuth, t, onClose, pendingPlan, setPendingPlan }) {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,21 +19,40 @@ export default function Auth({ onAuth, t, onClose }) {
   const [loading, setLoading] = useState(false);
   const [verifyMsg, setVerifyMsg] = useState("");
 
+  // ESC to close
   useEffect(() => {
     const handleEsc = (e) => { if (e.key === "Escape") { onClose && onClose(); } };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
+  // Handle redirect result (Google login after redirect)
+  useEffect(() => {
+    getRedirectResult(auth).then((result) => {
+      if (result?.user) {
+        onAuth({ name: result.user.displayName, email: result.user.email });
+      }
+    }).catch(() => {});
+  }, []);
+
   const handleGoogle = async () => {
     setLoading(true);
     setError("");
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      // Try popup first
       const result = await signInWithPopup(auth, provider);
       onAuth({ name: result.user.displayName, email: result.user.email });
     } catch (e) {
-      setError("Google login failed. Please try again.");
+      // If popup blocked, show error
+      if (e.code === "auth/popup-blocked") {
+        setError("Popup blocked. Please allow popups for hikezo.in and try again.");
+      } else if (e.code === "auth/popup-closed-by-user") {
+        setError("Login cancelled. Please try again.");
+      } else {
+        setError("Google login failed. Please try email login below.");
+      }
     }
     setLoading(false);
   };
@@ -75,11 +102,13 @@ export default function Auth({ onAuth, t, onClose }) {
     >
       <div style={{ position:"relative", background:"#0f1729", border:"1px solid rgba(255,255,255,0.1)", borderRadius:16, padding:32, width:"100%", maxWidth:400 }}>
 
+        {/* Close button */}
         <button
           onClick={() => { onClose && onClose(); }}
           style={{ position:"absolute", top:12, right:12, background:"rgba(255,255,255,0.08)", border:"1px solid rgba(255,255,255,0.15)", color:"#94a3b8", cursor:"pointer", width:32, height:32, borderRadius:"8px", fontSize:"1.1rem", display:"flex", alignItems:"center", justifyContent:"center" }}
-        >x</button>
+        >&#x2715;</button>
 
+        {/* Logo */}
         <div style={{ textAlign:"center", marginBottom:20 }}>
           <span style={{ fontFamily:"'Inter',sans-serif", fontWeight:800, fontSize:"1.5rem", color:"#f1f5f9" }}>
             hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>zo</span>
@@ -93,6 +122,7 @@ export default function Auth({ onAuth, t, onClose }) {
           {isLogin ? "Login to continue your career journey" : "Free - No credit card needed"}
         </p>
 
+        {/* Google Button */}
         <button
           onClick={handleGoogle}
           disabled={loading}
@@ -102,6 +132,7 @@ export default function Auth({ onAuth, t, onClose }) {
           Continue with Google
         </button>
 
+        {/* Divider */}
         <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:16 }}>
           <div style={{ flex:1, height:1, background:"rgba(255,255,255,0.08)" }}/>
           <span style={{ color:"#475569", fontSize:"0.8rem", fontFamily:"'Inter',sans-serif" }}>or</span>
