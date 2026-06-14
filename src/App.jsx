@@ -109,23 +109,49 @@ function AnimCounter({ to, suffix="", prefix="", start, dur=1400 }) {
   return <>{prefix}{val >= 1000 ? (val/1000).toFixed(0)+"K" : val}{suffix}</>;
 }
 const CONSULTANTS = [
-  { name: "Priya Sharma", role: "Career Consultant", exp: "8 yrs - 2400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
-  { name: "Arjun Mehta", role: "Career Consultant", exp: "6 yrs - 1800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at hikezo with 6 years creating career roadmaps for Indian professionals." },
-  { name: "Neha Gupta", role: "Career Consultant", exp: "5 yrs - 1600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at hikezo with 5 years transforming Indian professionals' career presence." },
-  { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at hikezo with 7 years preparing Indian professionals for top company interviews." },
+  { name: "Priya Sharma", role: "Career Consultant", exp: "8 yrs - 2,400+ sessions", emoji: "PS", specialty: "Salary Negotiation", color: "#0ea5e9", persona: "You are Priya Sharma, a warm Senior Career Consultant at hikezo specializing in salary negotiation with 8 years helping Indian professionals." },
+  { name: "Arjun Mehta", role: "Career Consultant", exp: "6 yrs - 1,800+ sessions", emoji: "AM", specialty: "Career Roadmap", color: "#8b5cf6", persona: "You are Arjun Mehta, an enthusiastic Career Growth Specialist at hikezo with 6 years creating career roadmaps for Indian professionals." },
+  { name: "Neha Gupta", role: "Career Consultant", exp: "5 yrs - 1,600+ sessions", emoji: "NG", specialty: "Resume & LinkedIn", color: "#ec4899", persona: "You are Neha Gupta, a creative LinkedIn and Resume Expert at hikezo with 5 years transforming Indian professionals' career presence." },
+  { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2,100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at hikezo with 7 years preparing Indian professionals for top company interviews." },
+  { name: "Ananya Singh", role: "Career Consultant", exp: "4 yrs - 1,200+ sessions", emoji: "AS", specialty: "Tech Careers", color: "#10b981", persona: "You are Ananya Singh, a tech-focused Career Consultant at hikezo with 4 years helping IT professionals grow in top tech companies." },
+  { name: "Vikram Nair", role: "Career Consultant", exp: "9 yrs - 2,700+ sessions", emoji: "VN", specialty: "Leadership & Management", color: "#6366f1", persona: "You are Vikram Nair, a Leadership Career Coach at hikezo with 9 years helping Indian professionals transition into management roles." },
+  { name: "Kavitha Reddy", role: "Career Consultant", exp: "6 yrs - 1,900+ sessions", emoji: "KR", specialty: "Finance Careers", color: "#f97316", persona: "You are Kavitha Reddy, a Finance Career Specialist at hikezo with 6 years guiding professionals in banking, fintech and finance roles." },
+  { name: "Rohan Joshi", role: "Career Consultant", exp: "5 yrs - 1,500+ sessions", emoji: "RJ", specialty: "Product Management", color: "#0ea5e9", persona: "You are Rohan Joshi, a Product Management Career Coach at hikezo with 5 years helping professionals break into and grow in PM roles." },
+  { name: "Shruti Kapoor", role: "Career Consultant", exp: "7 yrs - 2,000+ sessions", emoji: "SK", specialty: "HR & People Roles", color: "#8b5cf6", persona: "You are Shruti Kapoor, an HR Career Specialist at hikezo with 7 years guiding HR professionals to senior People roles." },
+  { name: "Aditya Kumar", role: "Career Consultant", exp: "4 yrs - 1,100+ sessions", emoji: "AK", specialty: "Data & Analytics", color: "#ec4899", persona: "You are Aditya Kumar, a Data Career Consultant at hikezo with 4 years helping data analysts and scientists grow their careers." },
+  { name: "Pooja Iyer", role: "Career Consultant", exp: "6 yrs - 1,700+ sessions", emoji: "PI", specialty: "Marketing Careers", color: "#f59e0b", persona: "You are Pooja Iyer, a Marketing Career Expert at hikezo with 6 years helping marketing professionals land top brand and growth roles." },
+  { name: "Siddharth Rao", role: "Career Consultant", exp: "8 yrs - 2,300+ sessions", emoji: "SR", specialty: "Sales & Business Dev", color: "#10b981", persona: "You are Siddharth Rao, a Sales Career Coach at hikezo with 8 years helping sales professionals negotiate better packages and grow faster." },
+  { name: "Meera Pillai", role: "Career Consultant", exp: "5 yrs - 1,400+ sessions", emoji: "MP", specialty: "Operations & Supply Chain", color: "#6366f1", persona: "You are Meera Pillai, an Operations Career Specialist at hikezo with 5 years helping ops professionals grow in top companies." },
+  { name: "Karan Malhotra", role: "Career Consultant", exp: "7 yrs - 2,200+ sessions", emoji: "KM", specialty: "Consulting & Strategy", color: "#f97316", persona: "You are Karan Malhotra, a Strategy Career Coach at hikezo with 7 years helping professionals break into consulting and strategy roles." },
+  { name: "Divya Menon", role: "Career Consultant", exp: "4 yrs - 1,300+ sessions", emoji: "DM", specialty: "Design & UX Careers", color: "#0ea5e9", persona: "You are Divya Menon, a Design Career Specialist at hikezo with 4 years helping UX designers and product designers grow their careers." },
+  { name: "Nikhil Bansal", role: "Career Consultant", exp: "6 yrs - 1,800+ sessions", emoji: "NB", specialty: "Startup Careers", color: "#8b5cf6", persona: "You are Nikhil Bansal, a Startup Career Coach at hikezo with 6 years helping professionals navigate startup ecosystems and growth roles." },
+  { name: "Tanvi Shah", role: "Career Consultant", exp: "5 yrs - 1,600+ sessions", emoji: "TS", specialty: "Women in Leadership", color: "#ec4899", persona: "You are Tanvi Shah, a Career Coach at hikezo specializing in helping women professionals grow into leadership and senior roles." },
+  { name: "Ravi Shankar", role: "Career Consultant", exp: "9 yrs - 2,600+ sessions", emoji: "RS", specialty: "IT & Infrastructure", color: "#f59e0b", persona: "You are Ravi Shankar, an IT Career Specialist at hikezo with 9 years helping infrastructure and DevOps professionals grow." },
+  { name: "Ishaan Chowdhury", role: "Career Consultant", exp: "4 yrs - 1,200+ sessions", emoji: "IC", specialty: "AI & ML Careers", color: "#10b981", persona: "You are Ishaan Chowdhury, an AI/ML Career Consultant at hikezo with 4 years helping data scientists and ML engineers grow." },
+  { name: "Sunita Desai", role: "Career Consultant", exp: "7 yrs - 2,000+ sessions", emoji: "SD", specialty: "Healthcare & Pharma", color: "#6366f1", persona: "You are Sunita Desai, a Healthcare Career Specialist at hikezo with 7 years guiding pharma and healthcare professionals." },
+  { name: "Harsh Agarwal", role: "Career Consultant", exp: "5 yrs - 1,500+ sessions", emoji: "HA", specialty: "E-commerce Careers", color: "#f97316", persona: "You are Harsh Agarwal, an E-commerce Career Coach at hikezo with 5 years helping professionals grow in top e-commerce companies." },
+  { name: "Preethi Subramaniam", role: "Career Consultant", exp: "6 yrs - 1,700+ sessions", emoji: "PS2", specialty: "BFSI Sector", color: "#0ea5e9", persona: "You are Preethi Subramaniam, a BFSI Career Specialist at hikezo with 6 years helping banking and insurance professionals grow." },
+  { name: "Mohit Saxena", role: "Career Consultant", exp: "8 yrs - 2,400+ sessions", emoji: "MS", specialty: "Government & PSU", color: "#8b5cf6", persona: "You are Mohit Saxena, a Career Consultant at hikezo with 8 years helping professionals navigate government and PSU career paths." },
+  { name: "Deepa Krishnan", role: "Career Consultant", exp: "5 yrs - 1,400+ sessions", emoji: "DK", specialty: "Education Sector", color: "#ec4899", persona: "You are Deepa Krishnan, an Education Career Specialist at hikezo with 5 years helping educators and edtech professionals grow." },
+  { name: "Rajesh Pillai", role: "Career Consultant", exp: "10 yrs - 3,000+ sessions", emoji: "RP", specialty: "C-Suite Transitions", color: "#f59e0b", persona: "You are Rajesh Pillai, a Senior Career Coach at hikezo with 10 years helping mid-senior professionals transition to C-suite roles." },
+  { name: "Nisha Tiwari", role: "Career Consultant", exp: "4 yrs - 1,100+ sessions", emoji: "NT", specialty: "Content & Media", color: "#10b981", persona: "You are Nisha Tiwari, a Content Career Specialist at hikezo with 4 years helping content creators and media professionals grow." },
+  { name: "Suresh Babu", role: "Career Consultant", exp: "7 yrs - 2,100+ sessions", emoji: "SB", specialty: "Manufacturing & Core", color: "#6366f1", persona: "You are Suresh Babu, a Core Engineering Career Coach at hikezo with 7 years helping manufacturing and core engineers grow." },
+  { name: "Ankita Pandey", role: "Career Consultant", exp: "5 yrs - 1,500+ sessions", emoji: "AP", specialty: "Legal & Compliance", color: "#f97316", persona: "You are Ankita Pandey, a Legal Career Specialist at hikezo with 5 years helping legal and compliance professionals grow." },
+  { name: "Vivek Menon", role: "Career Consultant", exp: "6 yrs - 1,800+ sessions", emoji: "VM", specialty: "International Careers", color: "#0ea5e9", persona: "You are Vivek Menon, an International Career Coach at hikezo with 6 years helping Indian professionals land global opportunities." },
+  { name: "Ritika Arora", role: "Career Consultant", exp: "4 yrs - 1,200+ sessions", emoji: "RA", specialty: "Early Career & Freshers", color: "#8b5cf6", persona: "You are Ritika Arora, an Early Career Specialist at hikezo with 4 years helping freshers and early professionals get their first big break." },
+  { name: "Gaurav Tiwari", role: "Career Consultant", exp: "8 yrs - 2,300+ sessions", emoji: "GT", specialty: "Cybersecurity Careers", color: "#ec4899", persona: "You are Gaurav Tiwari, a Cybersecurity Career Coach at hikezo with 8 years helping security professionals grow in top tech companies." },
+  { name: "Lavanya Nair", role: "Career Consultant", exp: "5 yrs - 1,600+ sessions", emoji: "LN", specialty: "Supply Chain & Logistics", color: "#f59e0b", persona: "You are Lavanya Nair, a Supply Chain Career Specialist at hikezo with 5 years helping logistics professionals grow." },
+  { name: "Amit Khanna", role: "Career Consultant", exp: "7 yrs - 2,000+ sessions", emoji: "AK2", specialty: "Real Estate & Infra", color: "#10b981", persona: "You are Amit Khanna, a Real Estate Career Coach at hikezo with 7 years helping professionals in real estate and infrastructure." },
+  { name: "Swati Bose", role: "Career Consultant", exp: "6 yrs - 1,900+ sessions", emoji: "SB2", specialty: "Research & Academia", color: "#6366f1", persona: "You are Swati Bose, a Research Career Specialist at hikezo with 6 years helping researchers and academics transition to industry roles." },
+  { name: "Pranav Kulkarni", role: "Career Consultant", exp: "5 yrs - 1,400+ sessions", emoji: "PK", specialty: "Cloud & DevOps", color: "#f97316", persona: "You are Pranav Kulkarni, a Cloud Career Coach at hikezo with 5 years helping DevOps and cloud engineers grow in top tech firms." },
+  { name: "Archana Bhat", role: "Career Consultant", exp: "8 yrs - 2,500+ sessions", emoji: "AB", specialty: "Diversity & Inclusion Careers", color: "#0ea5e9", persona: "You are Archana Bhat, a DEI Career Specialist at hikezo with 8 years helping diverse professionals navigate and grow in corporate India." },
 ];
 function getConsultantForUser(userEmail) {
-  // Deterministic — same email = same consultant always, no random
-  try {
-    const saved = localStorage.getItem("hz_consultant_" + getEmailKey(userEmail));
-    if (saved) return JSON.parse(saved);
-  } catch {}
-  // Pick consultant based on email hash — always same for same email
+  // Deterministic — same email = same consultant always, no random, no storage needed
   let hash = 0;
-  for(let i = 0; i < userEmail.length; i++) hash = userEmail.charCodeAt(i) + ((hash << 5) - hash);
-  const c = CONSULTANTS[Math.abs(hash) % CONSULTANTS.length];
-  try { localStorage.setItem("hz_consultant_" + getEmailKey(userEmail), JSON.stringify(c)); } catch {}
-  return c;
+  const email = userEmail.toLowerCase().trim();
+  for(let i = 0; i < email.length; i++) hash = email.charCodeAt(i) + ((hash << 5) - hash);
+  return CONSULTANTS[Math.abs(hash) % CONSULTANTS.length];
 }
 function getRandConsultant() { return CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)]; }
 
@@ -846,35 +872,57 @@ function Testimonials({ t }) {
   const ref=useRef(null); const v=useInView(ref);
   const { isMobile }=useBreakpoint();
   const tt=t.testi;
+  const [active, setActive]=useState(0);
+  const reviews = [
+    { name:"V.N.", role:"Senior Developer, TCS → Infosys", av:"VN", color:"#0ea5e9", text:"Was stuck at 9.5 LPA for 2 years. Used hikezo's salary script before my Infosys interview — they offered 14.2 LPA. The consultant told me exactly what numbers to say and when to stay quiet. Game changer." },
+    { name:"S.R.", role:"Product Manager, Hyderabad", av:"SR", color:"#8b5cf6", text:"I had no idea I was 30% underpaid compared to market. hikezo's benchmarking showed me the data, and the negotiation script helped me get a 28% correction at my current company itself. Didn't even need to switch." },
+    { name:"K.M.", role:"Data Analyst, Delhi → Bengaluru", av:"KM", color:"#10b981", text:"Had 3 offers and no idea how to compare or negotiate them. hikezo's consultant helped me evaluate each and counter-negotiate — converted a 15L offer to 18.5L. Best decision I made." },
+    { name:"A.S.", role:"Marketing Manager, Mumbai", av:"AS", color:"#f59e0b", text:"Was preparing for appraisal for weeks with no direction. One session gave me a clear script and talking points. Got 22% hike — highest in my team." },
+    { name:"R.G.", role:"Software Engineer, Pune", av:"RG", color:"#ec4899", text:"Fresh out of college, didn't know how to negotiate my first offer. hikezo taught me the exact framework — converted a 6 LPA offer to 8.2 LPA just by knowing what to say." },
+    { name:"D.S.", role:"HR Business Partner, Noida", av:"DS", color:"#6366f1", text:"hikezo's career roadmap helped me identify the path from HRBP to CHRO track. Got promoted within 8 months of following the plan. Highly recommend." },
+  ];
+  useEffect(()=>{
+    const iv = setInterval(()=>{ setActive(a=>(a+1)%reviews.length); }, 3500);
+    return ()=>clearInterval(iv);
+  },[]);
+  const visible = isMobile ? [active] : [active, (active+1)%reviews.length, (active+2)%reviews.length];
   return(
-    <section style={{ background:"#f8fafc",padding:isMobile?"4rem 1.5rem":"6rem 2rem",width:"100%" }} ref={ref}>
+    <section style={{ background:"#f8fafc",padding:isMobile?"4rem 1.5rem":"6rem 2rem",width:"100%",overflow:"hidden" }} ref={ref}>
       <div style={{ maxWidth:"1100px",margin:"0 auto" }}>
         <div style={{ textAlign:"center",marginBottom:"3rem" }}>
           <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 12px",borderRadius:"4px" }}>{tt.label}</span>
           <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.7rem":"2.2rem",fontWeight:700,color:"#0f172a",marginTop:"1rem",letterSpacing:"-0.03em" }}>{tt.title}</h2>
         </div>
-        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(3,1fr)",gap:"1.2rem" }}>
-          {tt.items.map((t2,i)=>(
-            <SR key={t2.name} cls="sr" delay={i*120}>
-              <div style={{ background:"#fff",border:"1px solid #e2e8f0",borderRadius:"12px",padding:"1.8rem",boxShadow:"0 1px 4px rgba(0,0,0,0.05)",cursor:"default",position:"relative",height:"100%",display:"flex",flexDirection:"column",transition:"all .3s ease" }}
+        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(3,1fr)",gap:"1.2rem",transition:"all .5s ease" }}>
+          {visible.map((idx,i)=>{
+            const t2=reviews[idx];
+            return(
+              <div key={idx} style={{ background:"#fff",border:"1px solid #e2e8f0",borderRadius:"12px",padding:"1.8rem",boxShadow:"0 1px 4px rgba(0,0,0,0.05)",position:"relative",display:"flex",flexDirection:"column",animation:"fadeUp .5s ease",transition:"all .3s ease" }}
                 onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 12px 32px rgba(14,165,233,0.1)";e.currentTarget.style.borderColor="rgba(14,165,233,0.25)";}}
                 onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 1px 4px rgba(0,0,0,0.05)";e.currentTarget.style.borderColor="#e2e8f0";}}>
                 <div style={{ position:"absolute",top:"1rem",right:"1.2rem",fontFamily:"Georgia,serif",fontSize:"4rem",color:"rgba(14,165,233,0.08)",lineHeight:1,pointerEvents:"none",userSelect:"none" }}>"</div>
                 <div style={{ display:"flex",gap:"2px",marginBottom:"1rem" }}>
-                  {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.82rem" }}>*</span>)}
+                  {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.82rem" }}>★</span>)}
                 </div>
                 <p style={{ fontFamily:"'Inter',sans-serif",color:"#374151",lineHeight:1.7,fontSize:"0.88rem",marginBottom:"1.4rem",flex:1 }}>{t2.text}</p>
                 <div style={{ display:"flex",alignItems:"center",gap:"10px",paddingTop:"1rem",borderTop:"1px solid #f1f5f9" }}>
-                  <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,fontSize:"0.72rem",color:"#fff",fontFamily:"'Inter',sans-serif",flexShrink:0 }}>{t2.av}</div>
+                  <div style={{ width:36,height:36,borderRadius:"50%",background:`linear-gradient(135deg,${t2.color},${t2.color}99)`,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,fontSize:"0.72rem",color:"#fff",fontFamily:"'Inter',sans-serif",flexShrink:0 }}>{t2.av}</div>
                   <div>
                     <div style={{ fontFamily:"'Inter',sans-serif",color:"#0f172a",fontWeight:600,fontSize:"0.85rem" }}>{t2.name}</div>
                     <div style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.72rem" }}>{t2.role}</div>
                   </div>
                 </div>
               </div>
-            </SR>
+            );
+          })}
+        </div>
+        {/* Dots */}
+        <div style={{ display:"flex",justifyContent:"center",gap:"6px",marginTop:"2rem" }}>
+          {reviews.map((_,i)=>(
+            <div key={i} onClick={()=>setActive(i)} style={{ width:i===active?"20px":"6px",height:"6px",borderRadius:"3px",background:i===active?"#0ea5e9":"#cbd5e1",cursor:"pointer",transition:"all .3s ease" }}/>
           ))}
         </div>
+        <p style={{ textAlign:"center",marginTop:"1.2rem",fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#94a3b8" }}>* Names abbreviated for privacy. Results based on user-reported outcomes and may vary.</p>
       </div>
     </section>
   );
