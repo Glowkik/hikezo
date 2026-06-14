@@ -82,6 +82,26 @@ async function loadFirestoreUsage(email) {
   } catch { return null; }
 }
 
+// Save chat history to Firestore
+async function saveFirestoreChat(email, msgs) {
+  try {
+    if(!email || !db) return;
+    // Save last 20 messages only to keep size small
+    const toSave = msgs.slice(-20);
+    await setDoc(doc(db, "chats", getEmailKey(email)), { msgs: toSave, updatedAt: Date.now() }, {merge:true});
+  } catch {}
+}
+
+// Load chat history from Firestore
+async function loadFirestoreChat(email) {
+  try {
+    if(!email || !db) return null;
+    const snap = await getDoc(doc(db, "chats", getEmailKey(email)));
+    if(snap.exists()) return snap.data().msgs || null;
+    return null;
+  } catch { return null; }
+}
+
 // -- SCROLL REVEAL + COUNTER ---------------------------------------------------
 function SR({ children, cls="sr", delay=0, style={}, onMouseEnter, onMouseLeave }) {
   const ref = useRef(null);
@@ -106,13 +126,13 @@ const CONSULTANTS = [
   { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at hikezo with 7 years preparing Indian professionals for top company interviews." },
 ];
 function getConsultantForUser(userEmail) {
-  // Always return same consultant for same user
+  // Always return same consultant for same user — localStorage for cross-device
   try {
-    const saved = sessionStorage.getItem("hz_consultant_" + userEmail);
+    const saved = localStorage.getItem("hz_consultant_" + getEmailKey(userEmail));
     if (saved) return JSON.parse(saved);
   } catch {}
   const c = CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)];
-  try { sessionStorage.setItem("hz_consultant_" + userEmail, JSON.stringify(c)); } catch {}
+  try { localStorage.setItem("hz_consultant_" + getEmailKey(userEmail), JSON.stringify(c)); } catch {}
   return c;
 }
 function getRandConsultant() { return CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)]; }
@@ -359,33 +379,45 @@ function ChatModal({ onClose, t, lang, user }) {
     window.addEventListener("keydown", handleEsc);
     return ()=>window.removeEventListener("keydown", handleEsc);
   },[]);
-  const chatKey = user?.email ? "hz_chat_" + user.email : "hz_chat_guest";
-  const [phase,setPhase]=useState(()=>{
-    try { const h = sessionStorage.getItem(chatKey); return h && JSON.parse(h).length > 0 ? "chat" : "connecting"; } catch { return "connecting"; }
-  });
-  const [msgs,setMsgs]=useState(()=>{
-    try { const h = sessionStorage.getItem(chatKey); return h ? JSON.parse(h) : []; } catch { return []; }
-  });
+  const chatKey = user?.email ? "hz_chat_" + getEmailKey(user.email) : "hz_chat_guest";
+  const [phase,setPhase]=useState("loading");
+  const [msgs,setMsgs]=useState([]);
   const [input,setInput]=useState("");
   const [loading,setLoading]=useState(false);
   const [showUp,setShowUp]=useState(false);
   const [usage,setUsage]=useState(()=>getLimitData(user?.email));
-  const [usageLoaded, setUsageLoaded]=useState(!user?.email); // true if no email (guest)
-  
-  // Load from Firestore FIRST before showing chat - cross-device sync
+  const [usageLoaded, setUsageLoaded]=useState(!user?.email);
+
+  // Load chat history + usage from Firestore on open
   useEffect(()=>{
     if(user?.email){
-      loadFirestoreUsage(user.email).then(data=>{
-        if(data){
-          // Use whichever is higher - local or Firestore
+      Promise.all([
+        loadFirestoreChat(user.email),
+        loadFirestoreUsage(user.email)
+      ]).then(([chatData, usageData])=>{
+        // Sync usage
+        if(usageData){
           const localData = getLimitData(user.email);
-          const finalData = (data.count || 0) >= (localData.count || 0) ? data : localData;
-          const key = "hz_usage_" + user.email.replace(/[^a-z0-9]/gi,'_');
+          const planRank = {"free":0,"pro":1,"elite":2};
+          const finalData = (usageData.count||0) >= (localData.count||0) || (planRank[usageData.plan||"free"]||0) > (planRank[localData.plan||"free"]||0) ? usageData : localData;
+          const key = "hz_usage_" + getEmailKey(user.email);
           localStorage.setItem(key, JSON.stringify(finalData));
           setUsage(finalData);
         }
+        // Sync chat
+        if(chatData && chatData.length > 0){
+          setMsgs(chatData);
+          setPhase("chat");
+        } else {
+          const local = (() => { try { const h = localStorage.getItem(chatKey); return h ? JSON.parse(h) : []; } catch { return []; }})();
+          if(local.length > 0){ setMsgs(local); setPhase("chat"); }
+          else { setPhase("connecting"); }
+        }
         setUsageLoaded(true);
-      }).catch(()=>setUsageLoaded(true));
+      }).catch(()=>{ setPhase("connecting"); setUsageLoaded(true); });
+    } else {
+      setPhase("connecting");
+      setUsageLoaded(true);
     }
   },[]);
   const ref=useRef(null);
@@ -406,7 +438,8 @@ function ChatModal({ onClose, t, lang, user }) {
     const txt=input.trim(); setInput("");
     const updatedWithUser=[...msgs,{r:"u",t:txt}];
     setMsgs(updatedWithUser);
-    try{sessionStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
+    try{localStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
+    if(user?.email) saveFirestoreChat(user.email, updatedWithUser);
     setLoading(true);
     const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd, user?.email);
     try{
@@ -414,7 +447,7 @@ function ChatModal({ onClose, t, lang, user }) {
       const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","x-user-plan":usage.plan||"free"},body:JSON.stringify({system:sys,messages:[...hist,{role:"user",content:txt}]})});
       const d=await res.json();
       const rep=d.content?.map(x=>x.text||"").join("")||"Sorry, connection issue. Give me a moment!";
-      setMsgs(p=>{const updated=[...p,{r:"a",t:rep}];try{sessionStorage.setItem(chatKey,JSON.stringify(updated));}catch{}return updated;});
+      setMsgs(p=>{const updated=[...p,{r:"a",t:rep}];try{localStorage.setItem(chatKey,JSON.stringify(updated));}catch{}if(user?.email)saveFirestoreChat(user.email,updated);return updated;});
       if(!isPro&&nd.count>=FREE_LIMIT)setTimeout(()=>setShowUp(true),1500);
     }catch{ setMsgs(p=>[...p,{r:"a",t:"Sorry, connection issue. Give me a moment!"}]); }
     setLoading(false);
@@ -424,6 +457,7 @@ function ChatModal({ onClose, t, lang, user }) {
 
   return(
     <>
+      {phase==="loading"&&<div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.97)",display:"flex",alignItems:"center",justifyContent:"center" }}><span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:"1.5rem",color:"#f1f5f9" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span></div>}
       {phase==="connecting"&&<ConnectingScreen c={c} lang={lang} onDone={connected}/>}
       {phase==="chat"&&(
         <div style={{ position:"fixed",inset:0,zIndex:200,background:isSmall?"#0f172a":"rgba(2,8,23,0.9)",backdropFilter:isSmall?"none":"blur(12px)",display:"flex",alignItems:isSmall?"stretch":"center",justifyContent:"center",padding:isSmall?"0":"1rem",animation:"fadeIn .3s ease" }}
@@ -443,7 +477,7 @@ function ChatModal({ onClose, t, lang, user }) {
               </div>
               <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
                 <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.62rem",color:"#334155",border:"1px solid rgba(255,255,255,0.07)",padding:"2px 7px",borderRadius:"4px" }}>{tc.badge}</span>
-                {msgs.length>0&&!showUp&&rem>0&&<button onClick={()=>{setMsgs([]);try{sessionStorage.removeItem(chatKey);}catch{}setPhase("connecting");}} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>New Chat</button>}
+                {msgs.length>0&&!showUp&&rem>0&&<button onClick={()=>{setMsgs([]);try{localStorage.removeItem(chatKey);}catch{}if(user?.email)saveFirestoreChat(user.email,[]);setPhase("connecting");}} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"5px",color:"#475569",cursor:"pointer",fontSize:"0.62rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif" }}>New Chat</button>}
                 <button onClick={onClose} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.9rem" }}>x</button>
               </div>
             </div>
