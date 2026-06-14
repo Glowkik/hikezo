@@ -47,8 +47,8 @@ function useCounter(target, duration = 1500, start = false) {
   return val;
 }
 const FREE_LIMIT = 3;
-function getLimitData() { try { const t = new Date().toDateString(), r = sessionStorage.getItem("hz_usage"); const d = r ? JSON.parse(r) : { date: t, count: 0, plan: "free" }; return d.date !== t ? { date: t, count: 0, plan: d.plan } : d; } catch { return { date: new Date().toDateString(), count: 0, plan: "free" }; } }
-function saveLimitData(d) { try { sessionStorage.setItem("hz_usage", JSON.stringify(d)); } catch {} }
+function getLimitData() { try { const r = localStorage.getItem("hz_usage"); const d = r ? JSON.parse(r) : { count: 0, plan: "free" }; return d; } catch { return { count: 0, plan: "free" }; } }
+function saveLimitData(d) { try { localStorage.setItem("hz_usage", JSON.stringify(d)); } catch {} }
 
 // -- SCROLL REVEAL + COUNTER ---------------------------------------------------
 function SR({ children, cls="sr", delay=0, style={}, onMouseEnter, onMouseLeave }) {
