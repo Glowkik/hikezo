@@ -366,17 +366,22 @@ function ChatModal({ onClose, t, lang, user }) {
   const [loading,setLoading]=useState(false);
   const [showUp,setShowUp]=useState(false);
   const [usage,setUsage]=useState(()=>getLimitData(user?.email));
+  const [usageLoaded, setUsageLoaded]=useState(!user?.email); // true if no email (guest)
   
-  // Load from Firestore on mount for cross-device sync
+  // Load from Firestore FIRST before showing chat - cross-device sync
   useEffect(()=>{
     if(user?.email){
       loadFirestoreUsage(user.email).then(data=>{
-        if(data && data.count > (getLimitData(user.email).count || 0)){
+        if(data){
+          // Use whichever is higher - local or Firestore
+          const localData = getLimitData(user.email);
+          const finalData = (data.count || 0) >= (localData.count || 0) ? data : localData;
           const key = "hz_usage_" + user.email.replace(/[^a-z0-9]/gi,'_');
-          localStorage.setItem(key, JSON.stringify(data));
-          setUsage(data);
+          localStorage.setItem(key, JSON.stringify(finalData));
+          setUsage(finalData);
         }
-      });
+        setUsageLoaded(true);
+      }).catch(()=>setUsageLoaded(true));
     }
   },[]);
   const ref=useRef(null);
