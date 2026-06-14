@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
+import { db } from "./firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 function useBreakpoint() {
   const get = () => window.innerWidth < 640 ? "mobile" : window.innerWidth < 1024 ? "tablet" : "desktop";
@@ -47,8 +49,34 @@ function useCounter(target, duration = 1500, start = false) {
   return val;
 }
 const FREE_LIMIT = 3;
-function getLimitData() { try { const r = localStorage.getItem("hz_usage"); const d = r ? JSON.parse(r) : { count: 0, plan: "free" }; return d; } catch { return { count: 0, plan: "free" }; } }
-function saveLimitData(d) { try { localStorage.setItem("hz_usage", JSON.stringify(d)); } catch {} }
+function getLimitData(email) { 
+  try { 
+    const key = email ? "hz_usage_" + email.replace(/[^a-z0-9]/gi,'_') : "hz_usage";
+    const r = localStorage.getItem(key); 
+    const d = r ? JSON.parse(r) : { count: 0, plan: "free" }; 
+    return d; 
+  } catch { return { count: 0, plan: "free" }; } 
+}
+function saveLimitData(d, email) { 
+  try { 
+    const key = email ? "hz_usage_" + email.replace(/[^a-z0-9]/gi,'_') : "hz_usage";
+    localStorage.setItem(key, JSON.stringify(d));
+    // Also save to Firestore if email available
+    if(email && db) {
+      setDoc(doc(db, "usage", email.replace(/[^a-z0-9]/gi,'_')), d, {merge:true}).catch(()=>{});
+    }
+  } catch {} 
+}
+
+// Load trial data from Firestore (cross-device)
+async function loadFirestoreUsage(email) {
+  try {
+    if(!email || !db) return null;
+    const snap = await getDoc(doc(db, "usage", email.replace(/[^a-z0-9]/gi,'_')));
+    if(snap.exists()) return snap.data();
+    return null;
+  } catch { return null; }
+}
 
 // -- SCROLL REVEAL + COUNTER ---------------------------------------------------
 function SR({ children, cls="sr", delay=0, style={}, onMouseEnter, onMouseLeave }) {
@@ -337,7 +365,20 @@ function ChatModal({ onClose, t, lang, user }) {
   const [input,setInput]=useState("");
   const [loading,setLoading]=useState(false);
   const [showUp,setShowUp]=useState(false);
-  const [usage,setUsage]=useState(getLimitData);
+  const [usage,setUsage]=useState(()=>getLimitData(user?.email));
+  
+  // Load from Firestore on mount for cross-device sync
+  useEffect(()=>{
+    if(user?.email){
+      loadFirestoreUsage(user.email).then(data=>{
+        if(data && data.count > (getLimitData(user.email).count || 0)){
+          const key = "hz_usage_" + user.email.replace(/[^a-z0-9]/gi,'_');
+          localStorage.setItem(key, JSON.stringify(data));
+          setUsage(data);
+        }
+      });
+    }
+  },[]);
   const ref=useRef(null);
   const isPro=usage.plan==="pro"||usage.plan==="elite";
   const rem=isPro?Infinity:Math.max(0,FREE_LIMIT-usage.count);
@@ -358,7 +399,7 @@ function ChatModal({ onClose, t, lang, user }) {
     setMsgs(updatedWithUser);
     try{sessionStorage.setItem(chatKey,JSON.stringify(updatedWithUser));}catch{}
     setLoading(true);
-    const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd);
+    const nd={...usage,count:usage.count+1}; setUsage(nd); saveLimitData(nd, user?.email);
     try{
       const hist=msgs.map(m=>({role:m.r==="a"?"assistant":"user",content:m.t}));
       const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json","x-user-plan":usage.plan||"free"},body:JSON.stringify({system:sys,messages:[...hist,{role:"user",content:txt}]})});
@@ -418,7 +459,7 @@ function ChatModal({ onClose, t, lang, user }) {
               {!isPro&&(
                 <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 10px",background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"6px" }}>
                   <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#475569" }}>{tc.freeLeft(rem)}</span>
-                  <button onClick={()=>window.open("https://rzp.io/rzp/DNfBx2L3","_blank")} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
+                  <button onClick={()=>setShowUp(true)} style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",border:"none",borderRadius:"5px",color:"#fff",fontWeight:600,fontSize:"0.66rem",padding:"2px 8px",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tc.upgrade}</button>
                 </div>
               )}
               <div style={{ display:"flex",gap:"8px" }}>
