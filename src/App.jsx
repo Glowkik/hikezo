@@ -50,9 +50,13 @@ function useCounter(target, duration = 1500, start = false) {
   return val;
 }
 const FREE_LIMIT = 3;
+function getEmailKey(email) {
+  // Consistent key across all devices — btoa gives stable base64
+  try { return btoa(email.toLowerCase().trim()).replace(/[^a-z0-9]/gi,'_'); } catch { return email.replace(/[^a-z0-9]/gi,'_'); }
+}
 function getLimitData(email) { 
   try { 
-    const key = email ? "hz_usage_" + email.replace(/[^a-z0-9]/gi,'_') : "hz_usage";
+    const key = email ? "hz_usage_" + getEmailKey(email) : "hz_usage";
     const r = localStorage.getItem(key); 
     const d = r ? JSON.parse(r) : { count: 0, plan: "free" }; 
     return d; 
@@ -60,11 +64,10 @@ function getLimitData(email) {
 }
 function saveLimitData(d, email) { 
   try { 
-    const key = email ? "hz_usage_" + email.replace(/[^a-z0-9]/gi,'_') : "hz_usage";
+    const key = email ? "hz_usage_" + getEmailKey(email) : "hz_usage";
     localStorage.setItem(key, JSON.stringify(d));
-    // Also save to Firestore if email available
     if(email && db) {
-      setDoc(doc(db, "usage", email.replace(/[^a-z0-9]/gi,'_')), d, {merge:true}).catch(()=>{});
+      setDoc(doc(db, "usage", getEmailKey(email)), d, {merge:true}).catch(()=>{});
     }
   } catch {} 
 }
@@ -73,7 +76,7 @@ function saveLimitData(d, email) {
 async function loadFirestoreUsage(email) {
   try {
     if(!email || !db) return null;
-    const snap = await getDoc(doc(db, "usage", email.replace(/[^a-z0-9]/gi,'_')));
+    const snap = await getDoc(doc(db, "usage", getEmailKey(email)));
     if(snap.exists()) return snap.data();
     return null;
   } catch { return null; }
@@ -1054,10 +1057,10 @@ export default function hikezo() {
         setUser(userData);
         // Load Firestore usage data on login (cross-device sync)
         try{
-          const snap = await getDoc(doc(db, "usage", firebaseUser.email.replace(/[^a-z0-9]/gi,'_')));
+          const snap = await getDoc(doc(db, "usage", getEmailKey(firebaseUser.email)));
           if(snap.exists()){
             const firestoreData = snap.data();
-            const localKey = "hz_usage_" + firebaseUser.email.replace(/[^a-z0-9]/gi,'_');
+            const localKey = "hz_usage_" + getEmailKey(firebaseUser.email);
             const localRaw = localStorage.getItem(localKey);
             const localData = localRaw ? JSON.parse(localRaw) : { count:0, plan:"free" };
             // Use whichever has higher count or better plan
