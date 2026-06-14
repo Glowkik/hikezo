@@ -21,17 +21,6 @@ function useInView(ref, threshold = 0.1) {
   return v;
 }
 
-// Scroll progress for parallax
-function useScrollY() {
-  const [y, setY] = useState(0);
-  useEffect(() => {
-    const fn = () => setY(window.scrollY);
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-  return y;
-}
-
 // Animated number counter
 function useCounter(target, duration = 1500, start = false) {
   const [val, setVal] = useState(0);
@@ -126,12 +115,15 @@ const CONSULTANTS = [
   { name: "Rahul Verma", role: "Career Consultant", exp: "7 yrs - 2100+ sessions", emoji: "RV", specialty: "Interview Prep", color: "#f59e0b", persona: "You are Rahul Verma, a confident Interview Coach at hikezo with 7 years preparing Indian professionals for top company interviews." },
 ];
 function getConsultantForUser(userEmail) {
-  // Always return same consultant for same user — localStorage for cross-device
+  // Deterministic — same email = same consultant always, no random
   try {
     const saved = localStorage.getItem("hz_consultant_" + getEmailKey(userEmail));
     if (saved) return JSON.parse(saved);
   } catch {}
-  const c = CONSULTANTS[Math.floor(Math.random() * CONSULTANTS.length)];
+  // Pick consultant based on email hash — always same for same email
+  let hash = 0;
+  for(let i = 0; i < userEmail.length; i++) hash = userEmail.charCodeAt(i) + ((hash << 5) - hash);
+  const c = CONSULTANTS[Math.abs(hash) % CONSULTANTS.length];
   try { localStorage.setItem("hz_consultant_" + getEmailKey(userEmail), JSON.stringify(c)); } catch {}
   return c;
 }
@@ -520,75 +512,6 @@ function ChatModal({ onClose, t, lang, user }) {
   );
 }
 
-// -- AUTH WALL -----------------------------------------------------------------
-function AuthWall({ onAuth, ta, isMobile }) {
-  const [mode,setMode]=useState("signup");
-  const [form,setForm]=useState({name:"",email:"",mobile:"",password:""});
-  const [errs,setErrs]=useState({});
-  const [loading,setLoading]=useState(false);
-  const [ok,setOk]=useState(false);
-
-  const validate=()=>{
-    const e={};
-    if(mode==="signup"&&!form.name.trim())e.name="Required";
-    if(!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))e.email="Valid email required";
-    if(mode==="signup"&&!form.mobile.match(/^[6-9]\d{9}$/))e.mobile="Valid 10-digit mobile";
-    if(form.password.length<6)e.password="Min 6 characters";
-    return e;
-  };
-  const submit=()=>{
-    const e=validate(); if(Object.keys(e).length){setErrs(e);return;}
-    setLoading(true);
-    setTimeout(()=>{
-      const d={name:form.name||"User",email:form.email,mobile:form.mobile,plan:"free",joinedAt:new Date().toISOString()};
-      try{sessionStorage.setItem("hz_user",JSON.stringify(d));}catch{}
-      setOk(true); setTimeout(()=>onAuth(d),1000);
-    },1000);
-  };
-  const inp=(field,ph,type="text")=>(
-    <div style={{ display:"flex",flexDirection:"column",gap:"3px" }}>
-      <input type={type} placeholder={ph} value={form[field]} onChange={e=>{setForm(p=>({...p,[field]:e.target.value}));setErrs(p=>({...p,[field]:""}));}} onKeyDown={e=>e.key==="Enter"&&submit()}
-        style={{ padding:"11px 14px",borderRadius:"8px",background:"rgba(255,255,255,0.05)",border:`1px solid ${errs[field]?"rgba(239,68,68,0.5)":"rgba(255,255,255,0.1)"}`,color:"#f1f5f9",fontFamily:"'Inter',sans-serif",fontSize:isMobile?"16px":"0.88rem",outline:"none",transition:"border-color .2s" }}
-        onFocus={e=>e.target.style.borderColor="rgba(14,165,233,0.5)"} onBlur={e=>e.target.style.borderColor=errs[field]?"rgba(239,68,68,0.5)":"rgba(255,255,255,0.1)"}/>
-      {errs[field]&&<span style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.68rem",color:"#ef4444" }}>{errs[field]}</span>}
-    </div>
-  );
-
-  return(
-    <div style={{ width:"100%",maxWidth:"400px",background:"#0f172a",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"20px",padding:isMobile?"1.8rem 1.4rem":"2.2rem",boxShadow:"0 32px 80px rgba(0,0,0,0.6)",animation:"scaleIn .4s ease" }}>
-      <div style={{ display:"flex",alignItems:"center",gap:"10px",marginBottom:"1.8rem",justifyContent:"center" }}>
-<span style={{ fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"1.15rem",color:"#f1f5f9" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
-      </div>
-      <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.2rem",textAlign:"center",marginBottom:"0.3rem" }}>
-        {ok?"[!] Account Created!":(mode==="signup"?ta.signupTitle:ta.loginTitle)}
-      </h2>
-      <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.8rem",textAlign:"center",marginBottom:"1.5rem" }}>
-        {ok?ta.success:(mode==="signup"?ta.signupSub:ta.loginSub)}
-      </p>
-      {ok?(
-        <div style={{ textAlign:"center",padding:"1rem" }}><div style={{ fontSize:"2.5rem",marginBottom:"0.5rem" }}>[OK]</div></div>
-      ):(
-        <div style={{ display:"flex",flexDirection:"column",gap:"0.75rem" }}>
-          {mode==="signup"&&inp("name",ta.namePh)}
-          {inp("email",ta.emailPh,"email")}
-          {mode==="signup"&&inp("mobile",ta.mobilePh,"tel")}
-          {inp("password",ta.passPh,"password")}
-          <button onClick={submit} disabled={loading} style={{ padding:"12px",borderRadius:"8px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.9rem",cursor:loading?"not-allowed":"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem",opacity:loading?.7:1,transition:"opacity .2s" }}>
-            {loading?ta.thinking:(mode==="signup"?ta.signupBtn:ta.loginBtn)}
-          </button>
-          <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.78rem",textAlign:"center" }}>
-            {mode==="signup"?ta.toLogin+" ":ta.toSignup+" "}
-            <span onClick={()=>{setMode(mode==="signup"?"login":"signup");setErrs({});}} style={{ color:"#0ea5e9",cursor:"pointer",fontWeight:600 }}>
-              {mode==="signup"?ta.loginLink:ta.signupLink}
-            </span>
-          </p>
-          <p style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.68rem",textAlign:"center" }}>{ta.privacy}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // -- URGENCY BANNER ------------------------------------------------------------
 function UrgencyBanner({ onCTA, lang, onClose }) {
   const [show, setShow] = useState(true);
@@ -693,7 +616,7 @@ function Hero({ onCTA, t, lang }) {
   const [liveUsers] = useState(()=>Math.floor(Math.random()*80)+120);
   useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+10; }),20); return()=>clearInterval(iv); },[]);
   const [typed, setTyped] = useState("");
-  const words = lang==="hi" ? ["Salary Negotiate करो","Skills Gap भरो","Interview Ace करो","Career Roadmap बनाओ","Resume Transform करो"] : ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
+  const words = ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
   const [wi, setWi] = useState(0);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
@@ -972,7 +895,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
           <div style={{ display:"inline-flex",alignItems:"center",gap:"6px",background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.15)",borderRadius:"6px",padding:"5px 14px",marginTop:"0.8rem" }}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#fca5a5",fontSize:"0.72rem",fontWeight:600 }}>
-              {lang==="hi" ? "1,200+ professionals ne is month upgrade kiya" : "100+ professionals upgraded this month"}
+              100+ professionals upgraded this month
             </span>
           </div>
         </div>
@@ -991,7 +914,7 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
                 </div>
                 <div style={{ display:"flex",alignItems:"baseline",gap:"6px" }}>
                   <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"2.4rem",fontWeight:800,color:plan.highlight?"#0f172a":"#f1f5f9",letterSpacing:"-0.04em",lineHeight:1 }}>{plan.price}</span>
-                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/{t.lang==="hi"?"माह":"mo"}</span>}
+                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/mo</span>}
                   {plan.originalPrice && <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.85rem",textDecoration:"line-through",marginLeft:"2px" }}>{plan.originalPrice}</span>}
                 </div>
                 {i===0&&<div style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem",marginTop:"2px" }}>{plan.period}</div>}
@@ -1075,7 +998,7 @@ export default function hikezo() {
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
-  const [lang,setLang]=useState("en"); // hindi removed // hindi removed // hindi removed
+  const [lang,setLang]=useState("en");
   const { isMobile, isTablet }=useBreakpoint();
   const t=T[lang]; const ta=t.auth;
 
