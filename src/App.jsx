@@ -594,6 +594,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
             <a key={h} href={h} onClick={()=>setMenuOpen(false)} style={{ color:"#94a3b8",textDecoration:"none",fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",padding:"0.6rem 0.5rem",borderBottom:"1px solid rgba(255,255,255,0.05)" }}>{l}</a>
           ))}
           <button onClick={()=>{onCTA();setMenuOpen(false);}} style={{ padding:"12px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"8px",color:"#fff",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem" }}>{tn.cta}</button>
+          {user&&<button onClick={()=>{onLogout();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",color:"#f87171",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem" }}>Logout</button>}
         </div>
       )}
     </nav>
