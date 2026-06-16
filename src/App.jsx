@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
 import OfferCompare from "./OfferCompare";
+import SalaryCalculator from "./SalaryCalculator";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -581,7 +582,7 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
     </div>
   );
 }
-function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, onCompare }) {
+function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, onCompare, onSalary }) {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [menuOpen, setMenuOpen] = useState(false);
   const tn = t.nav;
@@ -600,6 +601,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, o
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <button onClick={onCompare} style={{ background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"7px",color:"#0ea5e9",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(14,165,233,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(14,165,233,0.08)";}}>Compare Offers</button>
+          <button onClick={onSalary} style={{ background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"7px",color:"#10b981",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(16,185,129,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(16,185,129,0.08)";}}>Salary Calculator</button>
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -1046,6 +1048,7 @@ export default function hikezo() {
   const [showChat,setShowChat]=useState(false);
   const [showAuth,setShowAuth]=useState(false);
   const [showCompare,setShowCompare]=useState(false);
+  const [showSalary,setShowSalary]=useState(false);
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
@@ -1161,7 +1164,7 @@ export default function hikezo() {
 
       <div style={{ background:"#020817",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
         {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
-        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout} onCompare={()=>setShowCompare(true)}/>
+        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout} onCompare={()=>setShowCompare(true)} onSalary={()=>setShowSalary(true)}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
         <SocialProofStrip/>
         <HowItWorks t={t} onCTA={handleCTA}/>
@@ -1222,6 +1225,7 @@ export default function hikezo() {
       </div>
 
       {/* Auth Modal */}
+      {showSalary&&<SalaryCalculator onClose={()=>setShowSalary(false)} user={user} onStartChat={()=>setShowChat(true)} onShowAuth={()=>setShowAuth(true)}/>}
       {showCompare&&<OfferCompare onClose={()=>setShowCompare(false)} user={user} isPro={getLimitData(user?.email)?.plan==="pro"||getLimitData(user?.email)?.plan==="elite"} onShowAuth={()=>setShowAuth(true)}/>}
       {showAuth&&(
         <div style={{ position:"fixed",inset:0,zIndex:400,background:"rgba(2,8,23,0.92)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
