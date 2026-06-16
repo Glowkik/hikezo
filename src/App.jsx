@@ -601,7 +601,7 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, o
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           <button onClick={onCompare} style={{ background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"7px",color:"#0ea5e9",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(14,165,233,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(14,165,233,0.08)";}}>Compare Offers</button>
-          <button onClick={onSalary} style={{ background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"7px",color:"#10b981",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(16,185,129,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(16,185,129,0.08)";}}>Salary Calculator</button>
+          <button onClick={()=>document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"})} style={{ background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"7px",color:"#10b981",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(16,185,129,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(16,185,129,0.08)";}}>Salary Calculator</button>
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
           {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
@@ -630,8 +630,10 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, o
           {[["#features",tn.features],["#pricing",tn.pricing]].map(([h,l])=>(
             <a key={h} href={h} onClick={()=>setMenuOpen(false)} style={{ color:"#94a3b8",textDecoration:"none",fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",padding:"0.6rem 0.5rem",borderBottom:"1px solid rgba(255,255,255,0.05)" }}>{l}</a>
           ))}
-          <button onClick={()=>{onCTA();setMenuOpen(false);}} style={{ padding:"12px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"8px",color:"#fff",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.5rem" }}>{tn.cta}</button>
-          {user&&<button onClick={()=>{onLogout();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",color:"#f87171",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem" }}>Logout</button>}
+          <button onClick={()=>{document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"});setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"8px",color:"#10b981",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>💰 Salary Calculator</button>
+          <button onClick={()=>{onCompare();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"8px",color:"#0ea5e9",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>📊 Compare Offers</button>
+          <button onClick={()=>{onCTA();setMenuOpen(false);}} style={{ padding:"12px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"8px",color:"#fff",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem" }}>{tn.cta}</button>
+          {user&&<button onClick={()=>{onLogout();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",color:"#f87171",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>Logout</button>}
         </div>
       )}
     </nav>
@@ -932,6 +934,148 @@ function Testimonials({ t }) {
   );
 }
 
+// -- SALARY SECTION (inline on page) ------------------------------------------
+function SalarySection({ onCTA, isMobile }) {
+  const [ctc, setCtc] = useState("");
+  const [city, setCity] = useState("metro");
+  const [regime, setRegime] = useState("new");
+  const [result, setResult] = useState(null);
+
+  function calcSal(ctcVal, cityVal, regimeVal) {
+    const annual = parseFloat(ctcVal) * 100000;
+    if (!annual || annual <= 0) return null;
+    const basic = Math.round(annual * 0.35);
+    const pf_employer = Math.min(Math.round(basic * 0.12), 21600);
+    const gratuity = Math.round(basic * 0.0481);
+    const gross = annual - pf_employer - gratuity;
+    const hra = cityVal==="metro" ? Math.round(basic*0.50) : Math.round(basic*0.40);
+    const lta = Math.round(annual*0.04);
+    const special = Math.max(0, gross - basic - hra - lta);
+    const pf_emp = Math.min(Math.round(basic*0.12), 21600);
+    const pt = 2400;
+    let tax = 0;
+    if (regimeVal==="new") {
+      const nt = Math.max(0, gross - pf_emp - pt - 75000);
+      if (nt > 1200000) {
+        if (nt>300000) tax+=Math.min(nt-300000,300000)*0.05;
+        if (nt>600000) tax+=Math.min(nt-600000,300000)*0.10;
+        if (nt>900000) tax+=Math.min(nt-900000,300000)*0.15;
+        if (nt>1200000) tax+=Math.min(nt-1200000,300000)*0.20;
+        if (nt>1500000) tax+=(nt-1500000)*0.30;
+      }
+    } else {
+      const he = Math.max(0, Math.min(hra, cityVal==="metro"?basic*0.50:basic*0.40, hra-basic*0.10));
+      const nt = Math.max(0, gross-pf_emp-pt-50000-he-Math.min(pf_emp+50000,150000));
+      if (nt>500000) tax = nt<=1000000 ? 12500+(nt-500000)*0.20 : 112500+(nt-1000000)*0.30;
+      if (nt<=500000) tax=0;
+    }
+    const tds = Math.round(tax*1.04/12);
+    const mb=Math.round(basic/12), mh=Math.round(hra/12), ms=Math.max(0,Math.round(special/12));
+    const ml=Math.round(lta/12), mp=Math.round(pf_emp/12);
+    const inhand = mb+mh+ms+ml-mp-200-tds;
+    const pct = Math.round(((annual-inhand*12)/annual)*100);
+    return { inhand:Math.max(0,inhand), basic:mb, hra:mh, special:ms, lta:ml, pf:mp, tds, pct:Math.max(0,pct) };
+  }
+
+  const fmt = n => "₹"+n.toLocaleString("en-IN");
+
+  return (
+    <section id="salary-calculator" style={{ background:"#f8fafc", padding:isMobile?"4rem 1.2rem":"6rem 2rem", width:"100%", borderTop:"1px solid #e2e8f0" }}>
+      <div style={{ maxWidth:"780px", margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:"2.5rem" }}>
+          <span style={{ fontFamily:"'Inter',sans-serif", color:"#10b981", fontSize:"0.7rem", fontWeight:700, letterSpacing:"0.14em", background:"rgba(16,185,129,0.08)", padding:"4px 12px", borderRadius:"4px" }}>FREE TOOL</span>
+          <h2 style={{ fontFamily:"'Inter',sans-serif", fontSize:isMobile?"1.7rem":"2.2rem", fontWeight:700, color:"#0f172a", marginTop:"1rem", marginBottom:"0.5rem", letterSpacing:"-0.03em" }}>What's Your Actual In-Hand Salary?</h2>
+          <p style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.9rem", color:"#64748b" }}>Enter your CTC — see exactly what lands in your bank account every month.</p>
+        </div>
+
+        <div style={{ background:"#fff", borderRadius:"16px", padding:isMobile?"1.4rem":"2rem", border:"1px solid #e2e8f0", boxShadow:"0 4px 24px rgba(0,0,0,0.06)", marginBottom:"1.5rem" }}>
+          <div style={{ marginBottom:"1.2rem" }}>
+            <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.72rem", fontWeight:600, color:"#64748b", marginBottom:"5px", letterSpacing:"0.04em", textTransform:"uppercase" }}>Your CTC</div>
+            <div style={{ position:"relative" }}>
+              <span style={{ position:"absolute", left:"12px", top:"50%", transform:"translateY(-50%)", color:"#64748b", fontFamily:"'Inter',sans-serif" }}>₹</span>
+              <input type="number" value={ctc} onChange={e=>{ const v=parseFloat(e.target.value); if(e.target.value===""||( v>0&&v<=500)) setCtc(e.target.value); }} placeholder="e.g. 8" onKeyDown={e=>e.key==="Enter"&&setResult(calcSal(ctc,city,regime))}
+                style={{ width:"100%", padding:"12px 70px 12px 28px", borderRadius:"8px", border:"1.5px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"1.2rem", fontWeight:700, outline:"none", boxSizing:"border-box" }}
+                onFocus={e=>e.target.style.borderColor="#10b981"} onBlur={e=>e.target.style.borderColor="#e2e8f0"}/>
+              <span style={{ position:"absolute", right:"12px", top:"50%", transform:"translateY(-50%)", fontFamily:"'Inter',sans-serif", fontSize:"0.82rem", color:"#94a3b8", fontWeight:600 }}>LPA</span>
+            </div>
+            <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.68rem", color:"#94a3b8", marginTop:"4px" }}>Enter in Lakhs — type "8" for ₹8 LPA (₹8,00,000/year). Max 500.</div>
+          </div>
+
+          <div style={{ display:"grid", gridTemplateColumns:isMobile?"1fr":"1fr 1fr", gap:"1rem", marginBottom:"1.4rem" }}>
+            <div>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.72rem", fontWeight:600, color:"#64748b", marginBottom:"5px", letterSpacing:"0.04em", textTransform:"uppercase" }}>City</div>
+              <select value={city} onChange={e=>setCity(e.target.value)} style={{ width:"100%", padding:"10px 12px", borderRadius:"8px", border:"1px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", outline:"none" }}>
+                <option value="metro">Metro (Delhi/Mumbai/Bengaluru)</option>
+                <option value="nonmetro">Non-Metro</option>
+              </select>
+            </div>
+            <div>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.72rem", fontWeight:600, color:"#64748b", marginBottom:"5px", letterSpacing:"0.04em", textTransform:"uppercase" }}>Tax Regime</div>
+              <div style={{ display:"flex", gap:"0.5rem" }}>
+                {[["new","New (Default)"],["old","Old Regime"]].map(([v,l])=>(
+                  <button key={v} onClick={()=>setRegime(v)} style={{ flex:1, padding:"10px", borderRadius:"8px", border:`1.5px solid ${regime===v?"#10b981":"#e2e8f0"}`, background:regime===v?"rgba(16,185,129,0.08)":"#f8fafc", color:regime===v?"#10b981":"#64748b", cursor:"pointer", fontFamily:"'Inter',sans-serif", fontSize:"0.8rem", fontWeight:regime===v?700:500 }}>{l}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button onClick={()=>setResult(calcSal(ctc,city,regime))} disabled={!ctc}
+            style={{ width:"100%", padding:"13px", borderRadius:"8px", background:ctc?"linear-gradient(135deg,#10b981,#0ea5e9)":"#e2e8f0", border:"none", color:ctc?"#fff":"#94a3b8", cursor:ctc?"pointer":"not-allowed", fontFamily:"'Inter',sans-serif", fontSize:"0.95rem", fontWeight:700 }}>
+            Calculate My In-Hand Salary →
+          </button>
+        </div>
+
+        {result && (
+          <div style={{ animation:"fadeUp .4s ease" }}>
+            <div style={{ background:"linear-gradient(135deg,#020817,#0a1628)", borderRadius:"16px", padding:"2rem", textAlign:"center", marginBottom:"1rem" }}>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.72rem", fontWeight:600, color:"#64748b", letterSpacing:"0.1em", marginBottom:"0.4rem" }}>YOUR ACTUAL IN-HAND SALARY</div>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:isMobile?"2.5rem":"3.5rem", fontWeight:800, background:"linear-gradient(135deg,#10b981,#0ea5e9)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>{fmt(result.inhand)}</div>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", color:"#64748b", marginTop:"0.3rem" }}>per month</div>
+              <div style={{ marginTop:"0.8rem", display:"inline-block", background:"rgba(239,68,68,0.1)", border:"1px solid rgba(239,68,68,0.2)", borderRadius:"6px", padding:"4px 14px" }}>
+                <span style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.78rem", color:"#fca5a5" }}>{result.pct}% of your CTC is deducted before you receive it</span>
+              </div>
+            </div>
+
+            <div style={{ background:"#fff", borderRadius:"14px", padding:"1.4rem", border:"1px solid #e2e8f0", marginBottom:"1rem" }}>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.8rem", fontWeight:700, color:"#0f172a", marginBottom:"1rem" }}>Monthly Breakdown</div>
+              <div style={{ marginBottom:"0.7rem" }}>
+                <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.65rem", fontWeight:700, color:"#10b981", letterSpacing:"0.08em", marginBottom:"0.4rem" }}>EARNINGS</div>
+                {[["Basic Salary",result.basic,"Core salary"],["HRA",result.hra,city==="metro"?"50% of basic":"40% of basic"],["Special Allowance",result.special,"Flexible component"],["LTA",result.lta,"Leave Travel Allowance"]].map(([l,v,t2])=>(
+                  <div key={l} style={{ display:"flex", justifyContent:"space-between", padding:"5px 0", borderBottom:"1px solid #f8fafc" }}>
+                    <div><div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.82rem", color:"#374151", fontWeight:500 }}>{l}</div><div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.65rem", color:"#94a3b8" }}>{t2}</div></div>
+                    <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", fontWeight:700, color:"#10b981" }}>+{fmt(v)}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginBottom:"0.7rem" }}>
+                <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.65rem", fontWeight:700, color:"#ef4444", letterSpacing:"0.08em", marginBottom:"0.4rem" }}>DEDUCTIONS</div>
+                {[["PF (Your share)",result.pf,"12% of basic"],["Professional Tax",200,"₹200/month"],["TDS (Income Tax)",result.tds,`${regime==="new"?"New":"Old"} regime`]].map(([l,v,t2])=>(
+                  <div key={l} style={{ display:"flex", justifyContent:"space-between", padding:"5px 0", borderBottom:"1px solid #f8fafc" }}>
+                    <div><div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.82rem", color:"#374151", fontWeight:500 }}>{l}</div><div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.65rem", color:"#94a3b8" }}>{t2}</div></div>
+                    <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", fontWeight:700, color:"#ef4444" }}>-{fmt(v)}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display:"flex", justifyContent:"space-between", paddingTop:"0.8rem", borderTop:"2px solid #f1f5f9" }}>
+                <span style={{ fontFamily:"'Inter',sans-serif", fontSize:"1rem", fontWeight:700, color:"#0f172a" }}>In-Hand (Monthly)</span>
+                <span style={{ fontFamily:"'Inter',sans-serif", fontSize:"1.1rem", fontWeight:800, color:"#10b981" }}>{fmt(result.inhand)}</span>
+              </div>
+            </div>
+
+            <div style={{ background:"linear-gradient(135deg,#020817,#0a1628)", borderRadius:"14px", padding:"1.4rem", display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"1rem" }}>
+              <div>
+                <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", fontWeight:700, color:"#f1f5f9", marginBottom:"0.2rem" }}>Is your salary fair? 🤔</div>
+                <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.78rem", color:"#64748b" }}>Talk to a consultant — find out your market value & how to negotiate more.</div>
+              </div>
+              <button onClick={onCTA} style={{ padding:"10px 22px", borderRadius:"8px", background:"linear-gradient(135deg,#0ea5e9,#6366f1)", border:"none", color:"#fff", cursor:"pointer", fontFamily:"'Inter',sans-serif", fontSize:"0.88rem", fontWeight:700, whiteSpace:"nowrap" }}>Talk to Consultant — Free →</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 // — PRICING —————————————————————————————————-
 function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
   const ref=useRef(null); const v=useInView(ref);
@@ -1093,6 +1237,7 @@ export default function hikezo() {
 
   const [showBanner, setShowBanner] = useState(true);
   const [pendingPlan, setPendingPlan] = useState(null);
+  const [pendingAction, setPendingAction] = useState(null); // "chat" | "salary" | "compare"
   const handleCTA=()=>{ if(!user){setShowAuth(true);}else{setShowChat(true);} };
   const handleLogout=()=>{
     try{
@@ -1113,7 +1258,15 @@ export default function hikezo() {
     localStorage.removeItem("hz_pending_plan");
     if(p==="Rs.799"){ window.open("https://rzp.io/rzp/HqU3cDU","_blank"); }
     else if(p==="Rs.399"){ window.open("https://rzp.io/rzp/DNfBx2L3","_blank"); }
-    else { setTimeout(()=>setShowChat(true),300); }
+    else {
+      const action = pendingAction;
+      setPendingAction(null);
+      setTimeout(()=>{
+        if(action==="salary") setShowSalary(true);
+        else if(action==="compare") setShowCompare(true);
+        else setShowChat(true);
+      },300);
+    }
   };
 
   if(authLoading) return(
@@ -1170,6 +1323,7 @@ export default function hikezo() {
         <HowItWorks t={t} onCTA={handleCTA}/>
         <Features t={t}/>
         <Testimonials t={t}/>
+        <SalarySection onCTA={handleCTA} isMobile={isMobile}/>
         <Pricing onCTA={handleCTA} t={t} lang={lang} user={user} setShowAuth={setShowAuth} setPendingPlan={setPendingPlan}/>
         <FAQ t={t}/>
 
@@ -1225,8 +1379,8 @@ export default function hikezo() {
       </div>
 
       {/* Auth Modal */}
-      {showSalary&&<SalaryCalculator onClose={()=>setShowSalary(false)} user={user} onStartChat={()=>setShowChat(true)} onShowAuth={()=>setShowAuth(true)}/>}
-      {showCompare&&<OfferCompare onClose={()=>setShowCompare(false)} user={user} isPro={getLimitData(user?.email)?.plan==="pro"||getLimitData(user?.email)?.plan==="elite"} onShowAuth={()=>setShowAuth(true)}/>}
+      {showSalary&&<SalaryCalculator onClose={()=>setShowSalary(false)} user={user} onStartChat={()=>setShowChat(true)} onShowAuth={(action)=>{setPendingAction(action||"chat");setShowAuth(true);}}/>}
+      {showCompare&&<OfferCompare onClose={()=>setShowCompare(false)} user={user} isPro={getLimitData(user?.email)?.plan==="pro"||getLimitData(user?.email)?.plan==="elite"} onShowAuth={(action)=>{setPendingAction(action||"compare");setShowCompare(false);setShowAuth(true);}}/>}
       {showAuth&&(
         <div style={{ position:"fixed",inset:0,zIndex:400,background:"rgba(2,8,23,0.92)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowAuth(false)}>
