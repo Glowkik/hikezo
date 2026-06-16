@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
+import OfferCompare from "./OfferCompare";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -580,7 +581,7 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
     </div>
   );
 }
-function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout }) {
+function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, onCompare }) {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [menuOpen, setMenuOpen] = useState(false);
   const tn = t.nav;
@@ -598,8 +599,8 @@ function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout })
               onMouseEnter={e=>{e.target.style.color="#f1f5f9";e.target.style.background="rgba(255,255,255,0.05)";}} onMouseLeave={e=>{e.target.style.color="#64748b";e.target.style.background="transparent";}}>{l}</a>
           ))}
           <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
-          
-          {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
+          <button onClick={onCompare} style={{ background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"7px",color:"#0ea5e9",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(14,165,233,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(14,165,233,0.08)";}}>Compare Offers</button>
+          <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
             <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
             <span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem" }}>{user.name?.split(" ")[0]}</span>
             <button onClick={onLogout} style={{ background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"5px",color:"#f87171",cursor:"pointer",fontSize:"0.68rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif",fontWeight:600,transition:"all .2s" }}
@@ -1043,6 +1044,7 @@ function FAQ({ t }) {
 export default function hikezo() {
   const [showChat,setShowChat]=useState(false);
   const [showAuth,setShowAuth]=useState(false);
+  const [showCompare,setShowCompare]=useState(false);
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
@@ -1158,7 +1160,7 @@ export default function hikezo() {
 
       <div style={{ background:"#020817",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
         {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
-        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout}/>
+        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout} onCompare={()=>setShowCompare(true)}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
         <SocialProofStrip/>
         <HowItWorks t={t} onCTA={handleCTA}/>
@@ -1219,6 +1221,7 @@ export default function hikezo() {
       </div>
 
       {/* Auth Modal */}
+      {showCompare&&<OfferCompare onClose={()=>setShowCompare(false)}/>}
       {showAuth&&(
         <div style={{ position:"fixed",inset:0,zIndex:400,background:"rgba(2,8,23,0.92)",backdropFilter:"blur(12px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowAuth(false)}>
