@@ -4,77 +4,112 @@ function calcSalary(ctc, city, regime) {
   const annual = parseFloat(ctc) * 100000;
   if (!annual || annual <= 0) return null;
 
-  // Basic = 40-50% of CTC
-  const basic = Math.round(annual * 0.40);
-  const hra = city === "metro" ? Math.round(basic * 0.50) : Math.round(basic * 0.40);
-  const special = Math.round(annual * 0.10);
-  const lta = Math.round(annual * 0.05);
-  const pf_employee = Math.min(Math.round(basic * 0.12), 21600); // capped at 1800/mo
+  // Real CTC structure — employer PF + gratuity are PART of CTC
+  // CTC = Gross Salary + Employer PF + Gratuity
+  // Employer PF = 12% of basic (capped at ₹1800/mo = ₹21600/yr)
+  // Gratuity = 4.81% of basic
+
+  // Step 1: Find basic from CTC
+  // Basic is typically 40-50% of gross salary
+  // Gross = CTC - Employer PF - Gratuity
+  // Let basic = X, then:
+  // Employer PF = min(X*0.12, 21600)
+  // Gratuity = X*0.0481
+  // Gross = CTC - EmployerPF - Gratuity
+  // Basic = Gross * 0.40
+
+  // Simplified: Basic = CTC * 0.35 (accounts for employer contributions)
+  const basic = Math.round(annual * 0.35);
   const pf_employer = Math.min(Math.round(basic * 0.12), 21600);
   const gratuity = Math.round(basic * 0.0481);
-  const professional_tax = 2400; // annual
 
-  // Gross salary (what you receive before tax)
-  const gross = annual - pf_employer - gratuity;
+  // Gross = CTC - employer contributions
+  const gross_annual = annual - pf_employer - gratuity;
 
-  // Tax calculation
+  // Salary components (must add up to gross)
+  const hra = city === "metro" ? Math.round(basic * 0.50) : Math.round(basic * 0.40);
+  const lta = Math.round(annual * 0.04);
+  const special = gross_annual - basic - hra - lta; // Special = whatever is left
+
+  // Employee deductions
+  const pf_employee = Math.min(Math.round(basic * 0.12), 21600);
+  const professional_tax = 2400; // ₹200/month annual
+
+  // Taxable income for TDS
   let tax = 0;
-  const taxable = gross - pf_employee - professional_tax;
 
   if (regime === "new") {
-    // New regime FY 2024-25
+    // New Regime FY 2025-26
     const std_deduction = 75000;
-    const net_taxable = Math.max(0, taxable - std_deduction);
-    if (net_taxable <= 300000) tax = 0;
-    else if (net_taxable <= 600000) tax = (net_taxable - 300000) * 0.05;
-    else if (net_taxable <= 900000) tax = 15000 + (net_taxable - 600000) * 0.10;
-    else if (net_taxable <= 1200000) tax = 45000 + (net_taxable - 900000) * 0.15;
-    else if (net_taxable <= 1500000) tax = 90000 + (net_taxable - 1200000) * 0.20;
-    else tax = 150000 + (net_taxable - 1500000) * 0.30;
-    // Rebate u/s 87A for income up to 7L
-    if (net_taxable <= 700000) tax = 0;
+    const net_taxable = Math.max(0, gross_annual - pf_employee - professional_tax - std_deduction);
+    // Rebate u/s 87A — nil tax upto ₹12L in new regime
+    if (net_taxable <= 1200000) {
+      tax = 0;
+    } else if (net_taxable <= 1500000) {
+      // Slab: compute properly
+      let t = 0;
+      if (net_taxable > 300000) t += Math.min(net_taxable - 300000, 300000) * 0.05;
+      if (net_taxable > 600000) t += Math.min(net_taxable - 600000, 300000) * 0.10;
+      if (net_taxable > 900000) t += Math.min(net_taxable - 900000, 300000) * 0.15;
+      if (net_taxable > 1200000) t += Math.min(net_taxable - 1200000, 300000) * 0.20;
+      tax = t;
+    } else {
+      let t = 0;
+      if (net_taxable > 300000) t += Math.min(net_taxable - 300000, 300000) * 0.05;
+      if (net_taxable > 600000) t += Math.min(net_taxable - 600000, 300000) * 0.10;
+      if (net_taxable > 900000) t += Math.min(net_taxable - 900000, 300000) * 0.15;
+      if (net_taxable > 1200000) t += Math.min(net_taxable - 1200000, 300000) * 0.20;
+      if (net_taxable > 1500000) t += (net_taxable - 1500000) * 0.30;
+      tax = t;
+    }
   } else {
-    // Old regime
-    const hra_exempt = Math.min(hra, Math.min(basic * 0.50, hra - 0.10 * basic));
+    // Old Regime
     const std_deduction = 50000;
-    const section_80c = Math.min(pf_employee + 10000, 150000); // PF + some investment
-    const net_taxable = Math.max(0, taxable - hra_exempt - std_deduction - section_80c);
+    // HRA exemption: min of actual HRA, 50%/40% of basic, HRA - 10% of basic
+    const hra_exempt = Math.max(0, Math.min(hra, city==="metro" ? basic*0.50 : basic*0.40, hra - basic*0.10));
+    const section_80c = Math.min(pf_employee + 50000, 150000);
+    const net_taxable = Math.max(0, gross_annual - pf_employee - professional_tax - std_deduction - hra_exempt - section_80c);
     if (net_taxable <= 250000) tax = 0;
     else if (net_taxable <= 500000) tax = (net_taxable - 250000) * 0.05;
     else if (net_taxable <= 1000000) tax = 12500 + (net_taxable - 500000) * 0.20;
     else tax = 112500 + (net_taxable - 1000000) * 0.30;
-    if (net_taxable <= 500000) tax = 0; // Rebate 87A
+    // Rebate 87A for income upto 5L
+    if (net_taxable <= 500000) tax = 0;
   }
 
-  // Surcharge & cess
   const cess = tax * 0.04;
   const total_tax = Math.round(tax + cess);
   const tds_monthly = Math.round(total_tax / 12);
 
   const monthly_basic = Math.round(basic / 12);
   const monthly_hra = Math.round(hra / 12);
-  const monthly_special = Math.round(special / 12);
+  const monthly_special = Math.max(0, Math.round(special / 12));
   const monthly_lta = Math.round(lta / 12);
   const monthly_pf = Math.round(pf_employee / 12);
   const monthly_pt = Math.round(professional_tax / 12);
 
+  // In-hand = earnings - deductions
   const inhand_monthly = monthly_basic + monthly_hra + monthly_special + monthly_lta - monthly_pf - monthly_pt - tds_monthly;
   const inhand_annual = inhand_monthly * 12;
-
   const deduction_pct = Math.round(((annual - inhand_annual) / annual) * 100);
 
   return {
-    annual, gross,
+    annual, gross_annual,
     monthly: {
-      basic: monthly_basic, hra: monthly_hra,
-      special: monthly_special, lta: monthly_lta,
-      pf: monthly_pf, pt: monthly_pt, tds: tds_monthly,
-      inhand: inhand_monthly,
+      basic: monthly_basic,
+      hra: monthly_hra,
+      special: Math.max(0, monthly_special),
+      lta: monthly_lta,
+      pf: monthly_pf,
+      pt: monthly_pt,
+      tds: tds_monthly,
+      inhand: Math.max(0, inhand_monthly),
     },
-    annual_pf_employer: Math.round(pf_employer / 12),
-    annual_gratuity: Math.round(gratuity / 12),
-    deduction_pct,
+    employer_pf_monthly: Math.round(pf_employer / 12),
+    gratuity_monthly: Math.round(gratuity / 12),
+    deduction_pct: Math.max(0, deduction_pct),
     total_tax,
+    pf_annual_total: (pf_employee + pf_employer),
   };
 }
 
@@ -142,12 +177,17 @@ export default function SalaryCalculator({ onClose, onStartChat, user, onShowAut
               <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.72rem", fontWeight:600, color:"#64748b", marginBottom:"5px", letterSpacing:"0.04em", textTransform:"uppercase" }}>Your CTC</div>
               <div style={{ position:"relative", display:"flex", alignItems:"center" }}>
                 <span style={{ position:"absolute", left:"12px", fontFamily:"'Inter',sans-serif", fontSize:"0.85rem", color:"#64748b" }}>₹</span>
-                <input type="number" value={ctc} onChange={e => setCtc(e.target.value)} placeholder="e.g. 8"
+                <input type="number" value={ctc} onChange={e => {
+                  const val = parseFloat(e.target.value);
+                  if (e.target.value === "" || (val > 0 && val <= 500)) setCtc(e.target.value);
+                }} placeholder="e.g. 8"
                   onKeyDown={e => e.key === "Enter" && calculate()}
-                  style={{ width:"100%", padding:"11px 12px 11px 28px", borderRadius:"8px", border:"1.5px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"1.1rem", fontWeight:700, outline:"none", boxSizing:"border-box" }}
+                  min="1" max="500" step="0.5"
+                  style={{ width:"100%", padding:"11px 80px 11px 28px", borderRadius:"8px", border:"1.5px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"1.1rem", fontWeight:700, outline:"none", boxSizing:"border-box" }}
                   onFocus={e => e.target.style.borderColor="#0ea5e9"} onBlur={e => e.target.style.borderColor="#e2e8f0"}/>
                 <span style={{ position:"absolute", right:"12px", fontFamily:"'Inter',sans-serif", fontSize:"0.82rem", color:"#94a3b8", fontWeight:600 }}>LPA</span>
               </div>
+              <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.68rem", color:"#94a3b8", marginTop:"4px" }}>Enter in Lakhs Per Annum — e.g. type "8" for ₹8 LPA (₹8,00,000/year). Max 500 LPA.</div>
             </div>
 
             {/* City */}
@@ -243,8 +283,8 @@ export default function SalaryCalculator({ onClose, onStartChat, user, onShowAut
               <div style={{ background:"#f8fafc", borderRadius:"8px", padding:"0.8rem" }}>
                 <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.68rem", fontWeight:700, color:"#64748b", letterSpacing:"0.08em", marginBottom:"0.4rem" }}>EMPLOYER PAYS (part of your CTC but you don't see it)</div>
                 {[
-                  ["PF (Employer)", result.annual_pf_employer, "Goes to your PF — withdraw after exit"],
-                  ["Gratuity", result.annual_gratuity, "Paid after 5 years of service"],
+                  ["PF (Employer)", result.employer_pf_monthly, "Goes to your PF — withdraw after exit"],
+                  ["Gratuity", result.gratuity_monthly, "Paid after 5 years of service"],
                 ].map(([label, val, tip]) => (
                   <div key={label} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"5px 0" }}>
                     <div>
@@ -268,7 +308,7 @@ export default function SalaryCalculator({ onClose, onStartChat, user, onShowAut
               {[
                 ["Annual In-Hand", fmtFull(result.monthly.inhand * 12), "#10b981"],
                 ["Annual Tax", fmtFull(result.total_tax), "#ef4444"],
-                ["Annual PF Saved", fmtFull(result.monthly.pf * 12 * 2), "#6366f1"],
+                ["Annual PF Saved", fmtFull(result.pf_annual_total), "#6366f1"],
               ].map(([label, val, color]) => (
                 <div key={label} style={{ background:"#fff", borderRadius:"10px", padding:"0.9rem", border:"1px solid #e2e8f0", textAlign:"center" }}>
                   <div style={{ fontFamily:"'Inter',sans-serif", fontSize:"1rem", fontWeight:800, color }}>{val}</div>
