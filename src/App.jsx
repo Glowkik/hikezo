@@ -789,47 +789,6 @@ function Hero({ onCTA, t, lang }) {
   );
 }
 
-  return(
-    <section style={{ background:"#020817",minHeight:isMobile?"100vh":"92vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"9rem 1.2rem 2.5rem":isTablet?"8.5rem 2rem 3rem":"9.5rem 2rem 4rem",position:"relative",overflow:"hidden" }}>
-
-      {/* Animated grid */}
-      <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(14,165,233,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.04) 1px,transparent 1px)",backgroundSize:"50px 50px",pointerEvents:"none",maskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)" }}/>
-
-      {/* Neon SVG */}
-      <div style={{ position:"absolute",inset:0,pointerEvents:"none",overflow:"hidden" }}>
-        <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style={{ position:"absolute",inset:0 }}>
-          <defs>
-            <filter id="ng1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <filter id="ng2"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <filter id="ng3"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          </defs>
-          <circle r="3" fill="#0ea5e9" filter="url(#ng3)" opacity="0">
-            <animate attributeName="cx" values="-60;1260" dur="8s" repeatCount="indefinite"/>
-            <animate attributeName="cy" values="220;180" dur="8s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0;0;1;1;0" dur="8s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="3" fill="#818cf8" filter="url(#ng3)" opacity="0">
-            <animate attributeName="cx" values="1260;-60" dur="10s" repeatCount="indefinite"/>
-            <animate attributeName="cy" values="580;620" dur="10s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0;0;1;1;0" dur="10s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="600" cy="50" r="100" fill="none" stroke="rgba(14,165,233,0.07)" strokeWidth="1" filter="url(#ng1)">
-            <animate attributeName="r" values="60;180;60" dur="7s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.1;0.25;0.1" dur="7s" repeatCount="indefinite"/>
-          </circle>
-          <line x1="0" y1="0" x2="1200" y2="0" stroke="rgba(14,165,233,0.06)" strokeWidth="1.5" filter="url(#ng1)">
-            <animate attributeName="y1" values="-10;810;-10" dur="16s" repeatCount="indefinite"/>
-            <animate attributeName="y2" values="-10;810;-10" dur="16s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0;0.5;0.5;0;0" dur="16s" repeatCount="indefinite"/>
-          </line>
-        </svg>
-      </div>
-
-      {/* Glows */}
-      <div style={{ position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:"800px",height:"400px",background:"radial-gradient(ellipse,rgba(14,165,233,0.09) 0%,rgba(99,102,241,0.04) 50%,transparent 70%)",pointerEvents:"none",animation:"glowPulse 5s ease-in-out infinite" }}/>
-
-      <div style={{ position:"relative",zIndex:1,maxWidth:"780px",width:"100%" }}>
-
 // ── SOCIAL PROOF STRIP ───────────────────────────────────────────────────────
 function SocialProofStrip() {
   const companies = ["Google","Microsoft","Amazon","Flipkart","Swiggy","Infosys","TCS","PhonePe","Zomato","Razorpay","Wipro","HCL"];
