@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Auth from "./Auth";
 import OfferCompare from "./OfferCompare";
 import SalaryCalculator from "./SalaryCalculator";
+import ResumeUpload from "./ResumeUpload";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -1174,6 +1175,7 @@ export default function hikezo() {
   const [showAuth,setShowAuth]=useState(false);
   const [showCompare,setShowCompare]=useState(false);
   const [showSalary,setShowSalary]=useState(false);
+  const [showResume,setShowResume]=useState(false);
   const [showRefund,setShowRefund]=useState(false);
   const [showPrivacy,setShowPrivacy]=useState(false);
   const [showTerms,setShowTerms]=useState(false);
@@ -1219,7 +1221,7 @@ export default function hikezo() {
   const [showBanner, setShowBanner] = useState(true);
   const [pendingPlan, setPendingPlan] = useState(null);
   const [pendingAction, setPendingAction] = useState(null); // "chat" | "salary" | "compare"
-  const handleCTA=()=>{ if(!user){setShowAuth(true);}else{setShowChat(true);} };
+  const handleCTA=()=>{ setShowResume(true); };
   const handleLogout=()=>{
     try{
       sessionStorage.removeItem("hz_user");
@@ -1245,6 +1247,7 @@ export default function hikezo() {
       setTimeout(()=>{
         if(action==="salary") setShowSalary(true);
         else if(action==="compare") setShowCompare(true);
+        else if(action==="resume") setShowResume(true);
         else setShowChat(true);
       },300);
     }
@@ -1378,6 +1381,7 @@ export default function hikezo() {
       </div>
 
       {/* Auth Modal */}
+      {showResume&&<ResumeUpload onClose={()=>setShowResume(false)} user={user} onShowAuth={()=>{setPendingAction("resume");setShowAuth(true);}} onStartChat={()=>setShowChat(true)}/>}
       {showSalary&&<SalaryCalculator onClose={()=>setShowSalary(false)} user={user} onStartChat={()=>setShowChat(true)} onShowAuth={(action)=>{setPendingAction(action||"chat");setShowAuth(true);}}/>}
       {showCompare&&<OfferCompare onClose={()=>setShowCompare(false)} user={user} isPro={getLimitData(user?.email)?.plan==="pro"||getLimitData(user?.email)?.plan==="elite"} onShowAuth={(action)=>{setPendingAction(action||"compare");setShowCompare(false);setShowAuth(true);}}/>}
       {showAuth&&(
