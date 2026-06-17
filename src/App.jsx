@@ -644,146 +644,118 @@ function Hero({ onCTA, t, lang }) {
   const { isMobile, isTablet } = useBreakpoint();
   const th = t.hero;
   const [count, setCount] = useState(0);
-  const [liveUsers] = useState(()=>Math.floor(Math.random()*80)+120);
-  useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+8; }),15); return()=>clearInterval(iv); },[]);
   const [typed, setTyped] = useState("");
-  const words = ["Negotiate Your Salary","Get Your Dream Job","Ace Every Interview","Build Your Career Roadmap","Know Your Market Value"];
+  const words = ["Salary Negotiation","Career Roadmap","Interview Prep","Resume Review","Offer Comparison"];
   const [wi, setWi] = useState(0);
+  useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+8; }),15); return()=>clearInterval(iv); },[]);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
-    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){setTimeout(()=>{del=true;},1200);}} else{setTyped(cur.slice(0,i-1));i--;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?40:85);
+    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){setTimeout(()=>{del=true;},1800);}} else{setTyped(cur.slice(0,i-1));i--;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?40:90);
     return()=>clearInterval(iv);
   },[wi]);
 
   return(
-    <section style={{ background:"linear-gradient(160deg,#050B18 0%,#0A1628 50%,#050B18 100%)",minHeight:isMobile?"100vh":"95vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"9rem 1.2rem 3rem":isTablet?"9rem 2rem 4rem":"10rem 2rem 5rem",position:"relative",overflow:"hidden" }}>
+    <section style={{ background:"#ffffff",minHeight:isMobile?"auto":"auto",padding:isMobile?"7rem 1.2rem 3.5rem":isTablet?"8rem 2rem 4rem":"8.5rem 3rem 5rem",position:"relative",overflow:"hidden",display:"flex",alignItems:"center" }}>
 
-      {/* Animated mesh gradient */}
+      {/* Subtle animated gradient orbs in background */}
       <div style={{ position:"absolute",inset:0,pointerEvents:"none",overflow:"hidden" }}>
-        <div style={{ position:"absolute",top:"-20%",left:"-10%",width:"600px",height:"600px",background:"radial-gradient(circle,rgba(14,165,233,0.12) 0%,transparent 70%)",animation:"meshMove 15s ease infinite" }}/>
-        <div style={{ position:"absolute",bottom:"-20%",right:"-10%",width:"500px",height:"500px",background:"radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 70%)",animation:"meshMove 20s ease infinite reverse" }}/>
-        <div style={{ position:"absolute",top:"30%",right:"20%",width:"300px",height:"300px",background:"radial-gradient(circle,rgba(14,165,233,0.06) 0%,transparent 70%)",animation:"glowPulse 8s ease infinite" }}/>
+        {/* Orb 1 - blue */}
+        <div style={{ position:"absolute",top:"-15%",right:"-5%",width:isMobile?"300px":"500px",height:isMobile?"300px":"500px",borderRadius:"50%",background:"radial-gradient(circle,rgba(14,165,233,0.08) 0%,transparent 70%)",animation:"floatY 8s ease-in-out infinite" }}/>
+        {/* Orb 2 - purple */}
+        <div style={{ position:"absolute",bottom:"-10%",left:"-5%",width:isMobile?"250px":"400px",height:isMobile?"250px":"400px",borderRadius:"50%",background:"radial-gradient(circle,rgba(99,102,241,0.07) 0%,transparent 70%)",animation:"floatY2 10s ease-in-out infinite" }}/>
+        {/* Orb 3 - green accent */}
+        <div style={{ position:"absolute",top:"40%",left:"30%",width:"300px",height:"300px",borderRadius:"50%",background:"radial-gradient(circle,rgba(16,185,129,0.04) 0%,transparent 70%)",animation:"glowPulse 12s ease-in-out infinite" }}/>
+        {/* Subtle grid */}
+        <div style={{ position:"absolute",inset:0,backgroundImage:"radial-gradient(rgba(14,165,233,0.08) 1px,transparent 1px)",backgroundSize:"32px 32px",maskImage:"radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 80%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 80%)" }}/>
       </div>
 
-      {/* Grid pattern */}
-      <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(14,165,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.03) 1px,transparent 1px)",backgroundSize:"60px 60px",pointerEvents:"none",maskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)" }}/>
+      <div style={{ maxWidth:"1100px",margin:"0 auto",width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"3rem",flexWrap:isMobile?"wrap":"nowrap",position:"relative",zIndex:1 }}>
 
-      {/* Floating result cards */}
-      {!isMobile && (
-        <>
-          <div style={{ position:"absolute",left:"4%",top:"30%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat 4s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
-            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
-              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#10b981,#059669)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>💰</div>
-              <div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>V.N. got</div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#10b981" }}>+₹4.7L/year</div>
-              </div>
-            </div>
-          </div>
-          <div style={{ position:"absolute",right:"4%",top:"25%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat2 5s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
-            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
-              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#6366f1,#8b5cf6)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>📈</div>
-              <div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>S.R. got promoted</div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#a78bfa" }}>+28% hike</div>
-              </div>
-            </div>
-          </div>
-          <div style={{ position:"absolute",left:"6%",bottom:"20%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat2 6s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
-            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
-              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#f59e0b,#d97706)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>🎯</div>
-              <div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>K.M. landed</div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#fbbf24" }}>PhonePe 18 LPA</div>
-              </div>
-            </div>
-          </div>
-          <div style={{ position:"absolute",right:"6%",bottom:"22%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat 7s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
-            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
-              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#ec4899,#db2777)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>⭐</div>
-              <div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>Rating</div>
-                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#f472b6" }}>4.9/5 stars</div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+        {/* Left — Text content */}
+        <div style={{ flex:1,minWidth:isMobile?"100%":"auto",textAlign:isMobile?"center":"left" }}>
 
-      <div style={{ position:"relative",zIndex:1,maxWidth:"760px",width:"100%" }}>
+          {/* Badge */}
+          <div style={{ display:"inline-flex",alignItems:"center",gap:"7px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"100px",padding:"5px 14px",marginBottom:"1.2rem",animation:"fadeUp .5s ease both" }}>
+            <div style={{ width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite" }}/>
+            <span style={{ color:"#059669",fontSize:"0.72rem",fontWeight:600,fontFamily:"'Inter',sans-serif" }}>
+              {count}+ professionals got salary hikes
+            </span>
+          </div>
 
-        {/* Live badge */}
-        <div style={{ display:"inline-flex",alignItems:"center",gap:"8px",background:"rgba(16,185,129,0.1)",border:"1px solid rgba(16,185,129,0.25)",borderRadius:"100px",padding:"6px 16px",marginBottom:"1.5rem",animation:"fadeUp .5s ease both" }}>
-          <div style={{ width:7,height:7,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite",boxShadow:"0 0 8px rgba(16,185,129,0.6)" }}/>
-          <span style={{ color:"#86efac",fontSize:"0.72rem",fontWeight:600,fontFamily:"'Inter',sans-serif",letterSpacing:"0.04em" }}>
-            {liveUsers} professionals getting career help right now
-          </span>
+          {/* Headline */}
+          <h1 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"2rem":isTablet?"2.6rem":"3.2rem",fontWeight:900,lineHeight:1.1,color:"#0f172a",marginBottom:"0.8rem",letterSpacing:"-0.04em",animation:"fadeUp .6s ease .1s both" }}>
+            Upload Resume.<br/>
+            Get Free <span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundSize:"200% auto",animation:"gradShift 4s ease infinite" }}>AI Consultation.</span>
+          </h1>
+
+          {/* Typewriter */}
+          <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.88rem":"1rem",color:"#64748b",marginBottom:"1.2rem",minHeight:"1.5em",animation:"fadeUp .6s ease .15s both" }}>
+            Expert help for your{" "}
+            <span style={{ color:"#0ea5e9",fontWeight:600,borderBottom:"2px solid rgba(14,165,233,0.3)" }}>{typed}</span>
+            <span style={{ animation:"blink 1s step-end infinite",color:"#0ea5e9" }}>|</span>
+          </div>
+
+          {/* Sub */}
+          <p style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.88rem":"0.95rem",color:"#64748b",lineHeight:1.7,marginBottom:"2rem",maxWidth:"480px",margin:isMobile?"0 auto 2rem":"0 0 2rem",animation:"fadeUp .6s ease .2s both" }}>
+            Find out if you're underpaid. Get a personalized salary script, career roadmap, and step-by-step plan — free to start.
+          </p>
+
+          {/* CTAs */}
+          <div style={{ display:"flex",gap:"0.8rem",flexWrap:"wrap",justifyContent:isMobile?"center":"flex-start",animation:"fadeUp .6s ease .3s both" }}>
+            <button onClick={onCTA} className="hz-btn-primary" style={{ padding:"13px 28px",borderRadius:"10px",fontSize:"0.95rem",boxShadow:"0 4px 20px rgba(14,165,233,0.3)",display:"flex",alignItems:"center",gap:"8px" }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload Resume — Free
+            </button>
+            <button onClick={onCTA} style={{ padding:"13px 24px",borderRadius:"10px",background:"#f8fafc",border:"1.5px solid #e2e8f0",color:"#374151",fontWeight:600,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor="#0ea5e9";e.currentTarget.style.color="#0ea5e9";e.currentTarget.style.background="#f0f9ff";}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor="#e2e8f0";e.currentTarget.style.color="#374151";e.currentTarget.style.background="#f8fafc";}}>
+              Talk to Consultant →
+            </button>
+          </div>
+
+          {/* Trust */}
+          <p style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.75rem",marginTop:"1rem",animation:"fadeUp .6s ease .35s both" }}>
+            Free to start &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Results in first session
+          </p>
+
+          {/* Social proof */}
+          <div style={{ display:"flex",alignItems:"center",gap:"10px",marginTop:"1.5rem",justifyContent:isMobile?"center":"flex-start",animation:"fadeUp .6s ease .4s both",flexWrap:"wrap" }}>
+            <div style={{ display:"flex" }}>
+              {["RS","PM","AK","MK","SJ"].map((a,i)=>(
+                <div key={a} style={{ width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,hsl(${200+i*30},70%,50%),hsl(${220+i*30},70%,40%))`,border:"2px solid #fff",marginLeft:i===0?0:"-7px",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.52rem",color:"#fff",boxShadow:"0 1px 4px rgba(0,0,0,0.15)" }}>{a}</div>
+              ))}
+            </div>
+            <span style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.78rem" }}>
+              <strong style={{ color:"#0f172a" }}>{count}+</strong> professionals helped
+            </span>
+            <div style={{ display:"flex",alignItems:"center",gap:"2px" }}>
+              {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.78rem" }}>★</span>)}
+              <span style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.75rem",marginLeft:"4px" }}>4.9/5</span>
+            </div>
+          </div>
         </div>
 
-        {/* Main headline */}
-        <h1 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"clamp(2rem,8vw,2.8rem)":isTablet?"clamp(2.5rem,5vw,3.4rem)":"clamp(3rem,5vw,4rem)",fontWeight:900,lineHeight:1.05,color:"#f8fafc",maxWidth:"720px",margin:"0 auto 0.6rem",letterSpacing:"-0.04em",animation:"fadeUp .7s ease .1s both" }}>
-          Upload Your Resume.
-          <br/>
-          <span style={{ background:"linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#0ea5e9 100%)",backgroundSize:"200% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"gradShift 4s ease infinite" }}>
-            Get a Free Career Consultation.
-          </span>
-        </h1>
-
-        {/* Typewriter */}
-        <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.9rem":"1rem",color:"#64748b",marginBottom:"1rem",animation:"fadeUp .7s ease .15s both",minHeight:"1.5em" }}>
-          AI helps you{" "}
-          <span style={{ color:"#0ea5e9",fontWeight:600 }}>{typed}</span>
-          <span style={{ animation:"blink 1s step-end infinite",color:"#0ea5e9" }}>|</span>
-        </div>
-
-        {/* Sub */}
-        <p style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.88rem":"0.94rem",color:"#475569",maxWidth:"500px",lineHeight:1.7,margin:"0 auto 2rem",animation:"fadeUp .7s ease .2s both" }}>
-          {th.sub}
-        </p>
-
-        {/* CTAs */}
-        <div style={{ display:"flex",gap:"0.8rem",justifyContent:"center",flexWrap:"wrap",animation:"fadeUp .7s ease .3s both" }}>
-          <button onClick={onCTA} className="hz-btn-primary" style={{ padding:isMobile?"13px 26px":"15px 32px",borderRadius:"10px",fontSize:"0.96rem",boxShadow:"0 4px 24px rgba(14,165,233,0.4)",display:"flex",alignItems:"center",gap:"8px" }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            Upload Resume — Free
-          </button>
-          <button onClick={onCTA} style={{ padding:isMobile?"13px 22px":"15px 26px",borderRadius:"10px",background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.12)",color:"#94a3b8",fontWeight:600,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .25s ease",backdropFilter:"blur(8px)" }}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(14,165,233,0.4)";e.currentTarget.style.color="#e2e8f0";e.currentTarget.style.background="rgba(14,165,233,0.08)";}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.12)";e.currentTarget.style.color="#94a3b8";e.currentTarget.style.background="rgba(255,255,255,0.06)";}}>
-            See How It Works →
-          </button>
-        </div>
-
-        {/* Trust */}
-        <p style={{ fontFamily:"'Inter',sans-serif",color:"rgba(255,255,255,0.2)",fontSize:"0.75rem",marginTop:"1.2rem",animation:"fadeUp .7s ease .35s both" }}>
-          Free to start &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Results in first session
-        </p>
-
-        {/* Social proof */}
-        <div style={{ display:"flex",alignItems:"center",justifyContent:"center",gap:"12px",marginTop:"2rem",animation:"fadeUp .7s ease .4s both",flexWrap:"wrap" }}>
-          <div style={{ display:"flex" }}>
-            {["RS","PM","AK","MK","SJ"].map((a,i)=>(
-              <div key={a} style={{ width:30,height:30,borderRadius:"50%",background:`linear-gradient(135deg,hsl(${200+i*30},70%,45%),hsl(${220+i*30},70%,35%))`,border:"2px solid #050B18",marginLeft:i===0?0:"-8px",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.55rem",color:"#fff",boxShadow:"0 2px 8px rgba(0,0,0,0.3)" }}>{a}</div>
+        {/* Right — Stats cards (desktop only) */}
+        {!isMobile && (
+          <div style={{ flexShrink:0,width:"300px",display:"flex",flexDirection:"column",gap:"0.8rem",animation:"slideInRight .7s ease .2s both" }}>
+            {[
+              { icon:"💰", label:"Average Salary Hike", value:"40%", color:"#10b981", bg:"rgba(16,185,129,0.06)", border:"rgba(16,185,129,0.15)" },
+              { icon:"👥", label:"Professionals Helped", value:"500+", color:"#0ea5e9", bg:"rgba(14,165,233,0.06)", border:"rgba(14,165,233,0.15)" },
+              { icon:"⭐", label:"User Rating", value:"4.9/5", color:"#f59e0b", bg:"rgba(245,158,11,0.06)", border:"rgba(245,158,11,0.15)" },
+              { icon:"⚡", label:"Results in First Session", value:"Same Day", color:"#6366f1", bg:"rgba(99,102,241,0.06)", border:"rgba(99,102,241,0.15)" },
+            ].map((s,i)=>(
+              <div key={s.label} style={{ background:s.bg,border:`1px solid ${s.border}`,borderRadius:"12px",padding:"1rem 1.2rem",display:"flex",alignItems:"center",gap:"12px",animation:`fadeUp .5s ease ${.3+i*.1}s both`,transition:"all .2s ease" }}
+                onMouseEnter={e=>{e.currentTarget.style.transform="translateX(-4px)";e.currentTarget.style.boxShadow=`0 4px 16px ${s.border}`;}}
+                onMouseLeave={e=>{e.currentTarget.style.transform="translateX(0)";e.currentTarget.style.boxShadow="none";}}>
+                <div style={{ fontSize:"1.4rem",flexShrink:0 }}>{s.icon}</div>
+                <div style={{ flex:1 }}>
+                  <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"#94a3b8",marginBottom:"2px" }}>{s.label}</div>
+                  <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"1.2rem",fontWeight:800,color:s.color }}>{s.value}</div>
+                </div>
+              </div>
             ))}
           </div>
-          <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.8rem" }}>
-            <strong style={{ color:"#94a3b8" }}>{count.toLocaleString()}+</strong> {th.social}
-          </span>
-          <div style={{ display:"flex",gap:"2px",alignItems:"center" }}>
-            {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.82rem" }}>★</span>)}
-            <span style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.78rem",marginLeft:"4px" }}>4.9/5</span>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div style={{ display:"flex",gap:"1.5rem",justifyContent:"center",marginTop:"2.5rem",flexWrap:"wrap",animation:"fadeUp .7s ease .45s both" }}>
-          {[["500+","Professionals helped"],["40%","Avg salary hike"],["4.9/5","User rating"]].map(([v,l])=>(
-            <div key={l} style={{ textAlign:"center" }}>
-              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.4rem":"1.6rem",fontWeight:800,background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>{v}</div>
-              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.72rem",color:"#475569",marginTop:"2px" }}>{l}</div>
-            </div>
-          ))}
-        </div>
+        )}
       </div>
     </section>
   );
