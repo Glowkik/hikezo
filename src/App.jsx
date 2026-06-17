@@ -669,7 +669,7 @@ function Hero({ onCTA, t, lang }) {
         <div style={{ position:"absolute",inset:0,backgroundImage:"radial-gradient(rgba(14,165,233,0.08) 1px,transparent 1px)",backgroundSize:"32px 32px",maskImage:"radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 80%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 60% 40%,black 20%,transparent 80%)" }}/>
       </div>
 
-      <div style={{ maxWidth:"1100px",margin:"0 auto",width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"3rem",flexWrap:isMobile?"wrap":"nowrap",position:"relative",zIndex:1 }}>
+      <div style={{ maxWidth:"1100px",margin:"0 auto",width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",gap:isTablet?"2rem":"3rem",flexWrap:isMobile?"wrap":"nowrap",position:"relative",zIndex:1 }}>
 
         {/* Left — Text content */}
         <div style={{ flex:1,minWidth:isMobile?"100%":"auto",textAlign:isMobile?"center":"left" }}>
@@ -803,7 +803,7 @@ function HowItWorks({ t, onCTA }) {
           <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.7rem":"2.2rem",fontWeight:700,color:"#0f172a",marginTop:"1rem",letterSpacing:"-0.03em" }}>{th.title}</h2>
           <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.95rem",marginTop:"0.5rem" }}>{th.sub}</p>
         </SR>
-        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr 1fr":"repeat(4,1fr)",gap:"1.5rem",position:"relative" }}>
+        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(4,1fr)",gap:"1.2rem",position:"relative" }}>
           {!isMobile&&<div style={{ position:"absolute",top:"32px",left:"12%",right:"12%",height:"1px",background:"linear-gradient(90deg,transparent,#e2e8f0 20%,#e2e8f0 80%,transparent)",zIndex:0 }}/>}
           {th.steps.map((s,i)=>(
             <SR key={s.title} cls="sr" delay={i*120} style={{ textAlign:"center",position:"relative",zIndex:1,cursor:"default" }}>
@@ -981,7 +981,7 @@ function SalarySection({ onCTA, isMobile }) {
             <div style={{ position:"relative" }}>
               <span style={{ position:"absolute", left:"12px", top:"50%", transform:"translateY(-50%)", color:"#64748b", fontFamily:"'Inter',sans-serif" }}>₹</span>
               <input type="number" value={ctc} onChange={e=>{ const v=parseFloat(e.target.value); if(e.target.value===""||( v>0&&v<=500)) setCtc(e.target.value); }} placeholder="e.g. 8" onKeyDown={e=>e.key==="Enter"&&setResult(calcSal(ctc,city,regime))}
-                style={{ width:"100%", padding:"12px 70px 12px 28px", borderRadius:"8px", border:"1.5px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"1.2rem", fontWeight:700, outline:"none", boxSizing:"border-box" }}
+                style={{ width:"100%", padding:"12px 70px 12px 28px", borderRadius:"8px", border:"1.5px solid #e2e8f0", background:"#f8fafc", color:"#0f172a", fontFamily:"'Inter',sans-serif", fontSize:"1rem", fontWeight:700, outline:"none", boxSizing:"border-box" }}
                 onFocus={e=>e.target.style.borderColor="#10b981"} onBlur={e=>e.target.style.borderColor="#e2e8f0"}/>
               <span style={{ position:"absolute", right:"12px", top:"50%", transform:"translateY(-50%)", fontFamily:"'Inter',sans-serif", fontSize:"0.82rem", color:"#94a3b8", fontWeight:600 }}>LPA</span>
             </div>
@@ -1312,8 +1312,8 @@ export default function hikezo() {
       `}</style>
 
       <div style={{ background:"#ffffff",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
-        {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
-        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout} onCompare={()=>setShowCompare(true)} onSalary={()=>setShowSalary(true)}/>
+        {showBanner && false && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
+        <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={false} onLogout={handleLogout} onCompare={()=>setShowCompare(true)} onSalary={()=>setShowSalary(true)}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
         <SocialProofStrip/>
         <HowItWorks t={t} onCTA={handleCTA}/>
@@ -1392,12 +1392,12 @@ export default function hikezo() {
 
       {/* Terms of Service Modal */}
       {showTerms&&(
-        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.9)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
+        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(0,0,0,0.5)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowTerms(false)}>
-          <div style={{ width:"100%",maxWidth:"520px",maxHeight:"80vh",overflowY:"auto",background:"#0f172a",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease" }}>
+          <div style={{ width:"100%",maxWidth:"520px",maxHeight:"80vh",overflowY:"auto",background:"#fff",border:"1px solid #e2e8f0",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease",boxShadow:"0 20px 60px rgba(0,0,0,0.15)" }}>
             <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem" }}>
-              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.1rem" }}>Terms of Service</h2>
-              <button onClick={()=>setShowTerms(false)} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>x</button>
+              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#0f172a",fontWeight:700,fontSize:"1.1rem" }}>Terms of Service</h2>
+              <button onClick={()=>setShowTerms(false)} style={{ background:"#f1f5f9",border:"none",color:"#64748b",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>✕</button>
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1.1rem" }}>
               <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
@@ -1418,7 +1418,7 @@ export default function hikezo() {
                 {title:"13. Contact",body:"For questions about these Terms, contact: support@hikezo.in"},
               ].map(s=>(
                 <div key={s.title}>
-                  <p style={{ color:"#e2e8f0",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
+                  <p style={{ color:"#0f172a",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
                   <p>{s.body}</p>
                 </div>
               ))}
@@ -1428,31 +1428,27 @@ export default function hikezo() {
         </div>
       )}
       {showPrivacy&&(
-        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.9)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
+        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(0,0,0,0.5)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowPrivacy(false)}>
-          <div style={{ width:"100%",maxWidth:"520px",maxHeight:"80vh",overflowY:"auto",background:"#0f172a",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease" }}>
+          <div style={{ width:"100%",maxWidth:"520px",maxHeight:"80vh",overflowY:"auto",background:"#fff",border:"1px solid #e2e8f0",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease",boxShadow:"0 20px 60px rgba(0,0,0,0.15)" }}>
             <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem" }}>
-              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.1rem" }}>Privacy Policy</h2>
-              <button onClick={()=>setShowPrivacy(false)} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>x</button>
+              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#0f172a",fontWeight:700,fontSize:"1.1rem" }}>Privacy Policy</h2>
+              <button onClick={()=>setShowPrivacy(false)} style={{ background:"#f1f5f9",border:"none",color:"#64748b",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>✕</button>
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1.1rem" }}>
-              <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
-              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>Please read this Privacy Policy carefully before using hikezo.in. By accessing or using our platform, you agree to be bound by this policy.</p>
+              <p style={{ color:"#94a3b8",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
+              <p style={{ color:"#64748b",fontSize:"0.8rem",fontStyle:"italic" }}>Please read this Privacy Policy carefully before using hikezo.in.</p>
               {[
                 {title:"1. Information We Collect",body:"We collect: (a) Personal identification information including full name, email address, and mobile number provided during registration; (b) Career and professional information you voluntarily share during consultations; (c) Usage data including IP address, browser type, pages visited, and time spent; (d) Device information for analytics and security purposes. Payment information is processed exclusively by Razorpay and is never stored on our servers."},
                 {title:"2. How We Use Your Information",body:"Your information is used to: (a) Provide personalized career consultation services; (b) Send service-related communications and updates; (c) Improve our platform and user experience; (d) Comply with legal obligations; (e) Prevent fraud and ensure security. We do NOT sell, rent, or trade your personal data to any third parties under any circumstances."},
                 {title:"3. Data Sharing",body:"We may share your data with: (a) Service providers who assist in operating our platform (under strict confidentiality agreements); (b) Law enforcement or regulatory bodies when legally required; (c) Successors in the event of a merger or acquisition (with prior notice to users). We do not share your data with advertisers or marketing firms."},
                 {title:"4. AI-Assisted Services Disclosure",body:"hikezo uses AI technology to assist career consultants in providing personalized guidance. Conversations may be processed and stored to improve service quality. By using our consultation services, you consent to this processing. Conversation data is anonymized for training purposes."},
-                {title:"5. Data Security",body:"We implement industry-standard security measures including 256-bit SSL encryption, secure servers, regular security audits, and access controls. However, no method of internet transmission is 100% secure. We cannot guarantee absolute security of your data."},
-                {title:"6. Cookies & Tracking",body:"We use cookies and similar tracking technologies including analytics tools and Meta Pixel to understand usage patterns and improve our services. You may opt out via your browser settings, but this may affect platform functionality."},
-                {title:"7. Data Retention",body:"We retain your personal data for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data by emailing support@hikezo.in. We will process such requests within 30 days, subject to legal retention requirements."},
-                {title:"8. User Rights",body:"You have the right to: (a) Access your personal data; (b) Correct inaccurate data; (c) Request deletion of your data; (d) Object to processing of your data; (e) Data portability. To exercise these rights, contact support@hikezo.in."},
-                {title:"9. Children's Privacy",body:"hikezo is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from minors. If we discover that a minor has provided personal information, we will delete it immediately."},
-                {title:"10. Changes to This Policy",body:"We reserve the right to modify this Privacy Policy at any time. Changes will be posted on this page with an updated effective date. Continued use of the platform after changes constitutes acceptance of the new policy."},
-                {title:"11. Contact Us",body:"For privacy-related concerns, data requests, or complaints, contact us at: support@hikezo.in. We aim to respond within 48 business hours. Registered business: hikezo.in, India."},
+                {title:"5. Data Security",body:"We implement industry-standard security measures including 256-bit SSL encryption, secure servers, regular security audits, and access controls."},
+                {title:"6. Data Retention",body:"We retain your personal data for as long as your account is active or as needed to provide services. You may request deletion by emailing support@hikezo.in."},
+                {title:"7. Contact Us",body:"For privacy-related concerns: support@hikezo.in. We aim to respond within 48 business hours."},
               ].map(s=>(
                 <div key={s.title}>
-                  <p style={{ color:"#e2e8f0",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
+                  <p style={{ color:"#0f172a",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
                   <p>{s.body}</p>
                 </div>
               ))}
@@ -1464,32 +1460,27 @@ export default function hikezo() {
 
       {/* Refund Modal */}
       {showRefund&&(
-        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(2,8,23,0.9)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
+        <div style={{ position:"fixed",inset:0,zIndex:300,background:"rgba(0,0,0,0.5)",backdropFilter:"blur(8px)",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem",animation:"fadeIn .3s ease" }}
           onClick={e=>e.target===e.currentTarget&&setShowRefund(false)}>
-          <div style={{ width:"100%",maxWidth:"460px",background:"#0f172a",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease" }}>
+          <div style={{ width:"100%",maxWidth:"460px",maxHeight:"80vh",overflowY:"auto",background:"#fff",border:"1px solid #e2e8f0",borderRadius:"16px",padding:"2rem",animation:"scaleIn .3s ease",boxShadow:"0 20px 60px rgba(0,0,0,0.15)" }}>
             <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem" }}>
-              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:700,fontSize:"1.1rem" }}>Refund Policy</h2>
-              <button onClick={()=>setShowRefund(false)} style={{ background:"rgba(255,255,255,0.05)",border:"none",color:"#475569",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>x</button>
+              <h2 style={{ fontFamily:"'Inter',sans-serif",color:"#0f172a",fontWeight:700,fontSize:"1.1rem" }}>Refund Policy</h2>
+              <button onClick={()=>setShowRefund(false)} style={{ background:"#f1f5f9",border:"none",color:"#64748b",cursor:"pointer",width:28,height:28,borderRadius:"6px",display:"flex",alignItems:"center",justifyContent:"center" }}>✕</button>
             </div>
             <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.75,fontSize:"0.84rem",display:"flex",flexDirection:"column",gap:"1rem" }}>
-              <p style={{ color:"#475569",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
-              <p style={{ color:"#94a3b8",fontSize:"0.8rem",fontStyle:"italic" }}>By purchasing any plan on hikezo.in, you acknowledge that you have read, understood, and agreed to this Refund and Cancellation Policy.</p>
-              <div style={{ background:"rgba(239,68,68,0.06)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",padding:"1rem" }}>
-                <p style={{ color:"#fca5a5",fontWeight:700,marginBottom:"0.4rem",fontSize:"0.9rem" }}>STRICT NO-REFUND POLICY</p>
-                <p>All payments made on hikezo.in are <strong style={{ color:"#f1f5f9" }}>final, non-refundable, and non-transferable</strong>. Once a payment is processed, no refunds will be issued under any circumstances, including but not limited to: dissatisfaction with service, accidental purchase, change of mind, technical issues on the user's end, or non-usage of the platform.</p>
+              <p style={{ color:"#94a3b8",fontSize:"0.72rem" }}>Last updated: June 2025 | Effective: June 2025</p>
+              <div style={{ background:"rgba(239,68,68,0.04)",border:"1px solid rgba(239,68,68,0.15)",borderRadius:"8px",padding:"1rem" }}>
+                <p style={{ color:"#dc2626",fontWeight:700,marginBottom:"0.4rem",fontSize:"0.9rem" }}>STRICT NO-REFUND POLICY</p>
+                <p>All payments made on hikezo.in are <strong style={{ color:"#0f172a" }}>final, non-refundable, and non-transferable</strong>. Once a payment is processed, no refunds will be issued under any circumstances.</p>
               </div>
               {[
-                {title:"1. Nature of Service",body:"hikezo provides digital career consultation services delivered instantly upon payment. As the service is intangible and immediately accessible, it is categorically exempt from refund claims under standard digital services norms."},
-                {title:"2. No Cancellation Policy",body:"Subscriptions do not support mid-cycle cancellations. You may cancel future auto-renewal by contacting support@hikezo.in at least 7 days before your next billing date. No refund will be provided for the current billing period under any circumstances."},
-                {title:"3. Auto-Renewal",body:"All paid plans are automatically renewed at the end of each billing cycle. By subscribing, you authorize hikezo to charge your payment method for recurring fees. It is your responsibility to cancel before renewal. Charges made due to failure to cancel in time are non-refundable."},
-                {title:"4. Disputed Transactions",body:"Any unauthorized chargeback or payment dispute filed against hikezo without first contacting our support team will result in immediate account suspension and may be subject to legal action for breach of contract. We encourage users to contact support@hikezo.in to resolve any billing concerns before initiating a chargeback."},
-                {title:"5. Free Trial Recommendation",body:"We strongly recommend using our Free Plan to evaluate the platform before making any purchase. The availability of a free tier removes any justification for a refund based on dissatisfaction with service quality."},
-                {title:"6. Platform Downtime",body:"In the rare event of extended platform downtime exceeding 72 consecutive hours, hikezo may, at its sole discretion, provide service credits. This is not a guarantee and does not constitute a right to a cash refund."},
-                {title:"7. Governing Law",body:"This policy is governed by the laws of India. Any disputes arising from this policy shall be subject to the exclusive jurisdiction of courts in India."},
-                {title:"8. Contact",body:"For billing concerns, contact support@hikezo.in within 24 hours of the transaction. While we do not offer refunds, we are committed to resolving genuine billing errors promptly."},
+                {title:"1. Nature of Service",body:"hikezo provides digital career consultation services delivered instantly upon payment. As the service is intangible and immediately accessible, it is categorically exempt from refund claims."},
+                {title:"2. No Cancellation Policy",body:"Subscriptions do not support mid-cycle cancellations. You may cancel future auto-renewal by contacting support@hikezo.in at least 7 days before your next billing date."},
+                {title:"3. Auto-Renewal",body:"All paid plans are automatically renewed at the end of each billing cycle. It is your responsibility to cancel before renewal."},
+                {title:"4. Contact",body:"For billing concerns, contact support@hikezo.in within 24 hours of the transaction."},
               ].map(s=>(
                 <div key={s.title}>
-                  <p style={{ color:"#e2e8f0",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
+                  <p style={{ color:"#0f172a",fontWeight:600,marginBottom:"0.3rem",fontSize:"0.85rem" }}>{s.title}</p>
                   <p>{s.body}</p>
                 </div>
               ))}
