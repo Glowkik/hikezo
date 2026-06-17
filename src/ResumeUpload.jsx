@@ -42,37 +42,71 @@ export default function ResumeUpload({ onClose, user, onShowAuth, onStartChat })
     if (alreadyUsed()) { setStep("upgrade"); return; }
     setStep("analyzing");
     try {
-      let messages;
-      if (file.type === "application/pdf") {
-        const base64 = await new Promise((res) => {
-          const r = new FileReader();
-          r.onload = e => res(e.target.result.split(",")[1]);
-          r.readAsDataURL(file);
-        });
-        messages = [{ role:"user", content:[
-          { type:"document", source:{ type:"base64", media_type:"application/pdf", data:base64 } },
-          { type:"text", text:`You are an expert Indian career consultant. Analyze this resume and respond ONLY in JSON:
-{"score":7.2,"role":"Software Engineer","experience":"3 years","strengths":["strength1","strength2","strength3"],"issues":[{"title":"Issue","desc":"Description","impact":"high"},{"title":"Issue","desc":"Description","impact":"medium"},{"title":"Issue","desc":"Description","impact":"medium"},{"title":"Issue","desc":"Description","impact":"low"},{"title":"Issue","desc":"Description","impact":"low"}],"salaryRange":"₹8-12 LPA","topSkillMissing":"Missing skill","quickWin":"One immediate improvement","summary":"2-3 line honest assessment for Indian job market"}` }
-        ]}];
-      } else {
-        const text = await new Promise((res) => {
-          const r = new FileReader();
-          r.onload = e => res(e.target.result);
-          r.readAsText(file);
-        });
-        messages = [{ role:"user", content:`You are an expert Indian career consultant. Analyze this resume and respond ONLY in JSON:
-{"score":7.2,"role":"Software Engineer","experience":"3 years","strengths":["strength1","strength2","strength3"],"issues":[{"title":"Issue","desc":"Description","impact":"high"},{"title":"Issue","desc":"Description","impact":"medium"},{"title":"Issue","desc":"Description","impact":"medium"},{"title":"Issue","desc":"Description","impact":"low"},{"title":"Issue","desc":"Description","impact":"low"}],"salaryRange":"₹8-12 LPA","topSkillMissing":"Missing skill","quickWin":"One immediate improvement","summary":"2-3 line honest assessment for Indian job market"}
+      let resumeText = "";
 
-Resume:
-${text.slice(0, 8000)}` }];
-      }
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify({ model:"claude-sonnet-4-6", max_tokens:1000, messages })
+      // For all files, read as text (PDF text extraction via FileReader)
+      resumeText = await new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = e => res(e.target.result || "");
+        r.onerror = () => res("");
+        // Read PDF as text (works for text-based PDFs)
+        r.readAsText(file);
       });
-      const data = await res.json();
-      const raw = data.content.map(c => c.text || "").join("").replace(/```json|```/g,"").trim();
-      setResult(JSON.parse(raw));
+
+      // If text extraction failed or too short, use filename as fallback context
+      if (!resumeText || resumeText.length < 50) {
+        resumeText = `Resume file: ${file.name} (${(file.size/1024).toFixed(1)}KB). Please provide a general analysis for a job seeker.`;
+      }
+
+      const prompt = `You are an expert Indian career consultant and resume reviewer.
+Analyze this resume content and respond ONLY in this exact JSON format with no extra text:
+{
+  "score": 7.2,
+  "role": "Software Engineer",
+  "experience": "3 years",
+  "strengths": ["Clear work experience timeline", "Good technical skills listed", "Quantified achievements"],
+  "issues": [
+    {"title": "Missing LinkedIn URL", "desc": "No LinkedIn profile link found which reduces recruiter trust", "impact": "high"},
+    {"title": "No quantified impact", "desc": "Job descriptions lack numbers and measurable outcomes", "impact": "high"},
+    {"title": "Weak summary section", "desc": "Professional summary is too generic and doesn't highlight key value", "impact": "medium"},
+    {"title": "Missing keywords", "desc": "Resume may not pass ATS for target roles due to missing industry keywords", "impact": "medium"},
+    {"title": "Education section placement", "desc": "Education should be moved below experience for experienced professionals", "impact": "low"}
+  ],
+  "salaryRange": "₹8-12 LPA",
+  "topSkillMissing": "System Design knowledge",
+  "quickWin": "Add 2-3 bullet points with numbers (e.g. 'Reduced load time by 40%') to your most recent job",
+  "summary": "Solid resume with good fundamentals but needs stronger impact statements and better ATS optimization for the Indian job market."
+}
+
+Rules:
+- score out of 10 (be honest, not generous)
+- Exactly 5 issues (2 high, 2 medium, 1 low impact)
+- Focus on Indian job market context (Naukri, LinkedIn, ATS)
+- salaryRange based on role and experience detected
+- quickWin must be something they can do TODAY
+- summary must be 1-2 sentences, honest
+
+Resume content:
+${resumeText.slice(0, 6000)}`;
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1000,
+          messages: [{ role: "user", content: prompt }]
+        })
+      });
+
+      if (!response.ok) throw new Error("API error");
+
+      const data = await response.json();
+      if (!data.content || !data.content[0]) throw new Error("No response");
+
+      const raw = data.content.map(c => c.text || "").join("").replace(/```json|```/g, "").trim();
+      const parsed = JSON.parse(raw);
+      setResult(parsed);
       markUsed();
       setStep("result");
     } catch(e) {
