@@ -159,64 +159,63 @@ function getRandConsultant() { return CONSULTANTS[Math.floor(Math.random() * CON
 
 const T = {
   en: {
-    nav: { features: "Features", pricing: "Pricing", cta: "Get Started" },
+    nav: { features: "Features", pricing: "Pricing", cta: "Try Free" },
     hero: {
-      badge: "500+ Professionals Got Their Hike",
-      h1a: "Get the Salary", h1b: "You Deserve",
-      sub: "India's professionals earn 40% more after using hikezo. Get your personalized salary script, career roadmap, and interview prep — free to start.",
-      cta: "Talk to a Consultant - Free", demo: "See How It Works",
-      social: "got salary hikes with hikezo",
+      badge: "500+ Professionals Got Their Salary Hike",
+      h1a: "Upload Your Resume.", h1b: "Get a Free Career Consultation.",
+      sub: "Find out if you're underpaid, get a salary negotiation script, and a step-by-step career plan — all in one place. Free to start.",
+      cta: "Upload Resume — It's Free", demo: "See How It Works",
+      social: "professionals got salary hikes",
     },
-    how: { label: "PROCESS", title: "4 Steps to Career Transformation", sub: "Simple. Fast. Effective.", cta: "Get Started Free ->",
+    how: { label: "HOW IT WORKS", title: "Get Career Clarity in 4 Simple Steps", sub: "No fluff. Just results.", cta: "Get Started Free →",
       steps: [
-        { title: "Create Account", desc: "Sign up free in 30 seconds. No credit card needed." },
-        { title: "Meet Your Consultant", desc: "Get matched with a specialized career expert instantly." },
-        { title: "Get Your Strategy", desc: "Receive a personalized negotiation script & career plan." },
-        { title: "Claim Your Raise", desc: "Use your script. Walk out with the salary you deserve." },
+        { title: "Upload Your Resume", desc: "Upload your resume in seconds. No sign up needed to start." },
+        { title: "Get Your Career Score", desc: "AI analyzes your resume and tells you exactly what's holding you back." },
+        { title: "Talk to Your Consultant", desc: "Chat with a specialist — salary negotiation, career roadmap, interview prep." },
+        { title: "Get the Raise You Deserve", desc: "Use your personalized script. Walk in confident. Walk out with more money." },
       ]
     },
-    features: { label: "WHAT WE OFFER", title: "Everything You Need to Grow",
+    features: { label: "WHAT YOU GET", title: "Everything You Need to Earn More",
       items: [
-        { title: "Salary Negotiation", desc: "Exact words to say in your next appraisal. Proven to get 30-45% hikes." },
-        { title: "Career Roadmap", desc: "Know exactly what to do next week, next month, and next year to level up." },
-        { title: "Skills Gap Analysis", desc: "Discover the exact skills companies pay more for — and how to get them." },
-        { title: "Resume Overhaul", desc: "Rewrite your resume in 1 session. Get 3x more callbacks guaranteed." },
-        { title: "Interview Coaching", desc: "Walk into any interview confident. We prep you for the exact questions they'll ask." },
-        { title: "Salary Benchmarking", desc: "Find out if you're underpaid — compare your salary with 50,000+ data points." },
+        { title: "Resume Analysis", desc: "Upload your resume — get a detailed score and know exactly what to fix to get more callbacks." },
+        { title: "Salary Negotiation Script", desc: "Word-for-word script to use in your next appraisal or offer negotiation. Proven to get 30-45% hikes." },
+        { title: "Career Roadmap", desc: "A clear plan — what to do this week, this month, and this year to reach your next salary level." },
+        { title: "Skills Gap Finder", desc: "Find out exactly which skills you're missing that companies pay a premium for — and how to get them fast." },
+        { title: "Interview Preparation", desc: "Practice with real questions from top companies. Walk into your next interview fully prepared." },
+        { title: "Salary Benchmarking", desc: "See what people in your role, city, and experience level are actually earning right now." },
       ]
     },
-    testi: { label: "SUCCESS STORIES", title: "Real Results from Real Professionals",
+    testi: { label: "SUCCESS STORIES", title: "Real People. Real Results.",
       items: [
         { name: "Rahul Sharma", role: "Software Engineer, Bengaluru", text: "Used hikezo's script in my appraisal. Got 40% hike — from 8 LPA to 11.2 LPA. The roadmap helped me plan my next 2 years clearly. Best Rs.399 I ever spent.", av: "RS" },
         { name: "Priya Menon", role: "Product Manager, Mumbai", text: "Skills gap analysis showed exactly what I was missing for Senior PM. Followed the roadmap, cleared those gaps in 4 months, got promoted with 35% hike.", av: "PM" },
         { name: "Arjun Kapoor", role: "Data Analyst, Hyderabad", text: "hikezo prepped me for Swiggy and PhonePe interviews specifically. Got both offers. Chose PhonePe at 18 LPA — 60% jump from my previous 11 LPA.", av: "AK" },
       ]
     },
-    pricing: { label: "PRICING", title: "Simple, Transparent Pricing", sub: "The avg hikezo user earns Rs.2.8L more per year. Plans start at Rs.399.",
+    pricing: { label: "PRICING", title: "Start Free. Upgrade When You're Ready.", sub: "The avg hikezo user earns ₹2.8L more per year. Plans start at just ₹399/month.",
       plans: [
-        { name: "Free", price: "Rs.0", period: "forever", features: ["3 consultations/day", "Basic salary range", "General career advice"], bonuses: [], cta: "Get Started Free", highlight: false },
-        { name: "Pro", price: "Rs.399", originalPrice: "Rs.649", discount: "38% OFF", period: "per month", features: ["Unlimited consultations", "Salary negotiation script", "Skills gap analysis", "6/12-month career roadmap", "Resume review", "Interview prep Q&A"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist"], cta: "Start Pro Plan", highlight: true },
-        { name: "Elite", price: "Rs.799", originalPrice: "Rs.1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview sessions", "LinkedIn profile review", "Priority access", "Weekly progress reports"], bonuses: ["Free Resume Template", "Salary Negotiation PDF Guide", "LinkedIn Profile Checklist", "Top 50 Interview Questions PDF", "30-Day Career Acceleration Plan"], cta: "Start Elite Plan", highlight: false },
+        { name: "Free", price: "Rs.0", period: "forever", features: ["Resume upload & basic score", "3 AI consultant messages/day", "Salary range for your role", "Basic career advice"], bonuses: [], cta: "Start For Free", highlight: false },
+        { name: "Pro", price: "Rs.399", originalPrice: "Rs.649", discount: "38% OFF", period: "per month", features: ["Everything in Free", "Unlimited AI consultant chat", "Full resume analysis & fix suggestions", "Salary negotiation script", "6-month career roadmap", "Skills gap analysis", "Interview prep Q&A", "Offer letter review"], bonuses: ["Resume Template", "Salary Negotiation PDF", "LinkedIn Checklist"], cta: "Get Pro Plan", highlight: true },
+        { name: "Elite", price: "Rs.799", originalPrice: "Rs.1,299", discount: "38% OFF", period: "per month", features: ["Everything in Pro", "Mock interview practice", "LinkedIn profile review", "Priority consultant access", "Weekly progress check-ins", "Compare up to 4 job offers"], bonuses: ["Resume Template", "Salary Negotiation PDF", "LinkedIn Checklist", "Top 50 Interview Questions", "30-Day Career Plan"], cta: "Get Elite Plan", highlight: false },
       ]
     },
-    faq: { title: "Frequently Asked Questions",
+    faq: { title: "Common Questions",
       items: [
-        { q: "Who are hikezo's consultants?", a: "Experienced career professionals with backgrounds in HR, recruitment, and coaching — all specialized for India's job market." },
-        { q: "How does billing work?", a: "Plans are billed monthly and renew automatically. You can manage your subscription from account settings." },
-        { q: "How soon will I see results?", a: "Most users get a clear action plan and negotiation strategy in their very first session." },
-        { q: "Is my data safe?", a: "All conversations are encrypted with 256-bit SSL. We never share or sell your personal data." },
-        { q: "What's the difference between Pro and Elite?", a: "Pro covers all core tools. Elite adds mock interviews, LinkedIn review, priority access, and weekly progress reports." },
-        { q: "Is this relevant for the Indian market?", a: "Yes — built specifically for Indian professionals with India-specific salary data, company context, and negotiation culture." },
+        { q: "What exactly does hikezo do?", a: "hikezo is an AI-powered career consultation platform. Upload your resume, get a free score, then chat with an AI consultant for salary negotiation scripts, career roadmaps, and interview prep — built specifically for Indian professionals." },
+        { q: "Is it really free to start?", a: "Yes — upload your resume and get your career score completely free. No credit card needed. You get 3 free AI consultant messages per day on the free plan." },
+        { q: "Who are hikezo's consultants?", a: "hikezo uses AI consultants trained on thousands of real salary negotiations, career progressions, and interview experiences in the Indian job market." },
+        { q: "How soon will I see results?", a: "Most users get a clear negotiation strategy and action plan in their very first session — within minutes of signing up." },
+        { q: "What's the difference between Pro and Elite?", a: "Pro covers all core tools — unlimited chat, resume analysis, salary script, and career roadmap. Elite adds mock interviews, LinkedIn review, priority access, and weekly check-ins." },
+        { q: "Is my data safe?", a: "Yes — all conversations are encrypted. We never share or sell your personal data." },
         { q: "Is payment secure?", a: "All payments are processed through Razorpay — India's most trusted payment gateway." },
       ]
     },
-    cta: { title: "Ready to Take Your Career to the Next Level?", sub: "Join 500+ Indian professionals who've already transformed their careers.", btn: "Talk to a Consultant - Free ->" },
+    cta: { title: "Find Out What You're Really Worth", sub: "Upload your resume free — get your career score, salary insights, and a personalized action plan in minutes.", btn: "Upload Resume — It's Free →" },
     footer: "(c) 2025 hikezo.in | India's Career Growth Platform",
-    auth: { signupTitle: "Create Free Account", loginTitle: "Welcome Back", signupSub: "Free - No credit card needed", loginSub: "Login to continue your career journey", namePh: "Full Name", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Create Account & Start ->", loginBtn: "Login & Continue ->", thinking: "Please wait...", toLogin: "Already have an account?", toSignup: "Don't have an account?", loginLink: "Login", signupLink: "Sign Up Free", privacy: "[Secure] Your data is secure. We never spam or sell your information.", success: "Opening your consultation..." },
-    chat: { thinking: " is typing...", inputPh: "Type your message...", badge: "AI-Assisted", upgrade: "Upgrade ->", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} remaining today`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages for today. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now ->", later: "Maybe later" },
-    connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking consultant availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
+    auth: { signupTitle: "Create Free Account", loginTitle: "Welcome Back", signupSub: "Free — No credit card needed", loginSub: "Login to continue", namePh: "Full Name", emailPh: "Email Address", mobilePh: "Mobile Number (10 digits)", passPh: "Password (min 6 chars)", signupBtn: "Create Account & Start →", loginBtn: "Login & Continue →", thinking: "Please wait...", toLogin: "Already have an account?", toSignup: "Don't have an account?", loginLink: "Login", signupLink: "Sign Up Free", privacy: "🔒 Your data is secure. We never spam or sell your information.", success: "Opening your consultation..." },
+    chat: { thinking: " is typing...", inputPh: "Ask anything about your career...", badge: "AI-Assisted", upgrade: "Upgrade →", freeLeft: (n) => `${n} free message${n !== 1 ? "s" : ""} left`, upgradeTitle: "Free Limit Reached", upgradeSub: `You've used all ${FREE_LIMIT} free messages. Upgrade for unlimited access.`, upgradeBtn: "Upgrade Now →", later: "Maybe later" },
+    connect: { title: "Finding Your Consultant...", steps: (name) => ["Checking availability...", "Matching you with the best fit...", `${name} is ready for you!`] },
   },
-
 };
 
 // SVG Icons
@@ -585,55 +584,55 @@ function UrgencyBanner({ onCTA, lang, onClose }) {
 function Navbar({ onCTA, lang, setLang, t, user, bannerVisible=true, onLogout, onCompare, onSalary }) {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(()=>{ const fn=()=>setScrolled(window.scrollY>20); window.addEventListener("scroll",fn,{passive:true}); return()=>window.removeEventListener("scroll",fn); },[]);
   const tn = t.nav;
   return (
-    <nav style={{ position:"fixed",top:bannerVisible?"37px":"0px",transition:"top .3s ease",left:0,right:0,zIndex:100,height:isMobile?"60px":"68px",background:"rgba(15,23,42,0.98)",backdropFilter:"blur(20px)",borderBottom:"1px solid rgba(255,255,255,0.06)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:isMobile?"0 1.2rem":isTablet?"0 1.5rem":"0 2.5rem" }}>
+    <nav style={{ position:"fixed",top:bannerVisible?"37px":"0px",transition:"top .3s ease, box-shadow .3s ease, background .3s ease",left:0,right:0,zIndex:100,height:isMobile?"60px":"68px",background:scrolled?"rgba(255,255,255,0.97)":"rgba(255,255,255,0.92)",backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)",borderBottom:scrolled?"1px solid #e2e8f0":"1px solid rgba(226,232,240,0.6)",boxShadow:scrolled?"0 4px 24px rgba(0,0,0,0.06)":"none",display:"flex",alignItems:"center",justifyContent:"space-between",padding:isMobile?"0 1.2rem":isTablet?"0 1.5rem":"0 2.5rem" }}>
       {/* Logo */}
-      <div style={{ display:"flex",alignItems:"center",gap:"9px",textDecoration:"none" }}>
-        <span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:isMobile?"1.6rem":isTablet?"1.7rem":"1.9rem",color:"#f1f5f9",letterSpacing:"-0.03em" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
+      <div style={{ display:"flex",alignItems:"center",gap:"9px" }}>
+        <span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:isMobile?"1.5rem":isTablet?"1.6rem":"1.8rem",color:"#0f172a",letterSpacing:"-0.04em" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
       </div>
 
       {isDesktop ? (
-        <div style={{ display:"flex",gap:"0.5rem",alignItems:"center" }}>
+        <div style={{ display:"flex",gap:"0.25rem",alignItems:"center" }}>
           {[["#features",tn.features],["#pricing",tn.pricing]].map(([h,l])=>(
-            <a key={h} href={h} style={{ color:"#64748b",textDecoration:"none",fontSize:"0.85rem",fontFamily:"'Inter',sans-serif",fontWeight:500,padding:"6px 12px",borderRadius:"6px",transition:"all .2s" }}
-              onMouseEnter={e=>{e.target.style.color="#f1f5f9";e.target.style.background="rgba(255,255,255,0.05)";}} onMouseLeave={e=>{e.target.style.color="#64748b";e.target.style.background="transparent";}}>{l}</a>
+            <a key={h} href={h} style={{ color:"#64748b",textDecoration:"none",fontSize:"0.85rem",fontFamily:"'Inter',sans-serif",fontWeight:500,padding:"6px 14px",borderRadius:"8px",transition:"all .2s" }}
+              onMouseEnter={e=>{e.target.style.color="#0f172a";e.target.style.background="#f1f5f9";}} onMouseLeave={e=>{e.target.style.color="#64748b";e.target.style.background="transparent";}}>{l}</a>
           ))}
-          <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
-          <button onClick={onCompare} style={{ background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"7px",color:"#0ea5e9",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(14,165,233,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(14,165,233,0.08)";}}>Compare Offers</button>
-          <button onClick={()=>document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"})} style={{ background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"7px",color:"#10b981",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(16,185,129,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(16,185,129,0.08)";}}>Salary Calculator</button>
-          <div style={{ width:"1px",height:"20px",background:"rgba(255,255,255,0.08)",margin:"0 0.5rem" }}/>
-          {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"rgba(255,255,255,0.05)",borderRadius:"7px",border:"1px solid rgba(255,255,255,0.07)" }}>
-            <div style={{ width:24,height:24,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
-            <span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem" }}>{user.name?.split(" ")[0]}</span>
-            <button onClick={onLogout} style={{ background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"5px",color:"#f87171",cursor:"pointer",fontSize:"0.68rem",padding:"2px 8px",fontFamily:"'Inter',sans-serif",fontWeight:600,transition:"all .2s" }}
-              onMouseEnter={e=>{e.target.style.background="rgba(239,68,68,0.2)";}} onMouseLeave={e=>{e.target.style.background="rgba(239,68,68,0.1)";}}>
-              Logout
-            </button>
+          <div style={{ width:"1px",height:"20px",background:"#e2e8f0",margin:"0 0.5rem" }}/>
+          <button onClick={()=>document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"})} style={{ background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.25)",borderRadius:"7px",color:"#059669",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(16,185,129,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(16,185,129,0.08)";}}>💰 Salary Calc</button>
+          <button onClick={onCompare} style={{ background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.25)",borderRadius:"7px",color:"#0284c7",cursor:"pointer",padding:"7px 14px",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,transition:"all .2s" }} onMouseEnter={e=>{e.target.style.background="rgba(14,165,233,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(14,165,233,0.08)";}}>📊 Compare Offers</button>
+          <div style={{ width:"1px",height:"20px",background:"#e2e8f0",margin:"0 0.5rem" }}/>
+          {user&&<div style={{ display:"flex",alignItems:"center",gap:"7px",padding:"5px 10px",background:"#f8fafc",borderRadius:"8px",border:"1px solid #e2e8f0" }}>
+            <div style={{ width:26,height:26,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.65rem",color:"#fff" }}>{user.name?.charAt(0).toUpperCase()}</div>
+            <span style={{ fontFamily:"'Inter',sans-serif",color:"#374151",fontSize:"0.82rem",fontWeight:500 }}>{user.name?.split(" ")[0]}</span>
+            <button onClick={onLogout} style={{ background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"5px",color:"#dc2626",cursor:"pointer",fontSize:"0.68rem",padding:"3px 8px",fontFamily:"'Inter',sans-serif",fontWeight:600,transition:"all .2s" }}
+              onMouseEnter={e=>{e.target.style.background="rgba(239,68,68,0.15)";}} onMouseLeave={e=>{e.target.style.background="rgba(239,68,68,0.08)";}}>Logout</button>
           </div>}
-          <button onClick={onCTA} style={{ padding:"8px 18px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.82rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"opacity .2s,transform .2s" }}
-            onMouseEnter={e=>{e.target.style.opacity=".88";e.target.style.transform="translateY(-1px)";}} onMouseLeave={e=>{e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}>{tn.cta}</button>
+          <button onClick={onCTA} style={{ padding:"9px 20px",borderRadius:"8px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:700,fontSize:"0.85rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",boxShadow:"0 2px 12px rgba(14,165,233,0.3)",transition:"all .25s" }}
+            onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-1px)";e.currentTarget.style.boxShadow="0 6px 20px rgba(14,165,233,0.4)";}} onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 2px 12px rgba(14,165,233,0.3)";}}>{tn.cta}</button>
         </div>
       ) : (
         <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
-          {isTablet&&<>
-            <a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>
-          </>}
-          
-          {isTablet&&<button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
-          {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}><button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button><button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"7px",color:"#94a3b8",cursor:"pointer",width:34,height:34,display:"flex",alignItems:"center",justifyContent:"center" }}>{menuOpen?"x":"="}</button></div>}
+          {isTablet&&<a href="#pricing" style={{ color:"#64748b",textDecoration:"none",fontSize:"0.82rem",fontFamily:"'Inter',sans-serif" }}>{tn.pricing}</a>}
+          {isTablet&&<button onClick={onCTA} style={{ padding:"7px 16px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:700,fontSize:"0.82rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>}
+          {isMobile&&<div style={{display:"flex",alignItems:"center",gap:"8px"}}>
+            <button onClick={onCTA} style={{ padding:"7px 14px",borderRadius:"7px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:700,fontSize:"0.78rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>{tn.cta}</button>
+            <button onClick={()=>setMenuOpen(!menuOpen)} style={{ background:"#f8fafc",border:"1px solid #e2e8f0",borderRadius:"7px",color:"#374151",cursor:"pointer",width:36,height:36,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem" }}>{menuOpen?"✕":"☰"}</button>
+          </div>}
         </div>
       )}
 
       {isMobile&&menuOpen&&(
-        <div style={{ position:"absolute",top:"56px",left:0,right:0,background:"rgba(15,23,42,0.99)",borderBottom:"1px solid rgba(255,255,255,0.06)",padding:"1rem",display:"flex",flexDirection:"column",gap:"0.5rem",animation:"fadeUp .2s ease" }}>
+        <div style={{ position:"absolute",top:"60px",left:0,right:0,background:"#fff",borderBottom:"1px solid #e2e8f0",padding:"1rem",display:"flex",flexDirection:"column",gap:"0.5rem",animation:"fadeUp .2s ease",boxShadow:"0 8px 24px rgba(0,0,0,0.08)" }}>
           {[["#features",tn.features],["#pricing",tn.pricing]].map(([h,l])=>(
-            <a key={h} href={h} onClick={()=>setMenuOpen(false)} style={{ color:"#94a3b8",textDecoration:"none",fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",padding:"0.6rem 0.5rem",borderBottom:"1px solid rgba(255,255,255,0.05)" }}>{l}</a>
+            <a key={h} href={h} onClick={()=>setMenuOpen(false)} style={{ color:"#374151",textDecoration:"none",fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:500,padding:"0.7rem 0.8rem",borderRadius:"8px",borderBottom:"1px solid #f1f5f9" }}>{l}</a>
           ))}
-          <button onClick={()=>{document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"});setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"8px",color:"#10b981",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>💰 Salary Calculator</button>
-          <button onClick={()=>{onCompare();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"8px",color:"#0ea5e9",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>📊 Compare Offers</button>
-          <button onClick={()=>{onCTA();setMenuOpen(false);}} style={{ padding:"12px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"8px",color:"#fff",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem" }}>{tn.cta}</button>
-          {user&&<button onClick={()=>{onLogout();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(239,68,68,0.1)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",color:"#f87171",fontWeight:600,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>Logout</button>}
+          <button onClick={()=>{document.getElementById("salary-calculator")?.scrollIntoView({behavior:"smooth"});setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"8px",color:"#059669",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",textAlign:"left" }}>💰 Salary Calculator</button>
+          <button onClick={()=>{onCompare();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(14,165,233,0.08)",border:"1px solid rgba(14,165,233,0.2)",borderRadius:"8px",color:"#0284c7",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",textAlign:"left" }}>📊 Compare Offers</button>
+          <button onClick={()=>{onCTA();setMenuOpen(false);}} style={{ padding:"13px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",borderRadius:"8px",color:"#fff",fontWeight:700,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",marginTop:"0.3rem" }}>{tn.cta}</button>
+          {user&&<button onClick={()=>{onLogout();setMenuOpen(false);}} style={{ padding:"12px",background:"rgba(239,68,68,0.06)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:"8px",color:"#dc2626",fontWeight:600,fontSize:"0.92rem",cursor:"pointer",fontFamily:"'Inter',sans-serif" }}>Logout</button>}
         </div>
       )}
     </nav>
@@ -646,15 +645,149 @@ function Hero({ onCTA, t, lang }) {
   const th = t.hero;
   const [count, setCount] = useState(0);
   const [liveUsers] = useState(()=>Math.floor(Math.random()*80)+120);
-  useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+10; }),20); return()=>clearInterval(iv); },[]);
+  useEffect(()=>{ const iv=setInterval(()=>setCount(c=>{ if(c>=500){clearInterval(iv);return 500;} return c+8; }),15); return()=>clearInterval(iv); },[]);
   const [typed, setTyped] = useState("");
-  const words = ["Negotiate Your Salary","Bridge Your Skills Gap","Ace Every Interview","Build Your Career Roadmap","Transform Your Resume"];
+  const words = ["Negotiate Your Salary","Get Your Dream Job","Ace Every Interview","Build Your Career Roadmap","Know Your Market Value"];
   const [wi, setWi] = useState(0);
   useEffect(()=>{
     let i=0,del=false,cur=words[wi];
-    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){del=true;}} else{setTyped(cur.slice(0,i-1));i--;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?50:90);
+    const iv=setInterval(()=>{ if(!del){setTyped(cur.slice(0,i+1));i++;if(i===cur.length){setTimeout(()=>{del=true;},1200);}} else{setTyped(cur.slice(0,i-1));i--;if(i===0){del=false;setWi(p=>(p+1)%words.length);cur=words[(wi+1)%words.length];}} },del?40:85);
     return()=>clearInterval(iv);
   },[wi]);
+
+  return(
+    <section style={{ background:"linear-gradient(160deg,#050B18 0%,#0A1628 50%,#050B18 100%)",minHeight:isMobile?"100vh":"95vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"9rem 1.2rem 3rem":isTablet?"9rem 2rem 4rem":"10rem 2rem 5rem",position:"relative",overflow:"hidden" }}>
+
+      {/* Animated mesh gradient */}
+      <div style={{ position:"absolute",inset:0,pointerEvents:"none",overflow:"hidden" }}>
+        <div style={{ position:"absolute",top:"-20%",left:"-10%",width:"600px",height:"600px",background:"radial-gradient(circle,rgba(14,165,233,0.12) 0%,transparent 70%)",animation:"meshMove 15s ease infinite" }}/>
+        <div style={{ position:"absolute",bottom:"-20%",right:"-10%",width:"500px",height:"500px",background:"radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 70%)",animation:"meshMove 20s ease infinite reverse" }}/>
+        <div style={{ position:"absolute",top:"30%",right:"20%",width:"300px",height:"300px",background:"radial-gradient(circle,rgba(14,165,233,0.06) 0%,transparent 70%)",animation:"glowPulse 8s ease infinite" }}/>
+      </div>
+
+      {/* Grid pattern */}
+      <div style={{ position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(14,165,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.03) 1px,transparent 1px)",backgroundSize:"60px 60px",pointerEvents:"none",maskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)",WebkitMaskImage:"radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)" }}/>
+
+      {/* Floating result cards */}
+      {!isMobile && (
+        <>
+          <div style={{ position:"absolute",left:"4%",top:"30%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat 4s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
+            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#10b981,#059669)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>💰</div>
+              <div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>V.N. got</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#10b981" }}>+₹4.7L/year</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ position:"absolute",right:"4%",top:"25%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat2 5s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
+            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#6366f1,#8b5cf6)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>📈</div>
+              <div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>S.R. got promoted</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#a78bfa" }}>+28% hike</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ position:"absolute",left:"6%",bottom:"20%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat2 6s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
+            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#f59e0b,#d97706)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>🎯</div>
+              <div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>K.M. landed</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#fbbf24" }}>PhonePe 18 LPA</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ position:"absolute",right:"6%",bottom:"22%",background:"rgba(255,255,255,0.06)",backdropFilter:"blur(12px)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"14px",padding:"14px 18px",animation:"cardFloat 7s ease infinite",boxShadow:"0 8px 32px rgba(0,0,0,0.2)" }}>
+            <div style={{ display:"flex",alignItems:"center",gap:"10px" }}>
+              <div style={{ width:36,height:36,borderRadius:"50%",background:"linear-gradient(135deg,#ec4899,#db2777)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem" }}>⭐</div>
+              <div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.7rem",color:"rgba(255,255,255,0.5)",marginBottom:"2px" }}>Rating</div>
+                <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",fontWeight:700,color:"#f472b6" }}>4.9/5 stars</div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      <div style={{ position:"relative",zIndex:1,maxWidth:"760px",width:"100%" }}>
+
+        {/* Live badge */}
+        <div style={{ display:"inline-flex",alignItems:"center",gap:"8px",background:"rgba(16,185,129,0.1)",border:"1px solid rgba(16,185,129,0.25)",borderRadius:"100px",padding:"6px 16px",marginBottom:"1.5rem",animation:"fadeUp .5s ease both" }}>
+          <div style={{ width:7,height:7,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite",boxShadow:"0 0 8px rgba(16,185,129,0.6)" }}/>
+          <span style={{ color:"#86efac",fontSize:"0.72rem",fontWeight:600,fontFamily:"'Inter',sans-serif",letterSpacing:"0.04em" }}>
+            {liveUsers} professionals getting career help right now
+          </span>
+        </div>
+
+        {/* Main headline */}
+        <h1 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"clamp(2rem,8vw,2.8rem)":isTablet?"clamp(2.5rem,5vw,3.4rem)":"clamp(3rem,5vw,4rem)",fontWeight:900,lineHeight:1.05,color:"#f8fafc",maxWidth:"720px",margin:"0 auto 0.6rem",letterSpacing:"-0.04em",animation:"fadeUp .7s ease .1s both" }}>
+          Upload Your Resume.
+          <br/>
+          <span style={{ background:"linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#0ea5e9 100%)",backgroundSize:"200% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"gradShift 4s ease infinite" }}>
+            Get a Free Career Consultation.
+          </span>
+        </h1>
+
+        {/* Typewriter */}
+        <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.9rem":"1rem",color:"#64748b",marginBottom:"1rem",animation:"fadeUp .7s ease .15s both",minHeight:"1.5em" }}>
+          AI helps you{" "}
+          <span style={{ color:"#0ea5e9",fontWeight:600 }}>{typed}</span>
+          <span style={{ animation:"blink 1s step-end infinite",color:"#0ea5e9" }}>|</span>
+        </div>
+
+        {/* Sub */}
+        <p style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.88rem":"0.94rem",color:"#475569",maxWidth:"500px",lineHeight:1.7,margin:"0 auto 2rem",animation:"fadeUp .7s ease .2s both" }}>
+          {th.sub}
+        </p>
+
+        {/* CTAs */}
+        <div style={{ display:"flex",gap:"0.8rem",justifyContent:"center",flexWrap:"wrap",animation:"fadeUp .7s ease .3s both" }}>
+          <button onClick={onCTA} className="hz-btn-primary" style={{ padding:isMobile?"13px 26px":"15px 32px",borderRadius:"10px",fontSize:"0.96rem",boxShadow:"0 4px 24px rgba(14,165,233,0.4)",display:"flex",alignItems:"center",gap:"8px" }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Resume — Free
+          </button>
+          <button onClick={onCTA} style={{ padding:isMobile?"13px 22px":"15px 26px",borderRadius:"10px",background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.12)",color:"#94a3b8",fontWeight:600,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .25s ease",backdropFilter:"blur(8px)" }}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(14,165,233,0.4)";e.currentTarget.style.color="#e2e8f0";e.currentTarget.style.background="rgba(14,165,233,0.08)";}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.12)";e.currentTarget.style.color="#94a3b8";e.currentTarget.style.background="rgba(255,255,255,0.06)";}}>
+            See How It Works →
+          </button>
+        </div>
+
+        {/* Trust */}
+        <p style={{ fontFamily:"'Inter',sans-serif",color:"rgba(255,255,255,0.2)",fontSize:"0.75rem",marginTop:"1.2rem",animation:"fadeUp .7s ease .35s both" }}>
+          Free to start &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Results in first session
+        </p>
+
+        {/* Social proof */}
+        <div style={{ display:"flex",alignItems:"center",justifyContent:"center",gap:"12px",marginTop:"2rem",animation:"fadeUp .7s ease .4s both",flexWrap:"wrap" }}>
+          <div style={{ display:"flex" }}>
+            {["RS","PM","AK","MK","SJ"].map((a,i)=>(
+              <div key={a} style={{ width:30,height:30,borderRadius:"50%",background:`linear-gradient(135deg,hsl(${200+i*30},70%,45%),hsl(${220+i*30},70%,35%))`,border:"2px solid #050B18",marginLeft:i===0?0:"-8px",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.55rem",color:"#fff",boxShadow:"0 2px 8px rgba(0,0,0,0.3)" }}>{a}</div>
+            ))}
+          </div>
+          <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.8rem" }}>
+            <strong style={{ color:"#94a3b8" }}>{count.toLocaleString()}+</strong> {th.social}
+          </span>
+          <div style={{ display:"flex",gap:"2px",alignItems:"center" }}>
+            {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.82rem" }}>★</span>)}
+            <span style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.78rem",marginLeft:"4px" }}>4.9/5</span>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ display:"flex",gap:"1.5rem",justifyContent:"center",marginTop:"2.5rem",flexWrap:"wrap",animation:"fadeUp .7s ease .45s both" }}>
+          {[["500+","Professionals helped"],["40%","Avg salary hike"],["4.9/5","User rating"]].map(([v,l])=>(
+            <div key={l} style={{ textAlign:"center" }}>
+              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.4rem":"1.6rem",fontWeight:800,background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>{v}</div>
+              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.72rem",color:"#475569",marginTop:"2px" }}>{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
   return(
     <section style={{ background:"#020817",minHeight:isMobile?"100vh":"92vh",display:"flex",alignItems:"center",justifyContent:"center",textAlign:"center",padding:isMobile?"9rem 1.2rem 2.5rem":isTablet?"8.5rem 2rem 3rem":"9.5rem 2rem 4rem",position:"relative",overflow:"hidden" }}>
@@ -697,98 +830,20 @@ function Hero({ onCTA, t, lang }) {
 
       <div style={{ position:"relative",zIndex:1,maxWidth:"780px",width:"100%" }}>
 
-        {/* Live users badge -- FOMO */}
-        <div style={{ display:"inline-flex",alignItems:"center",gap:"8px",background:"rgba(16,185,129,0.08)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:"6px",padding:"5px 14px",marginBottom:"1.2rem",animation:"fadeUp .5s ease both" }}>
-          <div style={{ width:7,height:7,borderRadius:"50%",background:"#10b981",animation:"pulse 1.5s infinite" }}/>
-          <span style={{ color:"#86efac",fontSize:"0.7rem",fontWeight:600,fontFamily:"'Inter',sans-serif",letterSpacing:"0.06em" }}>
-            {liveUsers} professionals getting career help right now
-          </span>
-        </div>
-
-        {/* Headline -- clear value */}
-        <h1 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"clamp(1.9rem,8vw,2.6rem)":isTablet?"clamp(2.3rem,5vw,3.2rem)":"clamp(2.8rem,4.5vw,3.8rem)",fontWeight:800,lineHeight:1.1,color:"#f8fafc",maxWidth:"700px",margin:"0 auto 0.8rem",letterSpacing:"-0.04em",animation:"fadeUp .7s ease .1s both" }}>
-          {th.h1a}{" "}
-          <span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1,#0ea5e9)",backgroundSize:"200% auto",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"gradShift 3s ease infinite" }}>{th.h1b}</span>
-        </h1>
-
-        {/* Typewriter */}
-        <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.88rem":"0.96rem",color:"#64748b",marginBottom:"0.8rem",animation:"fadeUp .7s ease .15s both",minHeight:"1.4em" }}>
-          <span style={{ color:"#94a3b8" }}>{typed}</span>
-          <span style={{ animation:"blink 1s step-end infinite",color:"#0ea5e9" }}>|</span>
-        </div>
-
-        {/* Sub -- specific outcome */}
-        <p style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"0.86rem":"0.92rem",color:"#475569",maxWidth:"460px",lineHeight:1.65,margin:"0 auto 1.8rem",animation:"fadeUp .7s ease .2s both" }}>
-          {th.sub}
-        </p>
-
-        {/* CTAs */}
-        <div style={{ display:"flex",gap:"0.75rem",justifyContent:"center",flexWrap:"wrap",animation:"fadeUp .7s ease .3s both" }}>
-          <button onClick={onCTA} style={{ padding:isMobile?"13px 26px":"14px 32px",borderRadius:"8px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:700,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",boxShadow:"0 4px 20px rgba(14,165,233,0.35)",transition:"all .25s ease",display:"flex",alignItems:"center",gap:"6px" }}
-            onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 10px 32px rgba(14,165,233,0.5)";}}
-            onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 4px 20px rgba(14,165,233,0.35)";}}>
-            {th.cta}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-          <button onClick={onCTA} style={{ padding:isMobile?"13px 22px":"14px 24px",borderRadius:"8px",background:"transparent",border:"1px solid rgba(255,255,255,0.1)",color:"#94a3b8",fontWeight:500,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .25s ease" }}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(14,165,233,0.4)";e.currentTarget.style.color="#e2e8f0";e.currentTarget.style.background="rgba(14,165,233,0.05)";}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.1)";e.currentTarget.style.color="#94a3b8";e.currentTarget.style.background="transparent";}}>
-            Watch 2-min Demo
-          </button>
-        </div>
-
-        {/* Trust line */}
-        <p style={{ fontFamily:"'Inter',sans-serif",color:"#1e293b",fontSize:"0.75rem",marginTop:"1rem",animation:"fadeUp .7s ease .35s both" }}>
-          Free to start &nbsp;-&nbsp; No credit card &nbsp;-&nbsp; Results in first session
-        </p>
-
-        {/* Social proof */}
-        <div style={{ display:"flex",alignItems:"center",justifyContent:"center",gap:"12px",marginTop:"1.8rem",animation:"fadeUp .7s ease .4s both" }}>
-          <div style={{ display:"flex" }}>
-            {["RS","PM","AK","MK","SJ"].map((a,i)=>(
-              <div key={a} style={{ width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,hsl(${200+i*30},70%,45%),hsl(${220+i*30},70%,35%))`,border:"2px solid #020817",marginLeft:i===0?0:"-7px",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Inter',sans-serif",fontWeight:700,fontSize:"0.52rem",color:"#fff" }}>{a}</div>
-            ))}
-          </div>
-          <span style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.76rem" }}>
-            <strong style={{ color:"#64748b" }}>{count.toLocaleString()}+</strong> {th.social}
-          </span>
-          <div style={{ display:"flex",gap:"1px" }}>
-            {[1,2,3,4,5].map(s=><span key={s} style={{ color:"#f59e0b",fontSize:"0.75rem" }}>*</span>)}
-          </div>
-          <span style={{ fontFamily:"'Inter',sans-serif",color:"#334155",fontSize:"0.75rem" }}>4.9/5</span>
-        </div>
-
-        {/* Stats */}
-        <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"1px",background:"rgba(255,255,255,0.05)",borderRadius:"10px",overflow:"hidden",marginTop:"2rem",border:"1px solid rgba(255,255,255,0.06)",animation:"fadeUp .7s ease .45s both" }}>
-          {[["500+","Professionals helped"],["40%","Avg salary hike"],["4.9/5","User rating"]].map(([v,l],i)=>(
-            <div key={l} style={{ padding:"0.9rem",background:"rgba(255,255,255,0.02)",textAlign:"center",transition:"background .2s" }}
-              onMouseEnter={e=>e.currentTarget.style.background="rgba(14,165,233,0.05)"}
-              onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.02)"}>
-              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1rem":"1.2rem",fontWeight:700,color:"#f1f5f9",letterSpacing:"-0.02em" }}>{v}</div>
-              <div style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.65rem",color:"#334155",marginTop:"2px" }}>{l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
 // ── SOCIAL PROOF STRIP ───────────────────────────────────────────────────────
 function SocialProofStrip() {
   const companies = ["Google","Microsoft","Amazon","Flipkart","Swiggy","Infosys","TCS","PhonePe","Zomato","Razorpay","Wipro","HCL"];
   return(
-    <section style={{ background:"rgba(255,255,255,0.02)",borderTop:"1px solid rgba(255,255,255,0.05)",borderBottom:"1px solid rgba(255,255,255,0.05)",padding:"14px 0",overflow:"hidden" }}>
+    <section style={{ background:"#f8fafc",borderTop:"1px solid #e2e8f0",borderBottom:"1px solid #e2e8f0",padding:"16px 0",overflow:"hidden" }}>
       <style>{`@keyframes stripScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}`}</style>
-      <p style={{ textAlign:"center",fontFamily:"'Inter',sans-serif",fontSize:"0.65rem",color:"#334155",marginBottom:"10px",letterSpacing:"0.08em" }}>
+      <p style={{ textAlign:"center",fontFamily:"'Inter',sans-serif",fontSize:"0.65rem",color:"#94a3b8",marginBottom:"12px",letterSpacing:"0.1em",fontWeight:600 }}>
         PROFESSIONALS FROM THESE COMPANIES GOT THEIR HIKE
       </p>
       <div style={{ display:"flex",alignItems:"center",overflow:"hidden" }}>
         <div style={{ display:"inline-flex",alignItems:"center",animation:"stripScroll 22s linear infinite",whiteSpace:"nowrap" }}>
           {[...companies,...companies].map((c,i)=>(
-            <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:"6px",padding:"0 1.8rem",fontFamily:"'Inter',sans-serif",fontSize:"0.8rem",fontWeight:600,color:"#475569" }}>
-              <span style={{ width:4,height:4,borderRadius:"50%",background:"#0ea5e9",display:"inline-block" }}/>
+            <span key={i} style={{ display:"inline-flex",alignItems:"center",gap:"6px",padding:"0 2rem",fontFamily:"'Inter',sans-serif",fontSize:"0.82rem",fontWeight:600,color:"#64748b" }}>
+              <span style={{ width:5,height:5,borderRadius:"50%",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",display:"inline-block" }}/>
               {c}
             </span>
           ))}
@@ -849,21 +904,22 @@ function Features({ t }) {
   const { isMobile, isTablet }=useBreakpoint();
   const tf=t.features;
   return(
-    <section id="features" style={{ background:"#020817",padding:isMobile?"4rem 1.5rem":isTablet?"5rem 2rem":"7rem 3rem",width:"100%" }} ref={ref}>
+    <section id="features" style={{ background:"#ffffff",padding:isMobile?"4rem 1.5rem":isTablet?"5rem 2rem":"7rem 3rem",width:"100%" }} ref={ref}>
       <div style={{ maxWidth:"1100px",margin:"0 auto" }}>
-        <div style={{ textAlign:"center",marginBottom:"3rem" }}>
-          <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 12px",borderRadius:"4px" }}>{tf.label}</span>
-          <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.7rem":"2.2rem",fontWeight:700,color:"#f8fafc",marginTop:"1rem",letterSpacing:"-0.03em" }}>{tf.title}</h2>
+        <div style={{ textAlign:"center",marginBottom:"3.5rem" }}>
+          <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 14px",borderRadius:"100px",border:"1px solid rgba(14,165,233,0.15)" }}>{tf.label}</span>
+          <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.8rem":"2.4rem",fontWeight:800,color:"#0f172a",marginTop:"1rem",letterSpacing:"-0.04em",lineHeight:1.15 }}>{tf.title}</h2>
+          <p style={{ fontFamily:"'Inter',sans-serif",fontSize:"0.95rem",color:"#64748b",marginTop:"0.6rem" }}>Everything you need to earn what you're worth.</p>
         </div>
-        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(3,1fr)",gap:"1px",background:"rgba(255,255,255,0.06)",borderRadius:"16px",overflow:"hidden",border:"1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(3,1fr)",gap:"1.2rem" }}>
           {tf.items.map((f,i)=>(
             <SR key={f.title} cls="sr" delay={i*80}>
-              <div style={{ padding:"2rem",background:"rgba(255,255,255,0.02)",transition:"all .3s ease",cursor:"default",height:"100%" }}
-                onMouseEnter={e=>{e.currentTarget.style.background="rgba(14,165,233,0.06)";const ic=e.currentTarget.querySelector(".feat-icon");if(ic){ic.style.transform="scale(1.1) rotate(-5deg)";ic.style.background="rgba(14,165,233,0.15)";}}}
-                onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.02)";const ic=e.currentTarget.querySelector(".feat-icon");if(ic){ic.style.transform="scale(1) rotate(0deg)";ic.style.background="rgba(14,165,233,0.1)";}}}> 
-                <div className="feat-icon" style={{ width:38,height:38,borderRadius:"10px",background:"rgba(14,165,233,0.1)",display:"flex",alignItems:"center",justifyContent:"center",marginBottom:"1rem",color:"#0ea5e9",transition:"all .3s ease" }}>{FEAT_ICONS[i]}</div>
-                <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#f1f5f9",fontWeight:600,fontSize:"0.92rem",marginBottom:"0.4rem" }}>{f.title}</h3>
-                <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",lineHeight:1.65,fontSize:"0.82rem" }}>{f.desc}</p>
+              <div className="hz-card" style={{ padding:"1.8rem",cursor:"default",height:"100%",display:"flex",flexDirection:"column" }}
+                onMouseEnter={e=>{e.currentTarget.style.borderColor="#0ea5e9";e.currentTarget.style.boxShadow="0 8px 32px rgba(14,165,233,0.1)";e.currentTarget.style.transform="translateY(-4px)";const ic=e.currentTarget.querySelector(".feat-icon");if(ic){ic.style.transform="scale(1.1) rotate(-5deg)";ic.style.background="rgba(14,165,233,0.12)";ic.style.borderColor="rgba(14,165,233,0.3)";}}}
+                onMouseLeave={e=>{e.currentTarget.style.borderColor="#f1f5f9";e.currentTarget.style.boxShadow="none";e.currentTarget.style.transform="translateY(0)";const ic=e.currentTarget.querySelector(".feat-icon");if(ic){ic.style.transform="scale(1) rotate(0deg)";ic.style.background="rgba(14,165,233,0.06)";ic.style.borderColor="rgba(14,165,233,0.12)";}}}> 
+                <div className="feat-icon" style={{ width:44,height:44,borderRadius:"12px",background:"rgba(14,165,233,0.06)",border:"1px solid rgba(14,165,233,0.12)",display:"flex",alignItems:"center",justifyContent:"center",marginBottom:"1.2rem",color:"#0ea5e9",transition:"all .3s ease",flexShrink:0 }}>{FEAT_ICONS[i]}</div>
+                <h3 style={{ fontFamily:"'Inter',sans-serif",color:"#0f172a",fontWeight:700,fontSize:"1rem",marginBottom:"0.5rem" }}>{f.title}</h3>
+                <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",lineHeight:1.7,fontSize:"0.85rem",flex:1 }}>{f.desc}</p>
               </div>
             </SR>
           ))}
@@ -1082,74 +1138,68 @@ function Pricing({ onCTA, t, lang, user, setShowAuth, setPendingPlan }) {
   const { isMobile, isTablet }=useBreakpoint();
   const tp=t.pricing;
   return(
-    <section id="pricing" style={{ background:"#020817",padding:isMobile?"4rem 1.5rem":isTablet?"5rem 2rem":"7rem 3rem",width:"100%" }} ref={ref}>
+    <section id="pricing" style={{ background:"#f8fafc",padding:isMobile?"4rem 1.5rem":isTablet?"5rem 2rem":"7rem 3rem",width:"100%" }} ref={ref}>
       <div style={{ maxWidth:"1100px",margin:"0 auto" }}>
         <div style={{ textAlign:"center",marginBottom:"3.5rem" }}>
-          <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 12px",borderRadius:"4px" }}>{tp.label}</span>
-          <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.7rem":"2.2rem",fontWeight:700,color:"#f8fafc",marginTop:"1rem",letterSpacing:"-0.03em" }}>{tp.title}</h2>
-          <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",marginTop:"0.5rem",fontSize:"0.9rem" }}>{tp.sub}</p>
-          <div style={{ display:"inline-flex",alignItems:"center",gap:"6px",background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.15)",borderRadius:"6px",padding:"5px 14px",marginTop:"0.8rem" }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <span style={{ fontFamily:"'Inter',sans-serif",color:"#fca5a5",fontSize:"0.72rem",fontWeight:600 }}>
-              100+ professionals upgraded this month
-            </span>
+          <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 14px",borderRadius:"100px",border:"1px solid rgba(14,165,233,0.15)" }}>{tp.label}</span>
+          <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.8rem":"2.4rem",fontWeight:800,color:"#0f172a",marginTop:"1rem",letterSpacing:"-0.04em",lineHeight:1.15 }}>{tp.title}</h2>
+          <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",marginTop:"0.5rem",fontSize:"0.92rem" }}>{tp.sub}</p>
+          <div style={{ display:"inline-flex",alignItems:"center",gap:"6px",background:"rgba(239,68,68,0.06)",border:"1px solid rgba(239,68,68,0.12)",borderRadius:"100px",padding:"5px 16px",marginTop:"0.8rem" }}>
+            <span style={{ fontFamily:"'Inter',sans-serif",color:"#dc2626",fontSize:"0.72rem",fontWeight:600 }}>🔥 100+ professionals upgraded this month</span>
           </div>
         </div>
         <div style={{ display:"grid",gridTemplateColumns:isMobile?"1fr":isTablet?"repeat(2,1fr)":"repeat(3,1fr)",gap:"1.2rem",alignItems:"start" }}>
           {tp.plans.map((plan,i)=>(
             <SR key={plan.name} cls="sr-s" delay={i*120}>
-              <div style={{ background:plan.highlight?"#fff":"rgba(255,255,255,0.02)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.06)",borderRadius:"16px",padding:"2rem 1.6rem",position:"relative",display:"flex",flexDirection:"column",boxShadow:plan.highlight?"0 20px 60px rgba(0,0,0,0.25)":"none",transition:"all .3s ease" }}
-                onMouseEnter={e=>{ if(!plan.highlight){e.currentTarget.style.border="1px solid rgba(14,165,233,0.2)";e.currentTarget.style.transform="translateY(-4px)";}else{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 28px 70px rgba(0,0,0,0.3)";}}}
-                onMouseLeave={e=>{ if(!plan.highlight){e.currentTarget.style.border="1px solid rgba(255,255,255,0.06)";e.currentTarget.style.transform="translateY(0)";}else{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 20px 60px rgba(0,0,0,0.25)";}}}>
+              <div style={{ background:"#fff",border:plan.highlight?"2px solid #0ea5e9":"1px solid #e2e8f0",borderRadius:"16px",padding:"2rem 1.6rem",position:"relative",display:"flex",flexDirection:"column",boxShadow:plan.highlight?"0 20px 60px rgba(14,165,233,0.15)":"0 2px 12px rgba(0,0,0,0.04)",transition:"all .3s ease" }}
+                onMouseEnter={e=>{ e.currentTarget.style.transform="translateY(-4px)";if(plan.highlight){e.currentTarget.style.boxShadow="0 28px 70px rgba(14,165,233,0.2)";}else{e.currentTarget.style.boxShadow="0 12px 40px rgba(0,0,0,0.1)";e.currentTarget.style.borderColor="#0ea5e9";}}}
+                onMouseLeave={e=>{ e.currentTarget.style.transform="translateY(0)";if(plan.highlight){e.currentTarget.style.boxShadow="0 20px 60px rgba(14,165,233,0.15)";}else{e.currentTarget.style.boxShadow="0 2px 12px rgba(0,0,0,0.04)";e.currentTarget.style.borderColor="#e2e8f0";}}}>
 
-              {plan.highlight&&<div style={{ position:"absolute",top:"-1px",left:"50%",transform:"translateX(-50%)",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",color:"#fff",fontWeight:600,fontSize:"0.62rem",padding:"3px 18px",borderRadius:"0 0 8px 8px",fontFamily:"'Inter',sans-serif",letterSpacing:"0.08em",whiteSpace:"nowrap" }}>MOST POPULAR</div>}
+              {plan.highlight&&<div style={{ position:"absolute",top:"-1px",left:"50%",transform:"translateX(-50%)",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",color:"#fff",fontWeight:700,fontSize:"0.62rem",padding:"4px 20px",borderRadius:"0 0 10px 10px",fontFamily:"'Inter',sans-serif",letterSpacing:"0.08em",whiteSpace:"nowrap" }}>MOST POPULAR</div>}
               <div style={{ marginBottom:"1.5rem",paddingTop:plan.highlight?"0.5rem":0 }}>
                 <div style={{ display:"flex",alignItems:"center",gap:"8px",marginBottom:"0.5rem" }}>
-                  <div style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#64748b":"#334155",fontSize:"0.72rem",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>{plan.name}</div>
-                  {plan.discount && <div style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",borderRadius:"4px",padding:"2px 8px",fontFamily:"'Inter',sans-serif",color:"#fff",fontSize:"0.62rem",fontWeight:700,letterSpacing:"0.06em" }}>{plan.discount}</div>}
+                  <div style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.72rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase" }}>{plan.name}</div>
+                  {plan.discount && <div style={{ background:"linear-gradient(135deg,#10b981,#0ea5e9)",borderRadius:"100px",padding:"2px 10px",fontFamily:"'Inter',sans-serif",color:"#fff",fontSize:"0.62rem",fontWeight:700 }}>{plan.discount}</div>}
                 </div>
                 <div style={{ display:"flex",alignItems:"baseline",gap:"6px" }}>
-                  <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"2.4rem",fontWeight:800,color:plan.highlight?"#0f172a":"#f1f5f9",letterSpacing:"-0.04em",lineHeight:1 }}>{plan.price}</span>
-                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem" }}>/mo</span>}
-                  {plan.originalPrice && <span style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.85rem",textDecoration:"line-through",marginLeft:"2px" }}>{plan.originalPrice}</span>}
+                  <span style={{ fontFamily:"'Inter',sans-serif",fontSize:"2.4rem",fontWeight:800,color:"#0f172a",letterSpacing:"-0.04em",lineHeight:1 }}>{plan.price}</span>
+                  {i>0&&<span style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem" }}>/mo</span>}
+                  {plan.originalPrice && <span style={{ fontFamily:"'Inter',sans-serif",color:"#cbd5e1",fontSize:"0.85rem",textDecoration:"line-through",marginLeft:"2px" }}>{plan.originalPrice}</span>}
                 </div>
-                {i===0&&<div style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#94a3b8":"#334155",fontSize:"0.78rem",marginTop:"2px" }}>{plan.period}</div>}
+                {i===0&&<div style={{ fontFamily:"'Inter',sans-serif",color:"#94a3b8",fontSize:"0.78rem",marginTop:"2px" }}>{plan.period}</div>}
               </div>
-              <div style={{ height:"1px",background:plan.highlight?"#f1f5f9":"rgba(255,255,255,0.06)",marginBottom:"1.5rem" }}/>
+              <div style={{ height:"1px",background:"#f1f5f9",marginBottom:"1.5rem" }}/>
               <ul style={{ listStyle:"none",padding:0,marginBottom:"1.5rem",display:"flex",flexDirection:"column",gap:"0.65rem",flex:1 }}>
                 {plan.features.map(f=>(
-                  <li key={f} style={{ display:"flex",gap:"8px",alignItems:"flex-start",fontFamily:"'Inter',sans-serif",color:plan.highlight?"#374151":"#64748b",fontSize:"0.84rem" }}>
+                  <li key={f} style={{ display:"flex",gap:"8px",alignItems:"flex-start",fontFamily:"'Inter',sans-serif",color:"#374151",fontSize:"0.84rem" }}>
                     <span style={{ flexShrink:0,marginTop:"1px" }}>{Icon.check}</span>{f}
                   </li>
                 ))}
               </ul>
               {plan.bonuses?.length>0&&(
-                <div style={{ marginBottom:"1.5rem",background:plan.highlight?"rgba(14,165,233,0.05)":"rgba(14,165,233,0.04)",border:`1px solid ${plan.highlight?"rgba(14,165,233,0.2)":"rgba(14,165,233,0.1)"}`,borderRadius:"8px",padding:"0.8rem" }}>
+                <div style={{ marginBottom:"1.5rem",background:"rgba(14,165,233,0.04)",border:"1px solid rgba(14,165,233,0.12)",borderRadius:"10px",padding:"0.8rem" }}>
                   <div style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.68rem",fontWeight:700,letterSpacing:"0.08em",marginBottom:"0.5rem",display:"flex",alignItems:"center",gap:"5px" }}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-                    BONUS INCLUDED
+                    🎁 BONUS INCLUDED
                   </div>
-                  {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:plan.highlight?"#475569":"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
+                  {plan.bonuses.map(b=><div key={b} style={{ fontFamily:"'Inter',sans-serif",color:"#475569",fontSize:"0.78rem",display:"flex",gap:"5px",marginTop:"3px" }}><span style={{ color:"#10b981" }}>+</span>{b}</div>)}
                 </div>
               )}
-              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setPendingPlan(plan.price);try{sessionStorage.setItem("hz_pending_plan",plan.price);}catch{}setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"12px",borderRadius:"8px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"rgba(255,255,255,0.06)",border:plan.highlight?"none":"1px solid rgba(255,255,255,0.08)",color:plan.highlight?"#fff":"#94a3b8",fontWeight:600,fontSize:"0.88rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",transition:"all .2s" }} onMouseEnter={e=>{e.target.style.opacity=".88";}} onMouseLeave={e=>{e.target.style.opacity="1";}}>{plan.cta}</button>
+              <button onClick={()=>{ if(plan.price==="Rs.0"){onCTA();}else if(!user){setPendingPlan(plan.price);try{sessionStorage.setItem("hz_pending_plan",plan.price);}catch{}setShowAuth(true);}else if(plan.price==="Rs.799"){window.open("https://rzp.io/rzp/HqU3cDU","_blank");}else{window.open("https://rzp.io/rzp/DNfBx2L3","_blank");} }} style={{ width:"100%",padding:"13px",borderRadius:"10px",background:plan.highlight?"linear-gradient(135deg,#0ea5e9,#6366f1)":"#0f172a",border:"none",color:"#fff",fontWeight:700,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",boxShadow:plan.highlight?"0 4px 16px rgba(14,165,233,0.3)":"0 2px 8px rgba(0,0,0,0.1)",transition:"all .25s" }}
+                onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-1px)";e.currentTarget.style.opacity=".9";}} onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.opacity="1";}}>{plan.cta}</button>
             </div>
             </SR>
           ))}
         </div>
-        {/* Trust Badges — proper SVG icons */}
+        {/* Trust Badges */}
         <div style={{ marginTop:"2.5rem",display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"0.75rem" }}>
           {[
-            { label:"SSL Secured", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> },
-            { label:"Razorpay Secured", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
-            { label:"Data Privacy", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
-            { label:"256-bit Encryption", icon:<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg> },
+            { label:"SSL Secured" },
+            { label:"Razorpay Secured" },
+            { label:"Data Privacy" },
+            { label:"256-bit Encryption" },
           ].map(b=>(
-            <div key={b.label} style={{ display:"flex",alignItems:"center",gap:"6px",fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.75rem",padding:"6px 14px",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"6px",transition:"all .2s" }}
-              onMouseEnter={e=>{e.currentTarget.style.color="#94a3b8";e.currentTarget.style.borderColor="rgba(255,255,255,0.12)";}}
-              onMouseLeave={e=>{e.currentTarget.style.color="#64748b";e.currentTarget.style.borderColor="rgba(255,255,255,0.08)";}}>
-              <span style={{ color:"#475569",display:"flex",alignItems:"center" }}>{b.icon}</span>
-              {b.label}
+            <div key={b.label} style={{ display:"flex",alignItems:"center",gap:"6px",fontFamily:"'Inter',sans-serif",color:"#64748b",fontSize:"0.75rem",padding:"6px 14px",background:"#fff",border:"1px solid #e2e8f0",borderRadius:"100px" }}>
+              🔒 {b.label}
             </div>
           ))}
         </div>
@@ -1270,38 +1320,43 @@ export default function hikezo() {
   };
 
   if(authLoading) return(
-    <div style={{ background:"#020817",minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center" }}>
-      <span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:"1.8rem",color:"#f1f5f9" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
+    <div style={{ background:"#ffffff",minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center" }}>
+      <span style={{ fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:"1.8rem",color:"#0f172a" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
     </div>
   );
 
   return(
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         *{margin:0;padding:0;box-sizing:border-box;}
         html,body{width:100%;scroll-behavior:smooth;overflow-x:hidden;}
-        body{background:#020817;-webkit-text-size-adjust:100%;font-family:'Inter',sans-serif;}
-        #root{width:100%;overflow-x:hidden;background:#020817;}
+        body{background:#ffffff;-webkit-text-size-adjust:100%;font-family:'Inter',sans-serif;}
+        #root{width:100%;overflow-x:hidden;background:#ffffff;}
 
         @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
         @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
         @keyframes scaleIn{from{opacity:0;transform:scale(0.92) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}
         @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
         @keyframes dot{0%,80%,100%{opacity:.2;transform:scale(.7);}40%{opacity:1;transform:scale(1);}}
+        @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+        @keyframes gradShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+        @keyframes glowPulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+        @keyframes floatY{0%,100%{transform:translateY(0px);}50%{transform:translateY(-12px);}}
+        @keyframes floatY2{0%,100%{transform:translateY(0px);}50%{transform:translateY(-8px);}}
+        @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
         @keyframes ringPulse{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.08);opacity:1;}}
         @keyframes consultBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-        @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
         @keyframes waFloat{0%,100%{transform:translateY(0);box-shadow:0 6px 20px rgba(37,211,102,0.4);}50%{transform:translateY(-5px);box-shadow:0 12px 28px rgba(37,211,102,0.6);}}
-        @keyframes floatParticle{0%,100%{transform:translateY(0) translateX(0);opacity:0.4;}50%{transform:translateY(-20px) translateX(8px);opacity:0.8;}}
-        @keyframes gradShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
-        @keyframes glowPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0.8;transform:scale(1.05);}}
         @keyframes numberRise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-        @keyframes lineGrow{from{transform:scaleX(0);transform-origin:left;}to{transform:scaleX(1);transform-origin:left;}}
         @keyframes badgePop{0%{opacity:0;transform:scale(0.8) translateY(6px);}100%{opacity:1;transform:scale(1) translateY(0);}}
-        @keyframes shimmerSlide{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+        @keyframes meshMove{0%{transform:translate(0,0) rotate(0deg);}33%{transform:translate(30px,-20px) rotate(120deg);}66%{transform:translate(-20px,10px) rotate(240deg);}100%{transform:translate(0,0) rotate(360deg);}}
+        @keyframes cardFloat{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-10px) rotate(-1deg);}}
+        @keyframes cardFloat2{0%,100%{transform:translateY(0) rotate(1deg);}50%{transform:translateY(-8px) rotate(1deg);}}
+        @keyframes slideInLeft{from{opacity:0;transform:translateX(-40px);}to{opacity:1;transform:translateX(0);}}
+        @keyframes slideInRight{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:translateX(0);}}
+        @keyframes countUp{from{opacity:0;}to{opacity:1;}}
 
-        /* Scroll reveal classes */
         .sr{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(0.16,1,0.3,1),transform .7s cubic-bezier(0.16,1,0.3,1);}
         .sr.in{opacity:1 !important;transform:translateY(0) !important;}
         .sr-l{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(0.16,1,0.3,1),transform .7s cubic-bezier(0.16,1,0.3,1);}
@@ -1311,11 +1366,21 @@ export default function hikezo() {
         .sr-s{opacity:0;transform:scale(0.88);transition:opacity .6s cubic-bezier(0.16,1,0.3,1),transform .6s cubic-bezier(0.16,1,0.3,1);}
         .sr-s.in{opacity:1 !important;transform:scale(1) !important;}
 
-        ::-webkit-scrollbar{width:0px;}
+        .hz-btn-primary{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;transition:all .25s ease;position:relative;overflow:hidden;}
+        .hz-btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);opacity:0;transition:opacity .2s;}
+        .hz-btn-primary:hover::after{opacity:1;}
+        .hz-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(14,165,233,0.4);}
+
+        .hz-card{background:#fff;border:1px solid #f1f5f9;border-radius:16px;transition:all .3s ease;}
+        .hz-card:hover{border-color:#0ea5e9;box-shadow:0 8px 32px rgba(14,165,233,0.1);transform:translateY(-4px);}
+
+        ::-webkit-scrollbar{width:4px;}
+        ::-webkit-scrollbar-track{background:#f8fafc;}
+        ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px;}
         input,button{-webkit-tap-highlight-color:transparent;}
       `}</style>
 
-      <div style={{ background:"#020817",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
+      <div style={{ background:"#ffffff",minHeight:"100vh",width:"100vw",maxWidth:"100%",overflowX:"hidden" }}>
         {showBanner && <UrgencyBanner onCTA={handleCTA} lang={lang} onClose={()=>setShowBanner(false)}/>}
         <Navbar onCTA={handleCTA} lang={lang} setLang={setLang} t={t} user={user} bannerVisible={showBanner} onLogout={handleLogout} onCompare={()=>setShowCompare(true)} onSalary={()=>setShowSalary(true)}/>
         <Hero onCTA={handleCTA} t={t} lang={lang}/>
@@ -1328,45 +1393,48 @@ export default function hikezo() {
         <FAQ t={t}/>
 
         {/* CTA Banner */}
-        <section style={{ background:"#020817",padding:isMobile?"3rem 1.5rem 4rem":isTablet?"3.5rem 2rem 5rem":"5rem 3rem 7rem",textAlign:"center",borderTop:"1px solid rgba(255,255,255,0.05)" }}>
-          <div style={{ maxWidth:"640px",margin:"0 auto",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(14,165,233,0.12)",borderRadius:"16px",padding:isMobile?"2rem 1.5rem":"3rem 2.5rem",position:"relative",overflow:"hidden" }}>
-            {/* Subtle top glow */}
-            <div style={{ position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:"300px",height:"1px",background:"linear-gradient(90deg,transparent,rgba(14,165,233,0.5),transparent)",pointerEvents:"none" }}/>
-            <div style={{ position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:"200px",height:"60px",background:"radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 70%)",pointerEvents:"none" }}/>
-            <span style={{ fontFamily:"'Inter',sans-serif",color:"#0ea5e9",fontSize:"0.7rem",fontWeight:700,letterSpacing:"0.14em",background:"rgba(14,165,233,0.08)",padding:"4px 12px",borderRadius:"4px",display:"inline-block",marginBottom:"1.2rem" }}>GET STARTED TODAY</span>
-            <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.5rem":"2rem",fontWeight:700,color:"#f8fafc",marginBottom:"0.7rem",letterSpacing:"-0.03em" }}>{t.cta.title}</h2>
-            <p style={{ fontFamily:"'Inter',sans-serif",color:"#475569",marginBottom:"2rem",fontSize:"0.9rem",lineHeight:1.65 }}>{t.cta.sub}</p>
-            <button onClick={handleCTA} style={{ padding:isMobile?"12px 24px":"13px 32px",borderRadius:"8px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",border:"none",color:"#fff",fontWeight:600,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Inter',sans-serif",boxShadow:"0 4px 20px rgba(14,165,233,0.25)",transition:"all .2s" }}
-              onMouseEnter={e=>{e.target.style.transform="translateY(-2px)";e.target.style.boxShadow="0 8px 28px rgba(14,165,233,0.4)";}} onMouseLeave={e=>{e.target.style.transform="translateY(0)";e.target.style.boxShadow="0 4px 20px rgba(14,165,233,0.25)";}}>{t.cta.btn}</button>
+        <section style={{ background:"linear-gradient(160deg,#050B18,#0A1628)",padding:isMobile?"3rem 1.5rem 4rem":isTablet?"3.5rem 2rem 5rem":"5rem 3rem 7rem",textAlign:"center" }}>
+          <div style={{ maxWidth:"640px",margin:"0 auto" }}>
+            <div style={{ display:"inline-flex",alignItems:"center",gap:"6px",background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"100px",padding:"5px 16px",marginBottom:"1.5rem" }}>
+              <span style={{ width:6,height:6,borderRadius:"50%",background:"#10b981",display:"inline-block",animation:"pulse 1.5s infinite" }}/>
+              <span style={{ fontFamily:"'Inter',sans-serif",color:"rgba(255,255,255,0.7)",fontSize:"0.72rem",fontWeight:500 }}>Free to start — no credit card needed</span>
+            </div>
+            <h2 style={{ fontFamily:"'Inter',sans-serif",fontSize:isMobile?"1.8rem":"2.4rem",fontWeight:800,color:"#f8fafc",marginBottom:"0.7rem",letterSpacing:"-0.04em",lineHeight:1.15 }}>{t.cta.title}</h2>
+            <p style={{ fontFamily:"'Inter',sans-serif",color:"#64748b",marginBottom:"2rem",fontSize:"0.92rem",lineHeight:1.7 }}>{t.cta.sub}</p>
+            <button onClick={handleCTA} className="hz-btn-primary" style={{ padding:isMobile?"13px 28px":"15px 36px",borderRadius:"10px",fontSize:"0.96rem",boxShadow:"0 4px 24px rgba(14,165,233,0.4)",display:"inline-flex",alignItems:"center",gap:"8px" }}
+              onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 12px 36px rgba(14,165,233,0.5)";}} onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 4px 24px rgba(14,165,233,0.4)";}}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              {t.cta.btn}
+            </button>
           </div>
         </section>
 
         {/* Footer */}
-        <footer style={{ background:"#020817",borderTop:"1px solid rgba(255,255,255,0.06)",padding:"2rem 2rem",fontFamily:"'Inter',sans-serif" }}>
+        <footer style={{ background:"#f8fafc",borderTop:"1px solid #e2e8f0",padding:"2rem 2rem",fontFamily:"'Inter',sans-serif" }}>
           <div style={{ maxWidth:"1100px",margin:"0 auto" }}>
             <div style={{ display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"center",gap:"1rem",marginBottom:"1.5rem" }}>
               <div style={{ display:"flex",alignItems:"center",gap:"8px" }}>
-<span style={{ color:"#94a3b8",fontWeight:600,fontSize:"0.9rem" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
-                <span style={{ color:"#1e293b",fontSize:"0.75rem",marginLeft:"0.5rem" }}>India's Career Growth Platform</span>
+                <span style={{ fontWeight:800,fontSize:"1.1rem",color:"#0f172a",letterSpacing:"-0.03em" }}>hike<span style={{ background:"linear-gradient(135deg,#0ea5e9,#6366f1)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent" }}>zo</span></span>
+                <span style={{ color:"#94a3b8",fontSize:"0.75rem",marginLeft:"0.3rem" }}>India's Career Growth Platform</span>
               </div>
               {/* Social icons */}
               <div style={{ display:"flex",gap:"0.5rem" }}>
                 {[{h:"https://wa.me/917048918369",ic:Icon.wasvg},{h:"https://linkedin.com/company/hikezo",ic:Icon.lisvg},{h:"https://instagram.com/hikezo.in",ic:Icon.igsvg},{h:"https://youtube.com/@hikezo",ic:Icon.ytsvg}].map((s,i)=>(
-                  <a key={i} href={s.h} target="_blank" rel="noopener noreferrer" style={{ width:32,height:32,borderRadius:"6px",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.07)",display:"flex",alignItems:"center",justifyContent:"center",color:"#475569",textDecoration:"none",transition:"all .2s" }}
-                    onMouseEnter={e=>{e.currentTarget.style.background="rgba(14,165,233,0.08)";e.currentTarget.style.color="#0ea5e9";e.currentTarget.style.borderColor="rgba(14,165,233,0.2)";}} onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.04)";e.currentTarget.style.color="#475569";e.currentTarget.style.borderColor="rgba(255,255,255,0.07)";}}>
+                  <a key={i} href={s.h} target="_blank" rel="noopener noreferrer" style={{ width:34,height:34,borderRadius:"8px",background:"#fff",border:"1px solid #e2e8f0",display:"flex",alignItems:"center",justifyContent:"center",color:"#64748b",textDecoration:"none",transition:"all .2s" }}
+                    onMouseEnter={e=>{e.currentTarget.style.background="#f0f9ff";e.currentTarget.style.color="#0ea5e9";e.currentTarget.style.borderColor="rgba(14,165,233,0.3)";}} onMouseLeave={e=>{e.currentTarget.style.background="#fff";e.currentTarget.style.color="#64748b";e.currentTarget.style.borderColor="#e2e8f0";}}>
                     {s.ic}
                   </a>
                 ))}
               </div>
             </div>
-            <div style={{ display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"center",gap:"0.8rem",paddingTop:"1rem",borderTop:"1px solid rgba(255,255,255,0.05)" }}>
+            <div style={{ display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"center",gap:"0.8rem",paddingTop:"1rem",borderTop:"1px solid #e2e8f0" }}>
               <div style={{ display:"flex",gap:"1.5rem",flexWrap:"wrap" }}>
                 {[["Privacy Policy","privacy"],["Terms of Service","terms"],["Refund Policy","refund"],["Contact Us","mailto"]].map(([l,c])=>(
-                  <a key={l} href="#" onClick={e=>{e.preventDefault();if(c==="refund")setShowRefund(true);if(c==="privacy")setShowPrivacy(true);if(c==="terms")setShowTerms(true);if(c==="mailto")window.location.href="mailto:support@hikezo.in";}} style={{ color:"#334155",fontSize:"0.75rem",textDecoration:"none",transition:"color .2s",fontFamily:"'Inter',sans-serif" }}
-                    onMouseEnter={e=>e.target.style.color="#64748b"} onMouseLeave={e=>e.target.style.color="#334155"}>{l}</a>
+                  <a key={l} href="#" onClick={e=>{e.preventDefault();if(c==="refund")setShowRefund(true);if(c==="privacy")setShowPrivacy(true);if(c==="terms")setShowTerms(true);if(c==="mailto")window.location.href="mailto:support@hikezo.in";}} style={{ color:"#64748b",fontSize:"0.75rem",textDecoration:"none",transition:"color .2s",fontFamily:"'Inter',sans-serif" }}
+                    onMouseEnter={e=>e.target.style.color="#0ea5e9"} onMouseLeave={e=>e.target.style.color="#64748b"}>{l}</a>
                 ))}
               </div>
-              <span style={{ color:"#1e293b",fontSize:"0.72rem",fontFamily:"'Inter',sans-serif" }}>{t.footer}</span>
+              <span style={{ color:"#94a3b8",fontSize:"0.72rem",fontFamily:"'Inter',sans-serif" }}>{t.footer}</span>
             </div>
           </div>
         </footer>
